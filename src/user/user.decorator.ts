@@ -1,4 +1,8 @@
-import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+import {
+  createParamDecorator,
+  ExecutionContext,
+  HttpException,
+} from '@nestjs/common';
 import config from 'config';
 import * as jwt from 'jsonwebtoken';
 
@@ -17,4 +21,5 @@ export const User = createParamDecorator((data: any, ctx: ExecutionContext) => {
     const decoded: any = jwt.verify(token[1], config.get('secret'));
     return !!data ? decoded[data] : decoded;
   }
+  throw new HttpException('Auth token required', 401);
 });
