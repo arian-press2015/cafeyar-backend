@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import OTP from 'otp';
+import { totp } from 'otplib';
 import config from 'config';
 import * as jwt from 'jsonwebtoken';
 import {
@@ -13,6 +13,7 @@ import {
   VerifyUserDto,
 } from './dto';
 import { PrismaService } from 'src/shared/services/prisma.service';
+import { RedisService } from 'src/shared/services/redis.service';
 
 const select = {
   id: true,
@@ -26,7 +27,7 @@ const select = {
 
 @Injectable()
 export class UserService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, private redis: RedisService) {}
 
   async findAll(): Promise<UserDisplay[]> {
     return await this.prisma.user.findMany({ select });
@@ -41,10 +42,11 @@ export class UserService {
       throw new HttpException('No user found', 401);
     }
 
-    const otp = new OTP({ keySize: 128, codeLength: 5 });
-    const code = otp.totp(Date.now());
+    const code = totp.generate(config.get('secret'));
 
     // cache otp in redis
+    await this.redis.client.set(`${payload.phone}`, `${code}`);
+    await this.redis.client.expire(`${payload.phone}`, 120);
 
     // send otp sms
 
@@ -53,25 +55,38 @@ export class UserService {
   }
 
   async verify(payload: VerifyUserDto): Promise<UserRO> {
-    // find otp from redis
-    // if phone and otp code matches ...
-
     const user = await this.prisma.user.findUnique({
       where: { phone: payload.phone },
     });
 
+    if (!user) {
+      throw new HttpException('No user found', 401);
+    }
+
+    const code = await this.redis.client.get(`${payload.phone}`);
+
+    if (!code) {
+      throw new HttpException('No otp found', 400);
+    } else if (payload.otp !== code) {
+      throw new HttpException('Wrong otp', 400);
+    }
+
+    await this.redis.client.del(`${payload.phone}`);
+
     const token = await this.generateJWT(user);
+    console.log(token);
     return {
-      user: { token, ...user },
+      user: { ...user, token },
     };
   }
 
   async create(dto: CreateUserDto): Promise<UserDisplayRO> {
     const { phone } = dto;
+    console.log(phone);
 
     // check uniqueness of phone
     const userNotUnique = await this.prisma.user.findUnique({
-      where: { phone },
+      where: { phone: phone },
     });
 
     if (userNotUnique) {

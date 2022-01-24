@@ -21,6 +21,7 @@ import {
   CreateUserDto,
   LoginUserDto,
   UpdateUserDto,
+  UserDisplay,
   UserDisplayRO,
   UserRO,
   VerifyUserDto,
@@ -34,6 +35,17 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('')
+  @ApiOperation({ summary: 'Get all Users data' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns all Users',
+    type: [UserDisplay],
+  })
+  async findAll(): Promise<UserDisplay[]> {
+    return await this.userService.findAll();
+  }
+
+  @Get('me')
   @ApiOperation({ summary: 'Get User data' })
   @ApiResponse({
     status: 200,
@@ -44,7 +56,7 @@ export class UserController {
     return await this.userService.findByPhone(phone);
   }
 
-  @UsePipes(new ValidationPipe())
+  // @UsePipes(new ValidationPipe())
   @Post('')
   @ApiOperation({ summary: 'Create new User' })
   @ApiBody({ description: 'CreateUserDto Schema', type: CreateUserDto })
@@ -53,7 +65,7 @@ export class UserController {
     description: 'Creates a new User',
     type: UserDisplayRO,
   })
-  async create(@Body('user') userData: CreateUserDto): Promise<UserDisplayRO> {
+  async create(@Body() userData: CreateUserDto): Promise<UserDisplayRO> {
     return await this.userService.create(userData);
   }
 
@@ -67,7 +79,7 @@ export class UserController {
   })
   async update(
     @User('id') userId: number,
-    @Body('user') userData: UpdateUserDto,
+    @Body() userData: UpdateUserDto,
   ): Promise<UserDisplayRO> {
     return await this.userService.update(userId, userData);
   }
@@ -83,19 +95,19 @@ export class UserController {
     return await this.userService.delete(userId);
   }
 
-  @UsePipes(new ValidationPipe())
   @Get('login')
   @ApiOperation({ summary: 'Request login verification' })
   @ApiBody({ description: 'LoginUserDto Schema', type: LoginUserDto })
   @ApiResponse({
     status: 200,
     description: 'Trys to Log in using given data',
-    type: LoginUserDto,
+    type: Boolean,
   })
-  async login(@Body('user') loginUserDto: LoginUserDto): Promise<boolean> {
+  async login(@Body() loginUserDto: LoginUserDto): Promise<boolean> {
     return await this.userService.login(loginUserDto);
   }
 
+  // @UsePipes(new ValidationPipe())
   @Post('login')
   @ApiOperation({ summary: 'Verify User' })
   @HttpCode(200)
@@ -105,7 +117,7 @@ export class UserController {
     description: 'Verifies User before login and returns Auth Token',
     type: UserRO,
   })
-  async verify(@Body('data') verifyUserDto: VerifyUserDto): Promise<UserRO> {
+  async verify(@Body() verifyUserDto: VerifyUserDto): Promise<UserRO> {
     return await this.userService.verify(verifyUserDto);
   }
 }

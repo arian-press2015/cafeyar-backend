@@ -25,6 +25,9 @@
 ## TODO
 
 - users can get de-activated, not removed.
+- validation-pipe bug
+- unit-test end-points
+- move 3rd-party modules to a separate file in shared dir
 
 ## Description
 
