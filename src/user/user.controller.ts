@@ -56,7 +56,7 @@ export class UserController {
     return await this.userService.findByPhone(phone);
   }
 
-  // @UsePipes(new ValidationPipe())
+  @UsePipes(new ValidationPipe())
   @Post('')
   @ApiOperation({ summary: 'Create new User' })
   @ApiBody({ description: 'CreateUserDto Schema', type: CreateUserDto })
@@ -107,7 +107,7 @@ export class UserController {
     return await this.userService.login(loginUserDto);
   }
 
-  // @UsePipes(new ValidationPipe())
+  @UsePipes(new ValidationPipe())
   @Post('login')
   @ApiOperation({ summary: 'Verify User' })
   @HttpCode(200)
