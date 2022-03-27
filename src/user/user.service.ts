@@ -12,8 +12,8 @@ import {
   UserRO,
   VerifyUserDto,
 } from './dto';
-import { PrismaService } from 'src/shared/services/prisma.service';
-import { RedisService } from 'src/shared/services/redis.service';
+import { PrismaService } from '../shared/services/prisma.service';
+import { RedisService } from '../shared/services/redis.service';
 
 const select = {
   id: true,
@@ -45,8 +45,8 @@ export class UserService {
     const code = totp.generate(config.get('secret'));
 
     // cache otp in redis
-    await this.redis.client.set(`${payload.phone}`, `${code}`);
-    await this.redis.client.expire(`${payload.phone}`, 120);
+    await this.redis.set(`${payload.phone}`, `${code}`);
+    await this.redis.expire(`${payload.phone}`, 120);
 
     // send otp sms
 
@@ -63,7 +63,7 @@ export class UserService {
       throw new HttpException('No user found', 401);
     }
 
-    const code = await this.redis.client.get(`${payload.phone}`);
+    const code = await this.redis.get(`${payload.phone}`);
 
     if (!code) {
       throw new HttpException('No otp found', 400);
@@ -71,10 +71,9 @@ export class UserService {
       throw new HttpException('Wrong otp', 400);
     }
 
-    await this.redis.client.del(`${payload.phone}`);
+    await this.redis.del(`${payload.phone}`);
 
     const token = await this.generateJWT(user);
-    console.log(token);
     return {
       user: { ...user, token },
     };
@@ -82,7 +81,6 @@ export class UserService {
 
   async create(dto: CreateUserDto): Promise<UserDisplayRO> {
     const { phone } = dto;
-    console.log(phone);
 
     // check uniqueness of phone
     const userNotUnique = await this.prisma.user.findUnique({

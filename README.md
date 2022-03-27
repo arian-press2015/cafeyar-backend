@@ -24,9 +24,6 @@
 
 ## TODO
 
-- users can get de-activated, not removed.
-- validation-pipe bug
-- unit-test end-points
 - move 3rd-party modules to a separate file in shared dir
 
 ## Description
@@ -71,9 +68,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Author - [arian_press2015](https://ap2015.me)
 - Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Email - [email](arian.press2015@gmail.com)
 
 ## License
 

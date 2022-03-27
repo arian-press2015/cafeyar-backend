@@ -1,9 +1,9 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
-import { PrismaService } from 'src/shared/services/prisma.service';
+import { PrismaService } from '../shared/services/prisma.service';
 import { AuthMiddleware } from './auth.middleware';
-import { RedisService } from 'src/shared/services/redis.service';
+import { RedisService } from '../shared/services/redis.service';
 
 @Module({
   providers: [UserService, PrismaService, RedisService],
