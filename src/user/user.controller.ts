@@ -119,15 +119,7 @@ export class UserController {
   })
   @ApiResponse({
     status: 400,
-    description: 'No user found',
-  })
-  @ApiResponse({
-    status: 400,
-    description: 'No otp found',
-  })
-  @ApiResponse({
-    status: 400,
-    description: 'Wrong otp',
+    description: 'No user found|No otp found|Wrong otp',
   })
   async verify(@Body() verifyUserDto: VerifyUserDto): Promise<UserRO> {
     return await this.userService.verify(verifyUserDto);
