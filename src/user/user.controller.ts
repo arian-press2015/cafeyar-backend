@@ -28,7 +28,7 @@ import {
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 
 @ApiBearerAuth()
-@ApiTags('users')
+@ApiTags('user')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
