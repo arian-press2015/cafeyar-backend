@@ -1,23 +1,579 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
+model category {
+  id               Int                @id @default(autoincrement())
+  host_id          Int
+  name             String             @db.VarChar(50)
+  item_count       Int                @default(0)
+  item_min_price   Int                @default(0)
+  item_max_price   Int                @default(0)
+  host             host               @relation(fields: [host_id], references: [id], map: "category_fk")
+  category_image   category_image?
+  sub_cat_discount sub_cat_discount[]
+  sub_category     sub_category[]
+
+  @@unique([host_id, name], map: "category_host_id_name_un")
 }
 
-model User {
-  id            Int         @default(autoincrement()) @id
-  phone         String      @unique
-  name          String?
-  last          String?
-  age           Int?
-  gender        String?
-  weight        Int?
-  height        Int?
-  token         String?     @unique
+model category_image {
+  cat_id   Int      @id
+  height   Int
+  width    Int
+  url      String   @unique(map: "category_image_url_un") @db.VarChar(200)
+  category category @relation(fields: [cat_id], references: [id], map: "category_image_fk")
+}
+
+model discount {
+  id                       Int                        @id @default(autoincrement())
+  code                     String?                    @unique(map: "discount_code_un") @db.VarChar(20)
+  count                    Int
+  percentage               Int
+  max_amount               BigInt
+  expiry_date              DateTime                   @db.DateTime(0)
+  product_discount         product_discount[]
+  product_discount_history product_discount_history[]
+}
+
+model faq {
+  id       Int    @id @default(autoincrement())
+  question String @unique(map: "faq_un") @db.VarChar(200)
+  answer   String @db.VarChar(200)
+}
+
+model feature {
+  id                       Int             @id @default(autoincrement())
+  title                    String          @unique(map: "feature_title_un") @db.VarChar(50)
+  description              String          @db.VarChar(200)
+  version                  Int
+  version_featureToversion version         @relation(fields: [version], references: [id], onDelete: Cascade, map: "feature_fk")
+  level_feature            level_feature[]
+
+  @@index([version], map: "feature_fk")
+}
+
+model host {
+  id           Int         @id @default(autoincrement())
+  owner_id     Int
+  name         String      @unique(map: "host_name_un") @db.VarChar(50)
+  phone        String      @unique(map: "host_phone_un") @db.VarChar(13)
+  address      String?     @db.VarChar(200)
+  description  String?     @db.VarChar(200)
+  opening_time DateTime    @db.Time(0)
+  closing_time DateTime    @db.Time(0)
+  licenced     Boolean     @default(true)
+  deleted      Boolean     @default(false)
+  user         user        @relation(fields: [owner_id], references: [id], map: "host_fk")
+  category     category[]
+  host_image   host_image?
+  order        order[]
+  personnel    personnel[]
+  rate         rate[]
+  role         role[]
+  table        table[]
+
+  @@index([owner_id], map: "host_fk")
+}
+
+model host_image {
+  host_id Int    @id
+  height  Int
+  width   Int
+  url     String @unique(map: "host_image_url_un") @db.VarChar(200)
+  host    host   @relation(fields: [host_id], references: [id], map: "host_image_fk")
+}
+
+model image_type {
+  id          Int    @id @default(autoincrement())
+  type        String @unique(map: "image_type_type_un") @db.VarChar(50)
+  description String @db.VarChar(200)
+  width       Int
+  height      Int
+}
+
+model ingredient {
+  id                 Int                  @id @default(autoincrement())
+  name               String               @unique(map: "ingredient_name_un") @db.VarChar(50)
+  product_ingredient product_ingredient[]
+}
+
+model invoice {
+  id       Int       @id @default(autoincrement())
+  user_id  Int
+  price    BigInt    @default(0)
+  discount BigInt    @default(0)
+  pay_date DateTime? @db.DateTime(0)
+  user     user      @relation(fields: [user_id], references: [id], map: "invoice_fk")
+  order    order[]
+  payment  payment[]
+  tip      tip[]
+
+  @@index([user_id], map: "invoice_fk")
+}
+
+model level_feature {
+  id             Int            @id @default(autoincrement())
+  level_id       Int
+  feature_id     Int
+  feature        feature        @relation(fields: [feature_id], references: [id], onDelete: Cascade, map: "level_feature_fk")
+  purchase_level purchase_level @relation(fields: [level_id], references: [id], onDelete: Cascade, map: "level_feature_fk_1")
+
+  @@unique([level_id, feature_id], map: "level_feature_lev_feat_un")
+  @@index([feature_id], map: "level_feature_fk")
+}
+
+model order {
+  id                       Int                       @id @default(autoincrement())
+  host_id                  Int
+  invoice_id               Int
+  total_price              BigInt
+  total_discount           BigInt
+  time                     DateTime                  @db.DateTime(0)
+  description              String?                   @db.VarChar(100)
+  host                     host                      @relation(fields: [host_id], references: [id], map: "order_fk")
+  invoice                  invoice                   @relation(fields: [invoice_id], references: [id], map: "order_fk_1")
+  order_item               order_item[]
+  product_discount_history product_discount_history?
+  sub_cat_discount_history sub_cat_discount_history?
+
+  @@index([host_id], map: "order_fk")
+  @@index([invoice_id], map: "order_fk_1")
+}
+
+model order_item {
+  id         Int     @id @default(autoincrement())
+  product_id Int
+  order_id   Int
+  count      Int
+  order      order   @relation(fields: [order_id], references: [id], map: "order_item_fk")
+  product    product @relation(fields: [product_id], references: [id], map: "order_item_fk_1")
+
+  @@unique([product_id, order_id], map: "order_item_product_order_un")
+  @@index([order_id], map: "order_item_fk")
+}
+
+model owner {
+  user_id       Int        @id
+  username      String     @unique(map: "owner_username_un") @db.VarChar(50)
+  password      String     @unique(map: "owner_password_un") @db.VarChar(200)
+  owner_role_id Int
+  creation_date DateTime   @db.DateTime(0)
+  owner_role    owner_role @relation(fields: [owner_role_id], references: [id], map: "owner_fk_1")
+  user          user       @relation(fields: [user_id], references: [id], map: "owner_fk")
+
+  @@index([owner_role_id], map: "owner_fk_1")
+}
+
+model owner_permission {
+  id                    Int                     @id @default(autoincrement())
+  title                 String                  @unique(map: "owner_permission_title_un") @db.VarChar(50)
+  title_fa              String                  @unique(map: "owner_permission_title_fa_un") @db.VarChar(50)
+  description           String                  @db.VarChar(200)
+  owner_role_permission owner_role_permission[]
+}
+
+model owner_role {
+  id                    Int                     @id @default(autoincrement())
+  title                 String                  @unique(map: "owner_role_title_un") @db.VarChar(50)
+  title_fa              String                  @unique(map: "owner_role_title_fa_un") @db.VarChar(50)
+  owner                 owner[]
+  owner_role_permission owner_role_permission[]
+}
+
+model owner_role_permission {
+  id                  Int              @id @default(autoincrement())
+  owner_role_id       Int
+  owner_permission_id Int
+  owner_permission    owner_permission @relation(fields: [owner_permission_id], references: [id], onDelete: Cascade, map: "owner_role_permission_fk_1")
+  owner_role          owner_role       @relation(fields: [owner_role_id], references: [id], onDelete: Cascade, map: "owner_role_permission_fk")
+
+  @@unique([owner_role_id, owner_permission_id], map: "owner_role_permission_role_perm_un")
+  @@index([owner_permission_id], map: "owner_role_permission_fk_1")
+}
+
+model payment {
+  id          Int       @id @default(autoincrement())
+  invoice_id  Int?
+  purchase_id Int?
+  price       BigInt
+  success     Boolean?
+  invoice     invoice?  @relation(fields: [invoice_id], references: [id], onDelete: Restrict, map: "payment_fk_1")
+  purchase    purchase? @relation(fields: [purchase_id], references: [id], onDelete: Restrict, map: "payment_fk")
+
+  @@index([purchase_id], map: "payment_fk")
+  @@index([invoice_id], map: "payment_fk_1")
+}
+
+model permission {
+  id              Int               @id @default(autoincrement())
+  title           String            @unique(map: "permission_title_un") @db.VarChar(50)
+  title_fa        String            @unique(map: "permission_title_fa_un") @db.VarChar(50)
+  description     String            @db.VarChar(200)
+  role_permission role_permission[]
+}
+
+model personnel {
+  id            Int             @id @default(autoincrement())
+  user_id       Int
+  host_id       Int
+  role_id       Int
+  host          host            @relation(fields: [host_id], references: [id], map: "personnel_fk_1")
+  role          role            @relation(fields: [role_id], references: [id], map: "personnel_fk_2")
+  user          user            @relation(fields: [user_id], references: [id], map: "personnel_fk")
+  personnel_tip personnel_tip[]
+
+  @@unique([user_id, host_id, role_id], map: "personneluser_host_role_un")
+  @@index([host_id], map: "personnel_fk_1")
+  @@index([role_id], map: "personnel_fk_2")
+}
+
+model personnel_tip {
+  id           Int       @id @default(autoincrement())
+  personnel_id Int
+  tip_id       Int
+  paid         Boolean   @default(false)
+  personnel    personnel @relation(fields: [personnel_id], references: [id], onDelete: Cascade, map: "personnel_tip_fk_1")
+  tip          tip       @relation(fields: [tip_id], references: [id], onDelete: Cascade, map: "personnel_tip_fk")
+
+  @@unique([personnel_id, tip_id], map: "personnel_tip_pers_tip_un")
+  @@index([tip_id], map: "personnel_tip_fk")
+}
+
+model product {
+  id                 Int                  @id @default(autoincrement())
+  sub_cat_id         Int
+  name               String               @db.VarChar(50)
+  price              BigInt
+  enabled            Boolean              @default(true)
+  deleted            Boolean              @default(false)
+  sub_category       sub_category         @relation(fields: [sub_cat_id], references: [id], map: "product_fk")
+  order_item         order_item[]
+  product_discount   product_discount[]
+  product_image      product_image[]
+  product_ingredient product_ingredient[]
+  product_star       product_star[]
+
+  @@unique([sub_cat_id, name], map: "product_sub_cat_name_un")
+}
+
+model product_discount {
+  id          Int      @id @default(autoincrement())
+  product_id  Int
+  discount_id Int
+  discount    discount @relation(fields: [discount_id], references: [id], map: "product_discount_fk")
+  product     product  @relation(fields: [product_id], references: [id], map: "product_discount_fk_1")
+
+  @@unique([product_id, discount_id], map: "product_discount_prod_disc_un")
+  @@index([discount_id], map: "product_discount_fk")
+}
+
+model product_discount_history {
+  order_id        Int      @id
+  discount_id     Int
+  total_amount    BigInt
+  discount_amount BigInt
+  used_at         DateTime @db.DateTime(0)
+  discount        discount @relation(fields: [discount_id], references: [id], map: "product_discount_history_fk_1")
+  order           order    @relation(fields: [order_id], references: [id], map: "product_discount_history_fk")
+
+  @@index([discount_id], map: "product_discount_history_fk_1")
+}
+
+model product_image {
+  id         Int     @id @default(autoincrement())
+  product_id Int
+  height     Int
+  width      Int
+  url        String  @unique(map: "product_image_url_un") @db.VarChar(200)
+  user_image Boolean
+  product    product @relation(fields: [product_id], references: [id], map: "product_image_fk")
+
+  @@index([product_id], map: "product_image_fk")
+}
+
+model product_ingredient {
+  id            Int        @id @default(autoincrement())
+  product_id    Int
+  ingredient_id Int
+  ingredient    ingredient @relation(fields: [ingredient_id], references: [id], map: "product_ingredient_fk_1")
+  product       product    @relation(fields: [product_id], references: [id], map: "product_ingredient_fk")
+
+  @@unique([product_id, ingredient_id], map: "product_ingredient_prod_ing_un")
+  @@index([ingredient_id], map: "product_ingredient_fk_1")
+}
+
+model product_star {
+  id         Int     @id @default(autoincrement())
+  product_id Int
+  user_id    Int
+  star       Int
+  product    product @relation(fields: [product_id], references: [id], map: "product_star_fk")
+  user       user    @relation(fields: [user_id], references: [id], map: "product_star_fk_1")
+
+  @@unique([product_id, user_id], map: "product_star_user_product_un")
+  @@index([user_id], map: "product_star_fk_1")
+}
+
+model purchase {
+  id                        Int                        @id @default(autoincrement())
+  user_id                   Int
+  purchase_plan_id          Int
+  purchase_date             DateTime                   @db.DateTime(0)
+  purchase_plan             purchase_plan              @relation(fields: [purchase_plan_id], references: [id], map: "purchase_fk_1")
+  user                      user                       @relation(fields: [user_id], references: [id], map: "purchase_fk")
+  payment                   payment[]
+  purchase_discount_history purchase_discount_history?
+
+  @@index([user_id], map: "purchase_fk")
+  @@index([purchase_plan_id], map: "purchase_fk_1")
+}
+
+model purchase_discount {
+  id                        Int                         @id @default(autoincrement())
+  purchase_plan_id          Int                         @unique(map: "purchase_discount_purchase_plan_un")
+  code                      String?                     @unique(map: "purchase_discount_code_un") @db.VarChar(20)
+  count                     Int
+  percentage                Int
+  max_amount                BigInt
+  expiry_date               DateTime                    @db.DateTime(0)
+  purchase_plan             purchase_plan               @relation(fields: [purchase_plan_id], references: [id], map: "purchase_discount_fk")
+  purchase_discount_history purchase_discount_history[]
+}
+
+model purchase_discount_history {
+  purchase_id          Int               @id
+  purchase_discount_id Int
+  total_amount         BigInt
+  discount_amount      BigInt
+  used_at              DateTime          @db.DateTime(0)
+  purchase_discount    purchase_discount @relation(fields: [purchase_discount_id], references: [id], map: "purchase_discount_history_fk_1")
+  purchase             purchase          @relation(fields: [purchase_id], references: [id], map: "purchase_discount_history_fk")
+
+  @@index([purchase_discount_id], map: "purchase_discount_history_fk_1")
+}
+
+model purchase_level {
+  id            Int             @id @default(autoincrement())
+  title         String          @unique(map: "purchase_level_title_un") @db.VarChar(50)
+  price         BigInt
+  level_feature level_feature[]
+  purchase_plan purchase_plan[]
+}
+
+model purchase_lifetime {
+  id            Int                     @id @default(autoincrement())
+  title         purchase_lifetime_title @unique(map: "purchase_lifetime_title_un")
+  description   String                  @db.VarChar(200)
+  multiplier    Float                   @db.Float
+  purchase_plan purchase_plan[]
+}
+
+model purchase_plan {
+  id                   Int                @id @default(autoincrement())
+  purchase_lifetime_id Int
+  purchase_level_id    Int
+  price                BigInt
+  purchase_level       purchase_level     @relation(fields: [purchase_level_id], references: [id], onDelete: Cascade, map: "purchase_plan_fk_1")
+  purchase_lifetime    purchase_lifetime  @relation(fields: [purchase_lifetime_id], references: [id], onDelete: Cascade, map: "purchase_plan_fk")
+  purchase             purchase[]
+  purchase_discount    purchase_discount?
+
+  @@unique([purchase_lifetime_id, purchase_level_id], map: "purchase_plan_un")
+  @@index([purchase_level_id], map: "purchase_plan_fk_1")
+}
+
+model qr_image {
+  table_id Int    @id
+  height   Int
+  width    Int
+  url      String @unique(map: "qr_image_url_un") @db.VarChar(100)
+  table    table  @relation(fields: [table_id], references: [id], onDelete: Cascade, map: "qr_image_fk")
+}
+
+model rate {
+  user_id         Int
+  host_id         Int
+  host_point      Int
+  personnel_point Int
+  quality_point   Int
+  description     String? @db.VarChar(200)
+  host            host    @relation(fields: [host_id], references: [id], map: "rate_fk")
+  user            user    @relation(fields: [user_id], references: [id], map: "rate_fk_1")
+
+  @@id([user_id, host_id])
+  @@index([host_id], map: "rate_fk")
+}
+
+model role {
+  id              Int               @id @default(autoincrement())
+  host_id         Int
+  title           String            @db.VarChar(50)
+  title_fa        String            @db.VarChar(50)
+  host            host              @relation(fields: [host_id], references: [id], map: "role_fk")
+  personnel       personnel[]
+  role_permission role_permission[]
+
+  @@unique([title_fa, host_id], map: "role_host_title_fa_un")
+  @@unique([title, host_id], map: "role_host_title_un")
+  @@index([host_id], map: "role_fk")
+}
+
+model role_permission {
+  id            Int        @id @default(autoincrement())
+  role_id       Int
+  permission_id Int
+  permission    permission @relation(fields: [permission_id], references: [id], onDelete: Cascade, map: "role_permission_fk_1")
+  role          role       @relation(fields: [role_id], references: [id], onDelete: Cascade, map: "role_permission_fk")
+
+  @@unique([role_id, permission_id], map: "role_permission_role_perm_un")
+  @@index([permission_id], map: "role_permission_fk_1")
+}
+
+model sub_cat_discount {
+  id                       Int                        @id @default(autoincrement())
+  cat_id                   Int
+  sub_cat_id               Int
+  count                    Int
+  percentage               Int
+  max_amount               BigInt
+  expiry_date              DateTime                   @db.DateTime(0)
+  category                 category                   @relation(fields: [cat_id], references: [id], map: "sub_cat_discount_fk")
+  sub_category             sub_category               @relation(fields: [sub_cat_id], references: [id], map: "sub_cat_discount_fk_1")
+  sub_cat_discount_history sub_cat_discount_history[]
+
+  @@unique([cat_id, sub_cat_id], map: "sub_cat_discount_cat_sub_un")
+  @@index([sub_cat_id], map: "sub_cat_discount_fk_1")
+}
+
+model sub_cat_discount_history {
+  order_id            Int              @id
+  sub_cat_discount_id Int
+  total_amount        BigInt
+  discount_amount     BigInt
+  used_at             DateTime         @db.DateTime(0)
+  order               order            @relation(fields: [order_id], references: [id], map: "sub_cat_discount_history_fk")
+  sub_cat_discount    sub_cat_discount @relation(fields: [sub_cat_discount_id], references: [id], map: "sub_cat_discount_history_fk_1")
+
+  @@index([sub_cat_discount_id], map: "sub_cat_discount_history_fk_1")
+}
+
+model sub_category {
+  id               Int                @id @default(autoincrement())
+  cat_id           Int
+  name             String             @db.VarChar(50)
+  category         category           @relation(fields: [cat_id], references: [id], map: "sub_category_fk")
+  product          product[]
+  sub_cat_discount sub_cat_discount[]
+
+  @@unique([cat_id, name], map: "sub_category_name_cat_un")
+}
+
+model table {
+  id           Int       @id @default(autoincrement())
+  host_id      Int
+  capacity     Int
+  table_number Int
+  host         host      @relation(fields: [host_id], references: [id], map: "table_fk")
+  qr_image     qr_image?
+
+  @@index([host_id], map: "table_fk")
+}
+
+model tip {
+  id            Int             @id @default(autoincrement())
+  invoice_id    Int
+  user_id       Int
+  amount        BigInt
+  count         Int
+  date          DateTime        @db.DateTime(0)
+  invoice       invoice         @relation(fields: [invoice_id], references: [id], map: "tip_fk_1")
+  user          user            @relation(fields: [user_id], references: [id], map: "tip_fk")
+  personnel_tip personnel_tip[]
+
+  @@index([user_id], map: "tip_fk")
+  @@index([invoice_id], map: "tip_fk_1")
+}
+
+model user {
+  id                                                      Int                 @id @default(autoincrement())
+  name                                                    String              @db.VarChar(50)
+  last                                                    String              @db.VarChar(50)
+  phone                                                   String              @unique(map: "user_phone_un") @db.VarChar(13)
+  creation_date                                           DateTime            @db.DateTime(0)
+  gender                                                  user_gender?
+  age                                                     Int?
+  credit                                                  BigInt              @default(0)
+  introduction_id                                         String              @unique(map: "user_introduction_id_idx") @db.VarChar(50)
+  deleted                                                 Boolean             @default(false)
+  host                                                    host[]
+  invoice                                                 invoice[]
+  owner                                                   owner?
+  personnel                                               personnel[]
+  product_star                                            product_star[]
+  purchase                                                purchase[]
+  rate                                                    rate[]
+  tip                                                     tip[]
+  user_feature                                            user_feature[]
+  user_image                                              user_image?
+  user_introduction_userTouser_introduction_introducer_id user_introduction[] @relation("userTouser_introduction_introducer_id")
+  user_introduction_userTouser_introduction_user_id       user_introduction[] @relation("userTouser_introduction_user_id")
+}
+
+model user_feature {
+  id          Int     @id @default(autoincrement())
+  user_id     Int
+  title       String  @db.VarChar(50)
+  description String  @db.VarChar(200)
+  accepted    Boolean @default(false)
+  paid        Boolean @default(false)
+  user        user    @relation(fields: [user_id], references: [id], map: "user_feature_fk")
+
+  @@index([user_id], map: "user_feature_fk")
+}
+
+model user_image {
+  user_id Int    @id
+  height  Int?
+  width   Int?
+  url     String @unique(map: "user_image_url_un") @db.VarChar(200)
+  user    user   @relation(fields: [user_id], references: [id], map: "user_image_fk")
+}
+
+model user_introduction {
+  id                                         Int     @id @default(autoincrement())
+  user_id                                    Int
+  introducer_id                              Int
+  paid                                       Boolean @default(false)
+  user_userTouser_introduction_introducer_id user    @relation("userTouser_introduction_introducer_id", fields: [introducer_id], references: [id], map: "user_introduction_fk_1")
+  user_userTouser_introduction_user_id       user    @relation("userTouser_introduction_user_id", fields: [user_id], references: [id], map: "user_introduction_fk")
+
+  @@unique([user_id, introducer_id], map: "user_introduction_user_intro_un")
+  @@index([introducer_id], map: "user_introduction_fk_1")
+}
+
+model version {
+  id             Int       @id @default(autoincrement())
+  version_number Float     @unique(map: "version_number_un") @db.Float
+  creation_date  DateTime  @db.DateTime(0)
+  feature        feature[]
+}
+
+enum purchase_lifetime_title {
+  MONTHLY
+  SEASONAL
+  SEMIANNUAL
+  ANNUAL
+  PER_SALE
+}
+
+enum user_gender {
+  male
+  female
+  other
 }

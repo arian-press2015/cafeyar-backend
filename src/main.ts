@@ -11,7 +11,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('GymPan')
+    .setTitle('CafeYar')
     .setDescription('This is the documentation for the Back-End API')
     .setVersion('0.1')
     .addBearerAuth()
@@ -19,8 +19,8 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   const customOptions: SwaggerCustomOptions = {
-    customSiteTitle: 'GymPan Back-End API',
-    customfavIcon: '../gympan.png',
+    customSiteTitle: 'CafeYar Back-End API',
+    customfavIcon: '../cafeyar.jpg',
   };
 
   SwaggerModule.setup('docs', app, document, customOptions);
