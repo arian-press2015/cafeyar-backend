@@ -59,24 +59,24 @@ model feature {
 }
 
 model host {
-  id           Int         @id @default(autoincrement())
+  id           Int          @id @default(autoincrement())
   owner_id     Int
-  name         String      @unique(map: "host_name_un") @db.VarChar(50)
-  phone        String      @unique(map: "host_phone_un") @db.VarChar(13)
-  address      String?     @db.VarChar(200)
-  description  String?     @db.VarChar(200)
-  opening_time DateTime    @db.Time(0)
-  closing_time DateTime    @db.Time(0)
-  licenced     Boolean     @default(true)
-  deleted      Boolean     @default(false)
-  user         user        @relation(fields: [owner_id], references: [id], map: "host_fk")
+  name         String       @unique(map: "host_name_un") @db.VarChar(50)
+  phone        String       @unique(map: "host_phone_un") @db.VarChar(13)
+  address      String?      @db.VarChar(200)
+  description  String?      @db.VarChar(200)
+  opening_time DateTime     @db.Time(0)
+  closing_time DateTime     @db.Time(0)
+  licenced     Boolean      @default(true)
+  deleted      Boolean      @default(false)
+  customer     customer     @relation(fields: [owner_id], references: [id], map: "host_fk")
   category     category[]
   host_image   host_image?
+  host_table   host_table[]
   order        order[]
   personnel    personnel[]
   rate         rate[]
   role         role[]
-  table        table[]
 
   @@index([owner_id], map: "host_fk")
 }
@@ -104,17 +104,17 @@ model ingredient {
 }
 
 model invoice {
-  id       Int       @id @default(autoincrement())
-  user_id  Int
-  price    BigInt    @default(0)
-  discount BigInt    @default(0)
-  pay_date DateTime? @db.DateTime(0)
-  user     user      @relation(fields: [user_id], references: [id], map: "invoice_fk")
-  order    order[]
-  payment  payment[]
-  tip      tip[]
+  id          Int       @id @default(autoincrement())
+  customer_id Int
+  price       BigInt    @default(0)
+  discount    BigInt    @default(0)
+  pay_date    DateTime? @db.DateTime(0)
+  customer    customer  @relation(fields: [customer_id], references: [id], map: "invoice_fk")
+  order       order[]
+  payment     payment[]
+  tip         tip[]
 
-  @@index([user_id], map: "invoice_fk")
+  @@index([customer_id], map: "invoice_fk")
 }
 
 model level_feature {
@@ -159,13 +159,13 @@ model order_item {
 }
 
 model owner {
-  user_id       Int        @id
+  customer_id   Int        @id
   username      String     @unique(map: "owner_username_un") @db.VarChar(50)
   password      String     @unique(map: "owner_password_un") @db.VarChar(200)
   owner_role_id Int
   creation_date DateTime   @db.DateTime(0)
+  customer      customer   @relation(fields: [customer_id], references: [id], map: "owner_fk")
   owner_role    owner_role @relation(fields: [owner_role_id], references: [id], map: "owner_fk_1")
-  user          user       @relation(fields: [user_id], references: [id], map: "owner_fk")
 
   @@index([owner_role_id], map: "owner_fk_1")
 }
@@ -220,17 +220,17 @@ model permission {
 
 model personnel {
   id            Int             @id @default(autoincrement())
-  user_id       Int
+  customer_id   Int
   host_id       Int
   role_id       Int
-  host          host            @relation(fields: [host_id], references: [id], map: "personnel_fk_1")
-  role          role            @relation(fields: [role_id], references: [id], map: "personnel_fk_2")
-  user          user            @relation(fields: [user_id], references: [id], map: "personnel_fk")
+  customer      customer        @relation(fields: [customer_id], references: [id], map: "personnel_FK")
+  host          host            @relation(fields: [host_id], references: [id], map: "personnel_FK_1")
+  role          role            @relation(fields: [role_id], references: [id], map: "personnel_FK_2")
   personnel_tip personnel_tip[]
 
-  @@unique([user_id, host_id, role_id], map: "personneluser_host_role_un")
-  @@index([host_id], map: "personnel_fk_1")
-  @@index([role_id], map: "personnel_fk_2")
+  @@unique([customer_id, host_id, role_id], map: "personnel_cust_host_role_UN")
+  @@index([host_id], map: "personnel_FK_1")
+  @@index([role_id], map: "personnel_FK_2")
 }
 
 model personnel_tip {
@@ -309,28 +309,28 @@ model product_ingredient {
 }
 
 model product_star {
-  id         Int     @id @default(autoincrement())
-  product_id Int
-  user_id    Int
-  star       Int
-  product    product @relation(fields: [product_id], references: [id], map: "product_star_fk")
-  user       user    @relation(fields: [user_id], references: [id], map: "product_star_fk_1")
+  id          Int      @id @default(autoincrement())
+  product_id  Int
+  customer_id Int
+  star        Int
+  customer    customer @relation(fields: [customer_id], references: [id], map: "product_star_FK_1")
+  product     product  @relation(fields: [product_id], references: [id], map: "product_star_FK")
 
-  @@unique([product_id, user_id], map: "product_star_user_product_un")
-  @@index([user_id], map: "product_star_fk_1")
+  @@unique([product_id, customer_id], map: "product_star_customer_product_UN")
+  @@index([customer_id], map: "product_star_fk_1")
 }
 
 model purchase {
   id                        Int                        @id @default(autoincrement())
-  user_id                   Int
+  customer_id               Int
   purchase_plan_id          Int
   purchase_date             DateTime                   @db.DateTime(0)
+  customer                  customer                   @relation(fields: [customer_id], references: [id], map: "purchase_fk")
   purchase_plan             purchase_plan              @relation(fields: [purchase_plan_id], references: [id], map: "purchase_fk_1")
-  user                      user                       @relation(fields: [user_id], references: [id], map: "purchase_fk")
   payment                   payment[]
   purchase_discount_history purchase_discount_history?
 
-  @@index([user_id], map: "purchase_fk")
+  @@index([customer_id], map: "purchase_fk")
   @@index([purchase_plan_id], map: "purchase_fk_1")
 }
 
@@ -389,24 +389,24 @@ model purchase_plan {
 }
 
 model qr_image {
-  table_id Int    @id
-  height   Int
-  width    Int
-  url      String @unique(map: "qr_image_url_un") @db.VarChar(100)
-  table    table  @relation(fields: [table_id], references: [id], onDelete: Cascade, map: "qr_image_fk")
+  host_table_id Int        @id
+  height        Int
+  width         Int
+  url           String     @unique(map: "qr_image_url_un") @db.VarChar(100)
+  host_table    host_table @relation(fields: [host_table_id], references: [id], onDelete: Cascade, map: "qr_image_fk")
 }
 
 model rate {
-  user_id         Int
+  customer_id     Int
   host_id         Int
   host_point      Int
   personnel_point Int
   quality_point   Int
-  description     String? @db.VarChar(200)
-  host            host    @relation(fields: [host_id], references: [id], map: "rate_fk")
-  user            user    @relation(fields: [user_id], references: [id], map: "rate_fk_1")
+  description     String?  @db.VarChar(200)
+  customer        customer @relation(fields: [customer_id], references: [id], map: "rate_fk_1")
+  host            host     @relation(fields: [host_id], references: [id], map: "rate_fk")
 
-  @@id([user_id, host_id])
+  @@id([customer_id, host_id])
   @@index([host_id], map: "rate_fk")
 }
 
@@ -474,7 +474,86 @@ model sub_category {
   @@unique([cat_id, name], map: "sub_category_name_cat_un")
 }
 
-model table {
+model tip {
+  id            Int             @id @default(autoincrement())
+  invoice_id    Int
+  customer_id   Int
+  amount        BigInt
+  count         Int
+  tip_date      DateTime        @db.DateTime(0)
+  customer      customer        @relation(fields: [customer_id], references: [id], map: "tip_fk")
+  invoice       invoice         @relation(fields: [invoice_id], references: [id], map: "tip_fk_1")
+  personnel_tip personnel_tip[]
+
+  @@index([customer_id], map: "tip_fk")
+  @@index([invoice_id], map: "tip_fk_1")
+}
+
+model version {
+  id             Int       @id @default(autoincrement())
+  version_number Float     @unique(map: "version_number_un") @db.Float
+  creation_date  DateTime  @db.DateTime(0)
+  feature        feature[]
+}
+
+model customer {
+  id                                                                  Int                     @id @default(autoincrement())
+  name                                                                String                  @default("کاربر") @db.VarChar(50)
+  last                                                                String                  @default("گرامی") @db.VarChar(50)
+  phone                                                               String                  @unique(map: "customer_phone_un") @db.VarChar(13)
+  creation_date                                                       DateTime                @db.DateTime(0)
+  gender                                                              customer_gender?
+  age                                                                 Int?
+  credit                                                              BigInt                  @default(0)
+  introduction_id                                                     String                  @unique(map: "customer_introduction_id_idx") @db.VarChar(50)
+  deleted                                                             Boolean                 @default(false)
+  customer_feature                                                    customer_feature[]
+  customer_image                                                      customer_image?
+  customer_introduction_customerTocustomer_introduction_customer_id   customer_introduction[] @relation("customerTocustomer_introduction_customer_id")
+  customer_introduction_customerTocustomer_introduction_introducer_id customer_introduction[] @relation("customerTocustomer_introduction_introducer_id")
+  host                                                                host[]
+  invoice                                                             invoice[]
+  owner                                                               owner?
+  personnel                                                           personnel[]
+  product_star                                                        product_star[]
+  purchase                                                            purchase[]
+  rate                                                                rate[]
+  tip                                                                 tip[]
+}
+
+model customer_feature {
+  id          Int      @id @default(autoincrement())
+  customer_id Int
+  title       String   @db.VarChar(50)
+  description String   @db.VarChar(200)
+  accepted    Boolean  @default(false)
+  paid        Boolean  @default(false)
+  customer    customer @relation(fields: [customer_id], references: [id], map: "customer_feature_FK")
+
+  @@index([customer_id], map: "customer_feature_fk")
+}
+
+model customer_image {
+  customer_id Int      @id
+  height      Int?
+  width       Int?
+  url         String   @unique(map: "customer_image_url_UN") @db.VarChar(200)
+  customer    customer @relation(fields: [customer_id], references: [id], map: "customer_image_FK")
+}
+
+model customer_introduction {
+  id                                                     Int      @id @default(autoincrement())
+  customer_id                                            Int
+  introducer_id                                          Int
+  paid                                                   Boolean  @default(false)
+  customer_customerTocustomer_introduction_customer_id   customer @relation("customerTocustomer_introduction_customer_id", fields: [customer_id], references: [id], map: "customer_introduction_FK")
+  customer_customerTocustomer_introduction_introducer_id customer @relation("customerTocustomer_introduction_introducer_id", fields: [introducer_id], references: [id], map: "customer_introduction_FK_1")
+
+  @@unique([customer_id, introducer_id], map: "customer_introduction_cust_intro_UN")
+  @@index([introducer_id], map: "customer_introduction_FK_1")
+}
+
+model host_table {
   id           Int       @id @default(autoincrement())
   host_id      Int
   capacity     Int
@@ -485,85 +564,6 @@ model table {
   @@index([host_id], map: "table_fk")
 }
 
-model tip {
-  id            Int             @id @default(autoincrement())
-  invoice_id    Int
-  user_id       Int
-  amount        BigInt
-  count         Int
-  date          DateTime        @db.DateTime(0)
-  invoice       invoice         @relation(fields: [invoice_id], references: [id], map: "tip_fk_1")
-  user          user            @relation(fields: [user_id], references: [id], map: "tip_fk")
-  personnel_tip personnel_tip[]
-
-  @@index([user_id], map: "tip_fk")
-  @@index([invoice_id], map: "tip_fk_1")
-}
-
-model user {
-  id                                                      Int                 @id @default(autoincrement())
-  name                                                    String              @db.VarChar(50)
-  last                                                    String              @db.VarChar(50)
-  phone                                                   String              @unique(map: "user_phone_un") @db.VarChar(13)
-  creation_date                                           DateTime            @db.DateTime(0)
-  gender                                                  user_gender?
-  age                                                     Int?
-  credit                                                  BigInt              @default(0)
-  introduction_id                                         String              @unique(map: "user_introduction_id_idx") @db.VarChar(50)
-  deleted                                                 Boolean             @default(false)
-  host                                                    host[]
-  invoice                                                 invoice[]
-  owner                                                   owner?
-  personnel                                               personnel[]
-  product_star                                            product_star[]
-  purchase                                                purchase[]
-  rate                                                    rate[]
-  tip                                                     tip[]
-  user_feature                                            user_feature[]
-  user_image                                              user_image?
-  user_introduction_userTouser_introduction_introducer_id user_introduction[] @relation("userTouser_introduction_introducer_id")
-  user_introduction_userTouser_introduction_user_id       user_introduction[] @relation("userTouser_introduction_user_id")
-}
-
-model user_feature {
-  id          Int     @id @default(autoincrement())
-  user_id     Int
-  title       String  @db.VarChar(50)
-  description String  @db.VarChar(200)
-  accepted    Boolean @default(false)
-  paid        Boolean @default(false)
-  user        user    @relation(fields: [user_id], references: [id], map: "user_feature_fk")
-
-  @@index([user_id], map: "user_feature_fk")
-}
-
-model user_image {
-  user_id Int    @id
-  height  Int?
-  width   Int?
-  url     String @unique(map: "user_image_url_un") @db.VarChar(200)
-  user    user   @relation(fields: [user_id], references: [id], map: "user_image_fk")
-}
-
-model user_introduction {
-  id                                         Int     @id @default(autoincrement())
-  user_id                                    Int
-  introducer_id                              Int
-  paid                                       Boolean @default(false)
-  user_userTouser_introduction_introducer_id user    @relation("userTouser_introduction_introducer_id", fields: [introducer_id], references: [id], map: "user_introduction_fk_1")
-  user_userTouser_introduction_user_id       user    @relation("userTouser_introduction_user_id", fields: [user_id], references: [id], map: "user_introduction_fk")
-
-  @@unique([user_id, introducer_id], map: "user_introduction_user_intro_un")
-  @@index([introducer_id], map: "user_introduction_fk_1")
-}
-
-model version {
-  id             Int       @id @default(autoincrement())
-  version_number Float     @unique(map: "version_number_un") @db.Float
-  creation_date  DateTime  @db.DateTime(0)
-  feature        feature[]
-}
-
 enum purchase_lifetime_title {
   MONTHLY
   SEASONAL
@@ -572,7 +572,7 @@ enum purchase_lifetime_title {
   PER_SALE
 }
 
-enum user_gender {
+enum customer_gender {
   male
   female
   other
