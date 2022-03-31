@@ -44,6 +44,21 @@ export class UserController {
     return await this.userService.findByPhone(phone);
   }
 
+  @Get('')
+  @ApiOperation({ summary: 'Get User data' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns User for provided id',
+    type: UserDisplayRO,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'No user found',
+  })
+  async findOne(@Body('id') id: number): Promise<UserDisplayRO> {
+    return await this.userService.findById(id);
+  }
+
   @UsePipes(new ValidationPipe())
   @Post('')
   @ApiOperation({ summary: 'Create new User' })
@@ -70,7 +85,7 @@ export class UserController {
     type: UserRO,
   })
   @ApiResponse({
-    status: 400,
+    status: 404,
     description: 'No user found',
   })
   async update(
@@ -87,10 +102,15 @@ export class UserController {
     description: 'Deletes current User',
     type: UserDisplayRO,
   })
+  @ApiResponse({
+    status: 404,
+    description: 'No user found',
+  })
   async delete(@User('id') userId: number): Promise<UserDisplayRO> {
     return await this.userService.delete(userId);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get('login')
   @ApiOperation({ summary: 'Request login verification' })
   @ApiBody({ description: 'LoginUserDto Schema', type: LoginUserDto })
@@ -100,7 +120,7 @@ export class UserController {
     type: Boolean,
   })
   @ApiResponse({
-    status: 400,
+    status: 404,
     description: 'No user found',
   })
   async login(@Body() loginUserDto: LoginUserDto): Promise<boolean> {
@@ -119,7 +139,11 @@ export class UserController {
   })
   @ApiResponse({
     status: 400,
-    description: 'No user found|No otp found|Wrong otp',
+    description: 'Wrong otp',
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'No otp found|No user found',
   })
   async verify(@Body() verifyUserDto: VerifyUserDto): Promise<UserRO> {
     return await this.userService.verify(verifyUserDto);

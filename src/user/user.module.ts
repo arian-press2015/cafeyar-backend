@@ -1,4 +1,9 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { PrismaService } from '../shared/services/prisma.service';
@@ -12,6 +17,9 @@ import { RedisService } from '../shared/services/redis.service';
 })
 export class UserModule implements NestModule {
   public configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).exclude('user/login');
+    consumer
+      .apply(AuthMiddleware)
+      .exclude('user/login', { path: 'user', method: RequestMethod.POST })
+      .forRoutes(UserController);
   }
 }

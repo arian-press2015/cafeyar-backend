@@ -30,16 +30,16 @@ export class UserService {
 
   async login(payload: LoginUserDto): Promise<boolean> {
     if (payload.phone != '09012883045') {
-      throw new HttpException('No user found', 400);
+      throw new HttpException('No user found', 404);
     }
     return true;
   }
 
   async verify(payload: VerifyUserDto): Promise<UserRO> {
     if (payload.otp == '1') {
-      throw new HttpException('No user found', 400);
+      throw new HttpException('No user found', 404);
     } else if (payload.otp == '2') {
-      throw new HttpException('No otp found', 400);
+      throw new HttpException('No otp found', 404);
     } else if (payload.otp == '3') {
       throw new HttpException('Wrong otp', 400);
     }
@@ -51,7 +51,7 @@ export class UserService {
       last: 'mohammadi',
       age: 25,
       gender: 'male',
-      credit: 10000000n,
+      credit: 10000000,
       introduction_id: 'ap2015',
     };
 
@@ -76,7 +76,7 @@ export class UserService {
 
   async update(id: number, data: UpdateUserDto): Promise<UserRO> {
     if (data.phone == '1') {
-      throw new HttpException('No user found', 400);
+      throw new HttpException('No user found', 404);
     }
 
     const user = {
@@ -86,7 +86,7 @@ export class UserService {
       last: 'mohammadi',
       age: 25,
       gender: 'male',
-      credit: 10000000n,
+      credit: 10000000,
       introduction_id: 'ap2015',
     };
     return { user };
@@ -125,7 +125,14 @@ export class UserService {
     const user = await this.prisma.customer.findUnique({
       where: { phone },
     });
-    return { user };
+
+    if (!user) {
+      throw new HttpException('No user found', 404);
+    }
+
+    const credit = Number(user.credit);
+    delete user.credit;
+    return { user: { ...user, credit } };
   }
 
   public generateJWT(user: User): string {
