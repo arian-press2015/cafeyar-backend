@@ -27,12 +27,12 @@ import {
 } from './dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 
-@ApiBearerAuth()
 @ApiTags('user')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @ApiBearerAuth()
   @Get('me')
   @ApiOperation({ summary: 'Get User data' })
   @ApiResponse({
@@ -44,6 +44,7 @@ export class UserController {
     return await this.userService.findByPhone(phone);
   }
 
+  @ApiBearerAuth()
   @Get('')
   @ApiOperation({ summary: 'Get User data' })
   @ApiResponse({
@@ -76,6 +77,7 @@ export class UserController {
     return await this.userService.create(userData);
   }
 
+  @ApiBearerAuth()
   @Put('')
   @ApiOperation({ summary: 'Update current User' })
   @ApiBody({ description: 'UpdateUserDto Schema', type: UpdateUserDto })
@@ -95,6 +97,7 @@ export class UserController {
     return await this.userService.update(userId, userData);
   }
 
+  @ApiBearerAuth()
   @Delete('')
   @ApiOperation({ summary: 'Delete current User' })
   @ApiResponse({
