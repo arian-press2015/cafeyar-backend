@@ -47,7 +47,11 @@ export class HostService {
     return { host };
   }
 
-  async update(userID: number, hostData: UpdateHostDto): Promise<HostRO> {
+  async update(
+    userID: number,
+    hostID: number,
+    hostData: UpdateHostDto,
+  ): Promise<HostRO> {
     const host = {
       id: 1,
       owner: 1,

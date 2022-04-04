@@ -68,7 +68,7 @@ export class HostController {
     return await this.hostService.create(userID, hostData);
   }
 
-  @Patch('')
+  @Patch(':id')
   @ApiOperation({ summary: 'Update current Host' })
   @ApiBody({ description: 'UpdateHostDto Schema', type: UpdateHostDto })
   @ApiResponse({
@@ -82,9 +82,10 @@ export class HostController {
   })
   async update(
     @User('id') userID: number,
+    @Param('id') hostID: number,
     @Body() hostData: UpdateHostDto,
   ): Promise<HostRO> {
-    return await this.hostService.update(userID, hostData);
+    return await this.hostService.update(userID, hostID, hostData);
   }
 
   @Delete(':id')
