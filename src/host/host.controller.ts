@@ -3,8 +3,9 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
+  Patch,
   Post,
-  Put,
   UsePipes,
 } from '@nestjs/common';
 import {
@@ -60,11 +61,14 @@ export class HostController {
     status: 400,
     description: 'Name already exists|Phone number already exists',
   })
-  async create(@Body() hostData: CreateHostDto): Promise<HostRO> {
-    return await this.hostService.create(hostData);
+  async create(
+    @User('id') userID: number,
+    @Body() hostData: CreateHostDto,
+  ): Promise<HostRO> {
+    return await this.hostService.create(userID, hostData);
   }
 
-  @Put('')
+  @Patch('')
   @ApiOperation({ summary: 'Update current Host' })
   @ApiBody({ description: 'UpdateHostDto Schema', type: UpdateHostDto })
   @ApiResponse({
@@ -83,7 +87,7 @@ export class HostController {
     return await this.hostService.update(userID, hostData);
   }
 
-  @Delete('')
+  @Delete(':id')
   @ApiOperation({ summary: 'Delete current Host' })
   @ApiResponse({
     status: 200,
@@ -96,7 +100,7 @@ export class HostController {
   })
   async delete(
     @User('id') userID: number,
-    @Body('hostID') hostID: number,
+    @Param('hostID') hostID: number,
   ): Promise<HostRO> {
     return await this.hostService.delete(userID, hostID);
   }

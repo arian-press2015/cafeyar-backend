@@ -33,7 +33,7 @@ export class HostService {
     return hosts;
   }
 
-  async create(hostData: CreateHostDto): Promise<HostRO> {
+  async create(userID: number, hostData: CreateHostDto): Promise<HostRO> {
     const host = {
       id: 1,
       owner: 1,
