@@ -7,6 +7,7 @@ import {
   Post,
   Patch,
   UsePipes,
+  Param,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -45,7 +46,7 @@ export class UserController {
   }
 
   @ApiBearerAuth()
-  @Get('')
+  @Get(':id')
   @ApiOperation({ summary: 'Get User data' })
   @ApiResponse({
     status: 200,
@@ -56,8 +57,8 @@ export class UserController {
     status: 404,
     description: 'No user found',
   })
-  async findOne(@Body('id') id: number): Promise<UserDisplayRO> {
-    return await this.userService.findById(id);
+  async findOne(@Param('id') userID: number): Promise<UserDisplayRO> {
+    return await this.userService.findById(userID);
   }
 
   @UsePipes(new ValidationPipe())
@@ -78,7 +79,7 @@ export class UserController {
   }
 
   @ApiBearerAuth()
-  @Patch('')
+  @Patch(':id')
   @ApiOperation({ summary: 'Update current User' })
   @ApiBody({ description: 'UpdateUserDto Schema', type: UpdateUserDto })
   @ApiResponse({
@@ -91,14 +92,15 @@ export class UserController {
     description: 'No user found',
   })
   async update(
-    @User('id') userId: number,
+    @Param('id') userID: number,
+    @User('id') id: number,
     @Body() userData: UpdateUserDto,
   ): Promise<UserRO> {
-    return await this.userService.update(userId, userData);
+    return await this.userService.update(id, userID, userData);
   }
 
   @ApiBearerAuth()
-  @Delete('')
+  @Delete(':id')
   @ApiOperation({ summary: 'Delete current User' })
   @ApiResponse({
     status: 200,
@@ -109,8 +111,11 @@ export class UserController {
     status: 404,
     description: 'No user found',
   })
-  async delete(@User('id') userId: number): Promise<UserDisplayRO> {
-    return await this.userService.delete(userId);
+  async delete(
+    @Param('id') userID: number,
+    @User('id') id: number,
+  ): Promise<UserDisplayRO> {
+    return await this.userService.delete(id, userID);
   }
 
   @UsePipes(new ValidationPipe())

@@ -74,7 +74,11 @@ export class UserService {
     return { user };
   }
 
-  async update(id: number, data: UpdateUserDto): Promise<UserRO> {
+  async update(
+    id: number,
+    userID: number,
+    data: UpdateUserDto,
+  ): Promise<UserRO> {
     if (data.phone == '1') {
       throw new HttpException('No user found', 404);
     }
@@ -92,7 +96,7 @@ export class UserService {
     return { user };
   }
 
-  async delete(id: number): Promise<UserDisplayRO> {
+  async delete(id: number, userID: number): Promise<UserDisplayRO> {
     const user = {
       id: 1,
       name: 'mohammad',
