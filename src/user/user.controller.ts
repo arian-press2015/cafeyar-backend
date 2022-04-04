@@ -5,7 +5,7 @@ import {
   Get,
   HttpCode,
   Post,
-  Put,
+  Patch,
   UsePipes,
 } from '@nestjs/common';
 import {
@@ -78,7 +78,7 @@ export class UserController {
   }
 
   @ApiBearerAuth()
-  @Put('')
+  @Patch('')
   @ApiOperation({ summary: 'Update current User' })
   @ApiBody({ description: 'UpdateUserDto Schema', type: UpdateUserDto })
   @ApiResponse({
