@@ -4,6 +4,7 @@ import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { HostModule } from './host/host.module';
 import { TableModule } from './table/table.module';
+import { ImageTypeModule } from './image_type/image-type.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { TableModule } from './table/table.module';
     UserModule,
     HostModule,
     TableModule,
+    ImageTypeModule,
   ],
   controllers: [],
   providers: [],

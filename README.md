@@ -25,6 +25,7 @@
 ## TODO
 
 - move 3rd-party modules to a separate file in shared dir
+- add pagination everywhere
 
 ## Description
 
