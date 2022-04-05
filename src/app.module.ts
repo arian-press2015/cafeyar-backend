@@ -6,6 +6,7 @@ import { HostModule } from './host/host.module';
 import { TableModule } from './table/table.module';
 import { ImageTypeModule } from './image_type/image-type.module';
 import { CategoryModule } from './category/category.module';
+import { SubcategoryModule } from './subcategory/subcategory.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CategoryModule } from './category/category.module';
     TableModule,
     ImageTypeModule,
     CategoryModule,
+    SubcategoryModule,
   ],
   controllers: [],
   providers: [],
