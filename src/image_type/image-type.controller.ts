@@ -12,6 +12,7 @@ import { ImageTypeService } from './image-type.service';
 import {
   CreateImageTypeDto,
   UpdateImageTypeDto,
+  FilterImageTypeDto,
   ImageType,
   ImageTypeRO,
 } from './dto/index';
@@ -25,12 +26,12 @@ import {
 import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
-@ApiBearerAuth()
-@ApiTags('image')
+@ApiTags('image-type')
 @Controller('image-type')
 export class ImageTypeController {
   constructor(private readonly imageTypeService: ImageTypeService) {}
 
+  @ApiBearerAuth()
   @UsePipes(new ValidationPipe())
   @Post()
   @ApiOperation({ summary: 'Create new ImageType' })
@@ -63,6 +64,10 @@ export class ImageTypeController {
   }
 
   @Get()
+  @ApiBody({
+    description: 'image-type query fields',
+    type: FilterImageTypeDto,
+  })
   @ApiOperation({ summary: 'Get all of the ImageTypes' })
   @ApiResponse({
     status: 200,
@@ -73,8 +78,8 @@ export class ImageTypeController {
     status: 404,
     description: 'No ImageType found',
   })
-  find(): Promise<ImageType[]> {
-    return this.imageTypeService.find();
+  find(@Body() filterImageTypeDto: FilterImageTypeDto): Promise<ImageType[]> {
+    return this.imageTypeService.find(filterImageTypeDto);
   }
 
   @Get(':id')
@@ -92,6 +97,7 @@ export class ImageTypeController {
     return this.imageTypeService.findOne(image_number);
   }
 
+  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current ImageType' })
   @ApiBody({
@@ -123,6 +129,7 @@ export class ImageTypeController {
     );
   }
 
+  @ApiBearerAuth()
   @ApiResponse({
     status: 200,
     description: 'Deletes current ImageType',

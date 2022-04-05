@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import {
   CreateImageTypeDto,
   UpdateImageTypeDto,
+  FilterImageTypeDto,
   ImageType,
   ImageTypeRO,
 } from './dto/index';
@@ -22,7 +23,7 @@ export class ImageTypeService {
     return { imageType };
   }
 
-  async find(): Promise<ImageType[]> {
+  async find(dto: FilterImageTypeDto): Promise<ImageType[]> {
     const imageType = [];
     imageType.push({
       id: 1,
