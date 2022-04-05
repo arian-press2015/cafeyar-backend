@@ -78,7 +78,9 @@ export class IngredientController {
     status: 404,
     description: 'No Ingredient found',
   })
-  find(@Body() filterIngredientDto: FilterIngredientDto): Promise<Ingredient[]> {
+  find(
+    @Body() filterIngredientDto: FilterIngredientDto,
+  ): Promise<Ingredient[]> {
     return this.ingredientService.find(filterIngredientDto);
   }
 
@@ -122,7 +124,11 @@ export class IngredientController {
     @Param('id') ingredientID: number,
     @Body() UpdateIngredientDto: UpdateIngredientDto,
   ): Promise<IngredientRO> {
-    return this.ingredientService.update(userID, ingredientID, UpdateIngredientDto);
+    return this.ingredientService.update(
+      userID,
+      ingredientID,
+      UpdateIngredientDto,
+    );
   }
 
   @ApiBearerAuth()
