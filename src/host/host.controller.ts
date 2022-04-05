@@ -16,38 +16,22 @@ import {
   ApiOperation,
 } from '@nestjs/swagger';
 import { HostService } from './host.service';
-import { CreateHostDto, UpdateHostDto, HostRO, Host } from './dto';
+import {
+  CreateHostDto,
+  UpdateHostDto,
+  FilterHostDto,
+  HostRO,
+  Host,
+} from './dto';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
-@ApiBearerAuth()
 @ApiTags('host')
 @Controller('host')
 export class HostController {
   constructor(private readonly hostService: HostService) {}
 
-  @Get('me')
-  @ApiOperation({ summary: 'Get My Host data' })
-  @ApiResponse({
-    status: 200,
-    description: 'Returns owned Hosts for provided Auth Token',
-    type: [Host],
-  })
-  async findMine(@User('id') userID: number): Promise<Host[]> {
-    return await this.hostService.findMyHosts(userID);
-  }
-
-  @Get('accesible')
-  @ApiOperation({ summary: 'Get accesible Host data' })
-  @ApiResponse({
-    status: 200,
-    description: 'Returns accesible Hosts for provided Auth Token',
-    type: [Host],
-  })
-  async findAllowed(@User('id') userID: number): Promise<Host[]> {
-    return await this.hostService.findAccesibleHosts(userID);
-  }
-
+  @ApiBearerAuth()
   @UsePipes(new ValidationPipe())
   @Post('')
   @ApiOperation({ summary: 'Create new Host' })
@@ -68,6 +52,57 @@ export class HostController {
     return await this.hostService.create(userID, hostData);
   }
 
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a Host data' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns a Host for provided id',
+    type: [Host],
+  })
+  async findOne(@Param('id') hostID: number): Promise<HostRO> {
+    return await this.hostService.findOne(hostID);
+  }
+
+  @Get()
+  @ApiBody({
+    description: 'Category query fields',
+    type: FilterHostDto,
+  })
+  @ApiOperation({ summary: 'Get all Hosts data' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns all Hosts for provided filterHostDto',
+    type: [Host],
+  })
+  async find(@Body() filterHostDto: FilterHostDto): Promise<Host[]> {
+    return await this.hostService.find(filterHostDto);
+  }
+
+  @ApiBearerAuth()
+  @Get('me')
+  @ApiOperation({ summary: 'Get My Host data' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns owned Hosts for provided Auth Token',
+    type: [Host],
+  })
+  async findMine(@User('id') userID: number): Promise<Host[]> {
+    return await this.hostService.findMyHosts(userID);
+  }
+
+  @ApiBearerAuth()
+  @Get('accesible')
+  @ApiOperation({ summary: 'Get accesible Host data' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns accesible Hosts for provided Auth Token',
+    type: [Host],
+  })
+  async findAllowed(@User('id') userID: number): Promise<Host[]> {
+    return await this.hostService.findAccesibleHosts(userID);
+  }
+
+  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Host' })
   @ApiBody({ description: 'UpdateHostDto Schema', type: UpdateHostDto })
@@ -88,6 +123,7 @@ export class HostController {
     return await this.hostService.update(userID, hostID, hostData);
   }
 
+  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Delete current Host' })
   @ApiResponse({
