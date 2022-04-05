@@ -26,8 +26,8 @@ import {
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
-@ApiTags('productStar')
-@Controller('productStar')
+@ApiTags('product-star')
+@Controller('product-star')
 export class ProductStarController {
   constructor(private readonly productStarService: ProductStarService) {}
 

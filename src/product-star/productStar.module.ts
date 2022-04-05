@@ -19,8 +19,8 @@ export class ProductStarModule implements NestModule {
     consumer
       .apply(AuthMiddleware)
       .exclude(
-        { path: 'productStar', method: RequestMethod.GET },
-        { path: 'productStar/:id', method: RequestMethod.GET },
+        { path: 'product-star', method: RequestMethod.GET },
+        { path: 'product-star/:id', method: RequestMethod.GET },
       )
       .forRoutes(ProductStarController);
   }

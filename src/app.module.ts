@@ -11,7 +11,8 @@ import { ProductModule } from './product/product.module';
 import { InvoiceModule } from './invoice/invoice.module';
 import { FaqModule } from './faq/faq.module';
 import { IngredientModule } from './ingredient/ingredient.module';
-import { ProductStarModule } from './productStar/productStar.module';
+import { ProductStarModule } from './product-star/productStar.module';
+import { ProductImageModule } from './product-image/productImage.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ProductStarModule } from './productStar/productStar.module';
     FaqModule,
     IngredientModule,
     ProductStarModule,
+    ProductImageModule,
   ],
   controllers: [],
   providers: [],
