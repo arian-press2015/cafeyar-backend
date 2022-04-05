@@ -26,6 +26,8 @@
 
 - move 3rd-party modules to a separate file in shared dir
 - add pagination everywhere
+- use class validator decorators on routes having validationPipe
+- after version 1 (fake data version) add new things(new swagger error | feature , new routes, ...) to generate change log based on conventional commit
 
 ## Description
 

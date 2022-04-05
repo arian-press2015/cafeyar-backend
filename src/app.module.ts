@@ -5,6 +5,7 @@ import { UserModule } from './user/user.module';
 import { HostModule } from './host/host.module';
 import { TableModule } from './table/table.module';
 import { ImageTypeModule } from './image_type/image-type.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ImageTypeModule } from './image_type/image-type.module';
     HostModule,
     TableModule,
     ImageTypeModule,
+    CategoryModule,
   ],
   controllers: [],
   providers: [],
