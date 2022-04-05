@@ -33,6 +33,23 @@ import { ValidationPipe } from '../shared/pipes/validation.pipe';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @UsePipes(new ValidationPipe())
+  @Post('')
+  @ApiOperation({ summary: 'Create new User' })
+  @ApiBody({ description: 'CreateUserDto Schema', type: CreateUserDto })
+  @ApiResponse({
+    status: 201,
+    description: 'Creates a new User',
+    type: UserDisplayRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'phone number already exists',
+  })
+  async create(@Body() userData: CreateUserDto): Promise<UserDisplayRO> {
+    return await this.userService.create(userData);
+  }
+
   @ApiBearerAuth()
   @Get('me')
   @ApiOperation({ summary: 'Get User data' })
@@ -59,23 +76,6 @@ export class UserController {
   })
   async findOne(@Param('id') userID: number): Promise<UserDisplayRO> {
     return await this.userService.findById(userID);
-  }
-
-  @UsePipes(new ValidationPipe())
-  @Post('')
-  @ApiOperation({ summary: 'Create new User' })
-  @ApiBody({ description: 'CreateUserDto Schema', type: CreateUserDto })
-  @ApiResponse({
-    status: 201,
-    description: 'Creates a new User',
-    type: UserDisplayRO,
-  })
-  @ApiResponse({
-    status: 400,
-    description: 'phone number already exists',
-  })
-  async create(@Body() userData: CreateUserDto): Promise<UserDisplayRO> {
-    return await this.userService.create(userData);
   }
 
   @ApiBearerAuth()
