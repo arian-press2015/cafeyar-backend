@@ -7,6 +7,11 @@ import { TableModule } from './table/table.module';
 import { ImageTypeModule } from './image_type/image-type.module';
 import { CategoryModule } from './category/category.module';
 import { SubcategoryModule } from './subcategory/subcategory.module';
+import { ProductModule } from './product/product.module';
+import { InvoiceModule } from './invoice/invoice.module';
+import { FaqModule } from './faq/faq.module';
+import { IngredientModule } from './ingredient/ingredient.module';
+import { ProductStarModule } from './productStar/productStar.module';
 
 @Module({
   imports: [
@@ -19,6 +24,11 @@ import { SubcategoryModule } from './subcategory/subcategory.module';
     ImageTypeModule,
     CategoryModule,
     SubcategoryModule,
+    ProductModule,
+    InvoiceModule,
+    FaqModule,
+    IngredientModule,
+    ProductStarModule,
   ],
   controllers: [],
   providers: [],
