@@ -9,9 +9,7 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { TableService } from './table.service';
-import { CreateTableDto } from './dto/create-table.dto';
-import { UpdateTableDto } from './dto/update-table.dto';
-import { Table, TableRO } from './dto';
+import { Table, TableRO, UpdateTableDto, CreateTableDto } from './dto';
 import {
   ApiBearerAuth,
   ApiBody,
