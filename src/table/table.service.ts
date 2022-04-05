@@ -1,5 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTableDto, Table, TableRO, UpdateTableDto } from './dto';
+import {
+  CreateTableDto,
+  FilterTableDto,
+  Table,
+  TableRO,
+  UpdateTableDto,
+} from './dto';
 
 @Injectable()
 export class TableService {
@@ -16,7 +22,7 @@ export class TableService {
     return { table };
   }
 
-  async findHostTables(hostID: number): Promise<Table[]> {
+  async findHostTables(dto: FilterTableDto): Promise<Table[]> {
     const table = [];
     table.push({
       id: 1,

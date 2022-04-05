@@ -9,7 +9,13 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { TableService } from './table.service';
-import { Table, TableRO, UpdateTableDto, CreateTableDto } from './dto';
+import {
+  Table,
+  TableRO,
+  UpdateTableDto,
+  CreateTableDto,
+  FilterTableDto,
+} from './dto';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -20,12 +26,12 @@ import {
 import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
-@ApiBearerAuth()
 @ApiTags('table')
 @Controller('table')
 export class TableController {
   constructor(private readonly tableService: TableService) {}
 
+  @ApiBearerAuth()
   @UsePipes(new ValidationPipe())
   @Post()
   @ApiOperation({ summary: 'Create new Table' })
@@ -56,7 +62,10 @@ export class TableController {
 
   @Get()
   @ApiOperation({ summary: 'Get all Tables for the Host' })
-  @ApiBody({ description: 'HostID', type: Number })
+  @ApiBody({
+    description: 'Category query fields',
+    type: FilterTableDto,
+  })
   @ApiResponse({
     status: 200,
     description: 'Returns Tables for provided Host',
@@ -66,8 +75,8 @@ export class TableController {
     status: 404,
     description: 'No host found|No Table found',
   })
-  findHostTables(@Body('hostID') hostID: number): Promise<Table[]> {
-    return this.tableService.findHostTables(hostID);
+  findHostTables(@Body() filterTableDto: FilterTableDto): Promise<Table[]> {
+    return this.tableService.findHostTables(filterTableDto);
   }
 
   @Get(':id')
@@ -85,6 +94,7 @@ export class TableController {
     return this.tableService.findOne(table_number);
   }
 
+  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Table' })
   @ApiBody({ description: 'UpdateTableDto Schema', type: UpdateTableDto })
@@ -109,6 +119,7 @@ export class TableController {
     return this.tableService.update(userID, tableID, updateTableDto);
   }
 
+  @ApiBearerAuth()
   @ApiResponse({
     status: 200,
     description: 'Deletes current Table',
