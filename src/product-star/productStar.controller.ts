@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   UsePipes,
@@ -13,7 +12,6 @@ import {
   ProductStar,
   ProductStarRO,
   CreateProductStarDto,
-  UpdateProductStarDto,
   FilterProductStarDto,
 } from './dto/index';
 import {
@@ -23,7 +21,7 @@ import {
   ApiResponse,
   ApiOperation,
 } from '@nestjs/swagger';
-import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
 @ApiTags('product-star')

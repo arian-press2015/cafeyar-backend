@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { RedisService } from '../shared/services/redis.service';
-import { PrismaService } from '../shared/services/prisma.service';
+import { RedisService } from 'src/shared/services/redis.service';
+import { PrismaService } from 'src/shared/services/prisma.service';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 

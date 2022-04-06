@@ -11,8 +11,8 @@ import {
   UserRO,
   VerifyUserDto,
 } from './dto';
-import { PrismaService } from '../shared/services/prisma.service';
-import { RedisService } from '../shared/services/redis.service';
+import { PrismaService } from 'src/shared/services/prisma.service';
+import { RedisService } from 'src/shared/services/redis.service';
 
 const select = {
   id: true,

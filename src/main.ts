@@ -20,7 +20,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   const customOptions: SwaggerCustomOptions = {
     customSiteTitle: 'CafeYar Back-End API',
-    customfavIcon: '../cafeyar.jpg',
   };
 
   SwaggerModule.setup('docs', app, document, customOptions);

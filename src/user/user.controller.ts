@@ -26,7 +26,7 @@ import {
   UserRO,
   VerifyUserDto,
 } from './dto';
-import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 
 @ApiTags('user')
 @Controller('user')

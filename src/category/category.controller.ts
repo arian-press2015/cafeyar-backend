@@ -23,7 +23,7 @@ import {
   ApiResponse,
   ApiOperation,
 } from '@nestjs/swagger';
-import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
 @ApiTags('category')
