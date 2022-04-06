@@ -8,20 +8,20 @@ import {
   Delete,
   UsePipes,
 } from '@nestjs/common';
-import { ImageTypeService } from './image-type.service';
+import { ImageTypeService } from './imageType.service';
 import {
+  ImageType,
+  ImageTypeRO,
   CreateImageTypeDto,
   UpdateImageTypeDto,
   FilterImageTypeDto,
-  ImageType,
-  ImageTypeRO,
 } from './dto/index';
 import {
   ApiBearerAuth,
-  ApiBody,
-  ApiOperation,
-  ApiResponse,
   ApiTags,
+  ApiBody,
+  ApiResponse,
+  ApiOperation,
 } from '@nestjs/swagger';
 import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
@@ -65,13 +65,13 @@ export class ImageTypeController {
 
   @Get()
   @ApiBody({
-    description: 'image-type query fields',
+    description: 'ImageType query fields',
     type: FilterImageTypeDto,
   })
   @ApiOperation({ summary: 'Get all of the ImageTypes' })
   @ApiResponse({
     status: 200,
-    description: 'Returns all of the ImageTypes',
+    description: 'Returns all of the Categories',
     type: [ImageType],
   })
   @ApiResponse({
@@ -93,8 +93,8 @@ export class ImageTypeController {
     status: 404,
     description: 'No ImageType found',
   })
-  findOne(@Param('id') image_number: number): Promise<ImageTypeRO> {
-    return this.imageTypeService.findOne(image_number);
+  findOne(@Param('id') catID: number): Promise<ImageTypeRO> {
+    return this.imageTypeService.findOne(catID);
   }
 
   @ApiBearerAuth()

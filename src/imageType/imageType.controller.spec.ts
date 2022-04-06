@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ImageTypeController } from './image-type.controller';
-import { ImageTypeService } from './image-type.service';
+import { ImageTypeController } from './imageType.controller';
+import { ImageTypeService } from './imageType.service';
 
-describe('ImageController', () => {
+describe('ImageTypeController', () => {
   let controller: ImageTypeController;
 
   beforeEach(async () => {
