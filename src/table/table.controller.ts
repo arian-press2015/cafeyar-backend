@@ -120,6 +120,8 @@ export class TableController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current Table' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current Table',
@@ -133,7 +135,6 @@ export class TableController {
     status: 404,
     description: 'No Table found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') tableID: number,

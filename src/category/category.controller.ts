@@ -126,6 +126,8 @@ export class CategoryController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current Category' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current Category',
@@ -139,7 +141,6 @@ export class CategoryController {
     status: 404,
     description: 'No Category found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') categoryID: number,

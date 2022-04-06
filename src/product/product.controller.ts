@@ -126,6 +126,8 @@ export class ProductController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current Product' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current Product',
@@ -139,7 +141,6 @@ export class ProductController {
     status: 404,
     description: 'No Product found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') productID: number,

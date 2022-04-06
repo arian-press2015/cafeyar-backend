@@ -126,6 +126,8 @@ export class InvoiceController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current Invoice' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current Invoice',
@@ -139,7 +141,6 @@ export class InvoiceController {
     status: 404,
     description: 'No Invoice found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') invoiceID: number,

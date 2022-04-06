@@ -126,6 +126,8 @@ export class FaqController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current Faq' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current Faq',
@@ -139,7 +141,6 @@ export class FaqController {
     status: 404,
     description: 'No Faq found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') faqID: number,

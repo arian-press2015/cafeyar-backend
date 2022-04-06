@@ -110,6 +110,8 @@ export class CategoryImageController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current CategoryImage' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current CategoryImage',
@@ -123,7 +125,6 @@ export class CategoryImageController {
     status: 404,
     description: 'No CategoryImage found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') categoryImageID: number,

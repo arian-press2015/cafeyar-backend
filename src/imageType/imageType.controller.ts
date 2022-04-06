@@ -130,6 +130,8 @@ export class ImageTypeController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current ImageType' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current ImageType',
@@ -143,7 +145,6 @@ export class ImageTypeController {
     status: 404,
     description: 'No ImageType found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') imageTypeID: number,

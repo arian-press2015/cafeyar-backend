@@ -132,6 +132,8 @@ export class ProductImageController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current ProductImage' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current ProductImage',
@@ -145,7 +147,6 @@ export class ProductImageController {
     status: 404,
     description: 'No ProductImage found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') productImageID: number,

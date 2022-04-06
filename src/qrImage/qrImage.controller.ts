@@ -25,8 +25,8 @@ import {
 import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
-@ApiTags('qrImage')
-@Controller('qrImage')
+@ApiTags('qr-image')
+@Controller('qr-image')
 export class QrImageController {
   constructor(private readonly qrImageService: QrImageService) {}
 
@@ -106,6 +106,8 @@ export class QrImageController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current QrImage' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current QrImage',
@@ -119,7 +121,6 @@ export class QrImageController {
     status: 404,
     description: 'No QrImage found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') qrImageID: number,

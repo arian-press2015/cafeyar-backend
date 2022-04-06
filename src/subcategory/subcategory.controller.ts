@@ -132,6 +132,8 @@ export class SubcategoryController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current Subcategory' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current Subcategory',
@@ -145,7 +147,6 @@ export class SubcategoryController {
     status: 404,
     description: 'No Subcategory found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') subcategoryID: number,

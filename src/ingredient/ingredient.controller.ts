@@ -132,6 +132,8 @@ export class IngredientController {
   }
 
   @ApiBearerAuth()
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete current Ingredient' })
   @ApiResponse({
     status: 200,
     description: 'Deletes current Ingredient',
@@ -145,7 +147,6 @@ export class IngredientController {
     status: 404,
     description: 'No Ingredient found|No User found',
   })
-  @Delete(':id')
   delete(
     @User('id') userID: number,
     @Param('id') ingredientID: number,
