@@ -13,6 +13,8 @@ import { FaqModule } from './faq/faq.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { ProductStarModule } from './productStar/productStar.module';
 import { ProductImageModule } from './productImage/productImage.module';
+import { CategoryImageModule } from './categoryImage/categoryImage.module';
+import { QrImageModule } from './qrImage/qrImage.module';
 
 @Module({
   imports: [
@@ -31,6 +33,8 @@ import { ProductImageModule } from './productImage/productImage.module';
     IngredientModule,
     ProductStarModule,
     ProductImageModule,
+    CategoryImageModule,
+    QrImageModule,
   ],
   controllers: [],
   providers: [],
