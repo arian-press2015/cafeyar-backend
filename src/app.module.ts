@@ -33,6 +33,7 @@ import { VersionModule } from './version/version.module';
 import { SubcategoryDiscountModule } from './subcategoryDiscount/subcategoryDiscount.module';
 import { RoleModule } from './role/role.module';
 import { PermissionModule } from './permission/permission.module';
+import { OwnerRoleModule } from './ownerRole/ownerRole.module';
 
 @Module({
   imports: [
@@ -71,6 +72,7 @@ import { PermissionModule } from './permission/permission.module';
     SubcategoryDiscountModule,
     RoleModule,
     PermissionModule,
+    OwnerRoleModule,
   ],
   controllers: [],
   providers: [],
