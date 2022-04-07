@@ -16,6 +16,7 @@ import { ProductImageModule } from './productImage/productImage.module';
 import { CategoryImageModule } from './categoryImage/categoryImage.module';
 import { QrImageModule } from './qrImage/qrImage.module';
 import { HostImageModule } from './hostImage/hostImage.module';
+import { FeatureModule } from './feature/feature.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { HostImageModule } from './hostImage/hostImage.module';
     CategoryImageModule,
     QrImageModule,
     HostImageModule,
+    FeatureModule,
   ],
   controllers: [],
   providers: [],
