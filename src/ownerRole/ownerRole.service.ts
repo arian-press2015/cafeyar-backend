@@ -17,7 +17,14 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
-      permission: [1, 2],
+      permissions: [
+        {
+          id: 1,
+          title: 'see',
+          title_fa: 'دیدن',
+          description: 'something',
+        },
+      ],
     };
     return { ownerRole };
   }
@@ -28,7 +35,14 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
-      permission: [1, 2],
+      permissions: [
+        {
+          id: 1,
+          title: 'see',
+          title_fa: 'دیدن',
+          description: 'something',
+        },
+      ],
     });
     return ownerRole;
   }
@@ -38,7 +52,14 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
-      permission: [1, 2],
+      permissions: [
+        {
+          id: 1,
+          title: 'see',
+          title_fa: 'دیدن',
+          description: 'something',
+        },
+      ],
     };
     return { ownerRole };
   }
@@ -52,7 +73,14 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
-      permission: [1, 2],
+      permissions: [
+        {
+          id: 1,
+          title: 'see',
+          title_fa: 'دیدن',
+          description: 'something',
+        },
+      ],
     };
     return { ownerRole };
   }
@@ -62,7 +90,14 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
-      permission: [1, 2],
+      permissions: [
+        {
+          id: 1,
+          title: 'see',
+          title_fa: 'دیدن',
+          description: 'something',
+        },
+      ],
     };
     return { ownerRole };
   }
