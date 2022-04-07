@@ -21,7 +21,19 @@ export class OrderService {
       total_discount: 100000,
       time: '2020/02/02 10:20:30',
       description: 'nothing',
-      orderItem: [{ product: 1, count: 2 }],
+      orderItems: [
+        {
+          product: {
+            id: 1,
+            sub_cat_id: 1,
+            name: 'Pizza',
+            price: 100000,
+            enabled: true,
+            deleted: false,
+          },
+          count: 2,
+        },
+      ],
     };
     return { order };
   }
@@ -36,7 +48,19 @@ export class OrderService {
       total_discount: 100000,
       time: '2020/02/02 10:20:30',
       description: 'nothing',
-      orderItem: [{ product: 1, count: 2 }],
+      orderItems: [
+        {
+          product: {
+            id: 1,
+            sub_cat_id: 1,
+            name: 'Pizza',
+            price: 100000,
+            enabled: true,
+            deleted: false,
+          },
+          count: 2,
+        },
+      ],
     });
     return order;
   }
@@ -50,7 +74,19 @@ export class OrderService {
       total_discount: 100000,
       time: '2020/02/02 10:20:30',
       description: 'nothing',
-      orderItem: [{ product: 1, count: 2 }],
+      orderItems: [
+        {
+          product: {
+            id: 1,
+            sub_cat_id: 1,
+            name: 'Pizza',
+            price: 100000,
+            enabled: true,
+            deleted: false,
+          },
+          count: 2,
+        },
+      ],
     };
     return { order };
   }
@@ -68,7 +104,19 @@ export class OrderService {
       total_discount: 100000,
       time: '2020/02/02 10:20:30',
       description: 'nothing',
-      orderItem: [{ product: 1, count: 2 }],
+      orderItems: [
+        {
+          product: {
+            id: 1,
+            sub_cat_id: 1,
+            name: 'Pizza',
+            price: 100000,
+            enabled: true,
+            deleted: false,
+          },
+          count: 2,
+        },
+      ],
     };
     return { order };
   }
@@ -82,7 +130,19 @@ export class OrderService {
       total_discount: 100000,
       time: '2020/02/02 10:20:30',
       description: 'nothing',
-      orderItem: [{ product: 1, count: 2 }],
+      orderItems: [
+        {
+          product: {
+            id: 1,
+            sub_cat_id: 1,
+            name: 'Pizza',
+            price: 100000,
+            enabled: true,
+            deleted: false,
+          },
+          count: 2,
+        },
+      ],
     };
     return { order };
   }

@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Product } from 'src/product/dto';
 
 export class Order {
   @ApiProperty({ example: 12345, description: 'ID of the entity in database' })
@@ -38,10 +39,22 @@ export class Order {
   readonly description: string;
 
   @ApiProperty({
-    example: [{ product: 1, count: 2 }],
+    example: [
+      {
+        product: {
+          id: 1,
+          sub_cat_id: 1,
+          name: 'Pizza',
+          price: 100000,
+          enabled: true,
+          deleted: false,
+        },
+        count: 2,
+      },
+    ],
     description: 'products for this Order',
   })
-  readonly orderItem: OrderItem[];
+  readonly orderItems: OrderItem[];
 }
 
 export class OrderRO {
@@ -50,10 +63,17 @@ export class OrderRO {
 
 export class OrderItem {
   @ApiProperty({
-    example: 1,
+    example: {
+      id: 1,
+      sub_cat_id: 1,
+      name: 'Pizza',
+      price: 100000,
+      enabled: true,
+      deleted: false,
+    },
     description: 'product of the OrderItem',
   })
-  product: number;
+  product: Product;
   @ApiProperty({
     example: 1,
     description: 'count of the OrderItem',
