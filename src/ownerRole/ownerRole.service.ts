@@ -17,6 +17,7 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     };
     return { ownerRole };
   }
@@ -27,6 +28,7 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     });
     return ownerRole;
   }
@@ -36,6 +38,7 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     };
     return { ownerRole };
   }
@@ -49,6 +52,7 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     };
     return { ownerRole };
   }
@@ -58,6 +62,7 @@ export class OwnerRoleService {
       id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     };
     return { ownerRole };
   }
