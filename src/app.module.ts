@@ -30,6 +30,7 @@ import { PurchaseModule } from './purchase/purchase.module';
 import { PaymentModule } from './payment/payment.module';
 import { DiscountModule } from './discount/discount.module';
 import { VersionModule } from './version/version.module';
+import { SubcategoryDiscountModule } from './subcategoryDiscount/subcategoryDiscount.module';
 
 @Module({
   imports: [
@@ -65,6 +66,7 @@ import { VersionModule } from './version/version.module';
     PaymentModule,
     DiscountModule,
     VersionModule,
+    SubcategoryDiscountModule,
   ],
   controllers: [],
   providers: [],
