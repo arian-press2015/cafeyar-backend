@@ -29,6 +29,7 @@
 - use class validator decorators on routes having validationPipe
 - after version 1 (fake data version) add new things(new swagger error | feature , new routes, ...) to generate change log based on conventional commit
 - replace '/here/file.jpg' with real file address
+- add many-to-many relation routes to one of the entity routes
 
 ## Description
 
