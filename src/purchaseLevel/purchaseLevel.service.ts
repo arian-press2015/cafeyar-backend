@@ -17,6 +17,7 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
+      features: [1, 2],
     };
     return { purchaseLevel };
   }
@@ -27,6 +28,7 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
+      features: [1, 2],
     });
     return purchaseLevel;
   }
@@ -36,6 +38,7 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
+      features: [1, 2],
     };
     return { purchaseLevel };
   }
@@ -49,6 +52,7 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
+      features: [1, 2],
     };
     return { purchaseLevel };
   }
@@ -61,6 +65,7 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
+      features: [1, 2],
     };
     return { purchaseLevel };
   }

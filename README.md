@@ -31,6 +31,7 @@
 - replace '/here/file.jpg' with real file address
 - add many-to-many & many-to-one relation routes to one of the entity routes: all routes are just basics, some need extra routes
 - some dto fields must be nullable according to db
+- some entities need to return another one: purchaseLevel => feature[]
 
 ## Description
 
