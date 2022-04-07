@@ -25,6 +25,7 @@ import { RateModule } from './rate/rate.module';
 import { TipModule } from './tip/tip.module';
 import { PersonnelModule } from './personnel/personnel.module';
 import { OrderModule } from './order/order.module';
+import { UserFeatureModule } from './userFeature/userFeature.module';
 
 @Module({
   imports: [
@@ -55,6 +56,7 @@ import { OrderModule } from './order/order.module';
     TipModule,
     PersonnelModule,
     OrderModule,
+    UserFeatureModule,
   ],
   controllers: [],
   providers: [],
