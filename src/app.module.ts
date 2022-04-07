@@ -20,6 +20,7 @@ import { FeatureModule } from './feature/feature.module';
 import { PurchaseLevelModule } from './purchaseLevel/purchaseLevel.module';
 import { PurchasePlanModule } from './purchasePlan/purchasePlan.module';
 import { PurchaseLifetimeModule } from './purchaseLifetime/purchaseLifetime.module';
+import { UserImageModule } from './userImage/userImage.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { PurchaseLifetimeModule } from './purchaseLifetime/purchaseLifetime.modu
     PurchaseLevelModule,
     PurchasePlanModule,
     PurchaseLifetimeModule,
+    UserImageModule,
   ],
   controllers: [],
   providers: [],
