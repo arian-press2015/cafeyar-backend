@@ -26,6 +26,7 @@ import { TipModule } from './tip/tip.module';
 import { PersonnelModule } from './personnel/personnel.module';
 import { OrderModule } from './order/order.module';
 import { UserFeatureModule } from './userFeature/userFeature.module';
+import { PurchaseModule } from './purchase/purchase.module';
 
 @Module({
   imports: [
@@ -57,6 +58,7 @@ import { UserFeatureModule } from './userFeature/userFeature.module';
     PersonnelModule,
     OrderModule,
     UserFeatureModule,
+    PurchaseModule,
   ],
   controllers: [],
   providers: [],
