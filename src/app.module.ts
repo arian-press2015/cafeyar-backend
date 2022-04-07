@@ -29,6 +29,7 @@ import { UserFeatureModule } from './userFeature/userFeature.module';
 import { PurchaseModule } from './purchase/purchase.module';
 import { PaymentModule } from './payment/payment.module';
 import { DiscountModule } from './discount/discount.module';
+import { VersionModule } from './version/version.module';
 
 @Module({
   imports: [
@@ -63,6 +64,7 @@ import { DiscountModule } from './discount/discount.module';
     PurchaseModule,
     PaymentModule,
     DiscountModule,
+    VersionModule,
   ],
   controllers: [],
   providers: [],
