@@ -11,7 +11,9 @@ describe('OwnerPermissionController', () => {
       providers: [OwnerPermissionService],
     }).compile();
 
-    controller = module.get<OwnerPermissionController>(OwnerPermissionController);
+    controller = module.get<OwnerPermissionController>(
+      OwnerPermissionController,
+    );
   });
 
   it('should be defined', () => {

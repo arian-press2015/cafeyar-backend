@@ -78,7 +78,9 @@ export class PermissionController {
     status: 404,
     description: 'No Permission found',
   })
-  find(@Body() filterPermissionDto: FilterPermissionDto): Promise<Permission[]> {
+  find(
+    @Body() filterPermissionDto: FilterPermissionDto,
+  ): Promise<Permission[]> {
     return this.permissionService.find(filterPermissionDto);
   }
 
@@ -122,7 +124,11 @@ export class PermissionController {
     @Param('id') permissionID: number,
     @Body() UpdatePermissionDto: UpdatePermissionDto,
   ): Promise<PermissionRO> {
-    return this.permissionService.update(userID, permissionID, UpdatePermissionDto);
+    return this.permissionService.update(
+      userID,
+      permissionID,
+      UpdatePermissionDto,
+    );
   }
 
   @ApiBearerAuth()

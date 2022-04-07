@@ -122,7 +122,11 @@ export class PersonnelController {
     @Param('id') personnelID: number,
     @Body() UpdatePersonnelDto: UpdatePersonnelDto,
   ): Promise<PersonnelRO> {
-    return this.personnelService.update(userID, personnelID, UpdatePersonnelDto);
+    return this.personnelService.update(
+      userID,
+      personnelID,
+      UpdatePersonnelDto,
+    );
   }
 
   @ApiBearerAuth()

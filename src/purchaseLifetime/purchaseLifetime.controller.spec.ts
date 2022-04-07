@@ -11,7 +11,9 @@ describe('PurchaseLifetimeController', () => {
       providers: [PurchaseLifetimeService],
     }).compile();
 
-    controller = module.get<PurchaseLifetimeController>(PurchaseLifetimeController);
+    controller = module.get<PurchaseLifetimeController>(
+      PurchaseLifetimeController,
+    );
   });
 
   it('should be defined', () => {

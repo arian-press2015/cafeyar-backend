@@ -57,7 +57,10 @@ export class OwnerPermissionService {
     return { ownerPermission };
   }
 
-  async delete(userID: number, ownerPermissionID: number): Promise<OwnerPermissionRO> {
+  async delete(
+    userID: number,
+    ownerPermissionID: number,
+  ): Promise<OwnerPermissionRO> {
     const ownerPermission = {
       id: 1,
       title: 'see',
