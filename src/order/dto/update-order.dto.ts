@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { OrderItem } from './order.dto';
 
 export class UpdateOrderDto {
   @ApiProperty({
@@ -21,4 +22,10 @@ export class UpdateOrderDto {
 
   @ApiProperty({ example: 'nothing', description: 'description of the Order' })
   readonly description: string;
+
+  @ApiProperty({
+    example: [{ product: 1, count: 2 }],
+    description: 'products for this Order',
+  })
+  readonly orderItem: OrderItem[];
 }

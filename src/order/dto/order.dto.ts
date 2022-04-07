@@ -36,8 +36,27 @@ export class Order {
 
   @ApiProperty({ example: 'nothing', description: 'description of the Order' })
   readonly description: string;
+
+  @ApiProperty({
+    example: [{ product: 1, count: 2 }],
+    description: 'products for this Order',
+  })
+  readonly orderItem: OrderItem[];
 }
 
 export class OrderRO {
   order: Order;
+}
+
+export class OrderItem {
+  @ApiProperty({
+    example: 1,
+    description: 'product of the OrderItem',
+  })
+  product: number;
+  @ApiProperty({
+    example: 1,
+    description: 'count of the OrderItem',
+  })
+  count: number;
 }
