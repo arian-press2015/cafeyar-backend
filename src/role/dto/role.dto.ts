@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Permission } from 'src/permission/dto';
 
 export class Role {
   @ApiProperty({ example: 12345, description: 'ID of the entity in database' })
@@ -17,10 +18,17 @@ export class Role {
   readonly title_fa: string;
 
   @ApiProperty({
-    example: [1, 2],
+    example: [
+      {
+        id: 1,
+        title: 'see',
+        title_fa: 'دیدن',
+        description: 'something',
+      },
+    ],
     description: 'permissions of the Role',
   })
-  readonly permission: number[];
+  readonly permissions: Permission[];
 }
 
 export class RoleRO {
