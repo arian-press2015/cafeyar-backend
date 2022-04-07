@@ -23,6 +23,7 @@ import { PurchaseLifetimeModule } from './purchaseLifetime/purchaseLifetime.modu
 import { UserImageModule } from './userImage/userImage.module';
 import { RateModule } from './rate/rate.module';
 import { TipModule } from './tip/tip.module';
+import { PersonnelModule } from './personnel/personnel.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { TipModule } from './tip/tip.module';
     UserImageModule,
     RateModule,
     TipModule,
+    PersonnelModule,
   ],
   controllers: [],
   providers: [],
