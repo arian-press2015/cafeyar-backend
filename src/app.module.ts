@@ -35,6 +35,7 @@ import { RoleModule } from './role/role.module';
 import { PermissionModule } from './permission/permission.module';
 import { OwnerRoleModule } from './ownerRole/ownerRole.module';
 import { OwnerPermissionModule } from './ownerPermission/ownerPermission.module';
+import { OwnerModule } from './owner/owner.module';
 
 @Module({
   imports: [
@@ -75,6 +76,7 @@ import { OwnerPermissionModule } from './ownerPermission/ownerPermission.module'
     PermissionModule,
     OwnerRoleModule,
     OwnerPermissionModule,
+    OwnerModule,
   ],
   controllers: [],
   providers: [],
