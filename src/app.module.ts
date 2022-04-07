@@ -32,6 +32,7 @@ import { DiscountModule } from './discount/discount.module';
 import { VersionModule } from './version/version.module';
 import { SubcategoryDiscountModule } from './subcategoryDiscount/subcategoryDiscount.module';
 import { RoleModule } from './role/role.module';
+import { PermissionModule } from './permission/permission.module';
 
 @Module({
   imports: [
@@ -69,6 +70,7 @@ import { RoleModule } from './role/role.module';
     VersionModule,
     SubcategoryDiscountModule,
     RoleModule,
+    PermissionModule,
   ],
   controllers: [],
   providers: [],
