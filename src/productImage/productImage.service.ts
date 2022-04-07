@@ -6,7 +6,6 @@ import {
   ProductImage,
   ProductImageRO,
 } from './dto/index';
-import {} from './dto/update-productImage.dto';
 
 @Injectable()
 export class ProductImageService {

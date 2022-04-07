@@ -6,7 +6,6 @@ import {
   Category,
   CategoryRO,
 } from './dto/index';
-import {} from './dto/update-category.dto';
 
 @Injectable()
 export class CategoryService {

@@ -6,7 +6,6 @@ import {
   Faq,
   FaqRO,
 } from './dto/index';
-import {} from './dto/update-faq.dto';
 
 @Injectable()
 export class FaqService {

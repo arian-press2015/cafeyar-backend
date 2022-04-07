@@ -5,7 +5,6 @@ import {
   QrImage,
   QrImageRO,
 } from './dto/index';
-import {} from './dto/update-qrImage.dto';
 
 @Injectable()
 export class QrImageService {

@@ -6,7 +6,6 @@ import {
   Product,
   ProductRO,
 } from './dto/index';
-import {} from './dto/update-product.dto';
 
 @Injectable()
 export class ProductService {

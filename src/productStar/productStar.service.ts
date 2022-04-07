@@ -6,7 +6,6 @@ import {
   ProductStar,
   ProductStarRO,
 } from './dto/index';
-import {} from './dto/update-productStar.dto';
 
 @Injectable()
 export class ProductStarService {

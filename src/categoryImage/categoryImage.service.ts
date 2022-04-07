@@ -5,7 +5,6 @@ import {
   CategoryImage,
   CategoryImageRO,
 } from './dto/index';
-import {} from './dto/update-categoryImage.dto';
 
 @Injectable()
 export class CategoryImageService {

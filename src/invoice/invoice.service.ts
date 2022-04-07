@@ -6,7 +6,6 @@ import {
   Invoice,
   InvoiceRO,
 } from './dto/index';
-import {} from './dto/update-invoice.dto';
 
 @Injectable()
 export class InvoiceService {

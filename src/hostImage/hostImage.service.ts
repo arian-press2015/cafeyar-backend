@@ -5,7 +5,6 @@ import {
   HostImage,
   HostImageRO,
 } from './dto/index';
-import {} from './dto/update-hostImage.dto';
 
 @Injectable()
 export class HostImageService {

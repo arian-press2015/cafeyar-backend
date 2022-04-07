@@ -6,7 +6,6 @@ import {
   Ingredient,
   IngredientRO,
 } from './dto/index';
-import {} from './dto/update-ingredient.dto';
 
 @Injectable()
 export class IngredientService {
