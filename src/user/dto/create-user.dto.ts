@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
@@ -8,4 +8,11 @@ export class CreateUserDto {
     description: 'Phone number of the User',
   })
   readonly phone: string;
+
+  @IsOptional()
+  @ApiProperty({
+    example: 'ap2015',
+    description: '(optional) introduction code',
+  })
+  readonly introduction?: string;
 }
