@@ -27,6 +27,12 @@ export class Tip {
     description: 'tip count',
   })
   readonly count: number;
+
+  @ApiProperty({
+    example: [1, 2],
+    description: 'tip targets',
+  })
+  readonly personnel: number[];
 }
 
 export class TipRO {

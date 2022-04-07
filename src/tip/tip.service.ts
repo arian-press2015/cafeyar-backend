@@ -16,6 +16,7 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
+      personnel: [1, 2],
     };
     return { tip };
   }
@@ -28,6 +29,7 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
+      personnel: [1, 2],
     });
     return tip;
   }
@@ -39,6 +41,7 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
+      personnel: [1, 2],
     };
     return { tip };
   }
@@ -54,6 +57,7 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
+      personnel: [1, 2],
     };
     return { tip };
   }
@@ -65,6 +69,7 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
+      personnel: [1, 2],
     };
     return { tip };
   }
