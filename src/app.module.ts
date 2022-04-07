@@ -27,6 +27,7 @@ import { PersonnelModule } from './personnel/personnel.module';
 import { OrderModule } from './order/order.module';
 import { UserFeatureModule } from './userFeature/userFeature.module';
 import { PurchaseModule } from './purchase/purchase.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -59,6 +60,7 @@ import { PurchaseModule } from './purchase/purchase.module';
     OrderModule,
     UserFeatureModule,
     PurchaseModule,
+    PaymentModule,
   ],
   controllers: [],
   providers: [],
