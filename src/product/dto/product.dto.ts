@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Ingredient } from 'src/ingredient/dto';
 
 export class Product {
   @ApiProperty({ example: 12345, description: 'ID of the entity in database' })
@@ -30,6 +31,17 @@ export class Product {
     description: 'product deleted',
   })
   readonly deleted: boolean;
+
+  @ApiProperty({
+    example: [
+      {
+        id: 1,
+        name: 'Noon',
+      },
+    ],
+    description: 'product ingredients',
+  })
+  readonly ingredients?: Ingredient[];
 }
 
 export class ProductRO {

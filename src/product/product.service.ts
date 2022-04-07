@@ -20,6 +20,12 @@ export class ProductService {
       price: 100000,
       enabled: true,
       deleted: false,
+      ingredients: [
+        {
+          id: 1,
+          name: 'Noon',
+        },
+      ],
     };
     return { product };
   }
@@ -33,6 +39,12 @@ export class ProductService {
       price: 100000,
       enabled: true,
       deleted: false,
+      ingredients: [
+        {
+          id: 1,
+          name: 'Noon',
+        },
+      ],
     });
     return product;
   }
@@ -45,6 +57,12 @@ export class ProductService {
       price: 100000,
       enabled: true,
       deleted: false,
+      ingredients: [
+        {
+          id: 1,
+          name: 'Noon',
+        },
+      ],
     };
     return { product };
   }
@@ -61,6 +79,12 @@ export class ProductService {
       price: 100000,
       enabled: true,
       deleted: false,
+      ingredients: [
+        {
+          id: 1,
+          name: 'Noon',
+        },
+      ],
     };
     return { product };
   }
@@ -73,6 +97,12 @@ export class ProductService {
       price: 100000,
       enabled: true,
       deleted: false,
+      ingredients: [
+        {
+          id: 1,
+          name: 'Noon',
+        },
+      ],
     };
     return { product };
   }

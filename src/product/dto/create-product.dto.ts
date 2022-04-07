@@ -33,4 +33,10 @@ export class CreateProductDto {
     description: 'product deleted',
   })
   readonly deleted: boolean;
+
+  @ApiProperty({
+    example: [1, 2],
+    description: 'product ingredients',
+  })
+  readonly ingredients: number[];
 }
