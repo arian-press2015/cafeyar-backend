@@ -36,6 +36,7 @@ import { PermissionModule } from './permission/permission.module';
 import { OwnerRoleModule } from './ownerRole/ownerRole.module';
 import { OwnerPermissionModule } from './ownerPermission/ownerPermission.module';
 import { OwnerModule } from './owner/owner.module';
+import { PurchaseDiscountModule } from './purchaseDiscount/purchaseDiscount.module';
 
 @Module({
   imports: [
@@ -77,6 +78,7 @@ import { OwnerModule } from './owner/owner.module';
     OwnerRoleModule,
     OwnerPermissionModule,
     OwnerModule,
+    PurchaseDiscountModule,
   ],
   controllers: [],
   providers: [],
