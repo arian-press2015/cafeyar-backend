@@ -24,6 +24,7 @@ import { UserImageModule } from './userImage/userImage.module';
 import { RateModule } from './rate/rate.module';
 import { TipModule } from './tip/tip.module';
 import { PersonnelModule } from './personnel/personnel.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { PersonnelModule } from './personnel/personnel.module';
     RateModule,
     TipModule,
     PersonnelModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [],
