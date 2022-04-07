@@ -19,6 +19,7 @@ import { HostImageModule } from './hostImage/hostImage.module';
 import { FeatureModule } from './feature/feature.module';
 import { PurchaseLevelModule } from './purchaseLevel/purchaseLevel.module';
 import { PurchasePlanModule } from './purchasePlan/purchasePlan.module';
+import { PurchaseLifetimeModule } from './purchaseLifetime/purchaseLifetime.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { PurchasePlanModule } from './purchasePlan/purchasePlan.module';
     FeatureModule,
     PurchaseLevelModule,
     PurchasePlanModule,
+    PurchaseLifetimeModule,
   ],
   controllers: [],
   providers: [],
