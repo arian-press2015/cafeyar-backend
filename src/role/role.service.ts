@@ -15,6 +15,7 @@ export class RoleService {
       host_id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     };
     return { role };
   }
@@ -26,6 +27,7 @@ export class RoleService {
       host_id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     });
     return role;
   }
@@ -36,6 +38,7 @@ export class RoleService {
       host_id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     };
     return { role };
   }
@@ -50,6 +53,7 @@ export class RoleService {
       host_id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     };
     return { role };
   }
@@ -60,6 +64,7 @@ export class RoleService {
       host_id: 1,
       title: 'see',
       title_fa: 'دیدن',
+      permission: [1, 2],
     };
     return { role };
   }
