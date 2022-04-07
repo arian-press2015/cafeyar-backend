@@ -20,6 +20,16 @@ export class DiscountService {
       percentage: 100000,
       max_amount: 2000000,
       expiry_date: '2022/02/02 20:30:40',
+      products: [
+        {
+          id: 1,
+          sub_cat_id: 1,
+          name: 'Pizza',
+          price: 100000,
+          enabled: true,
+          deleted: false,
+        },
+      ],
     };
     return { discount };
   }
@@ -33,6 +43,16 @@ export class DiscountService {
       percentage: 100000,
       max_amount: 2000000,
       expiry_date: '2022/02/02 20:30:40',
+      products: [
+        {
+          id: 1,
+          sub_cat_id: 1,
+          name: 'Pizza',
+          price: 100000,
+          enabled: true,
+          deleted: false,
+        },
+      ],
     });
     return discount;
   }
@@ -45,6 +65,16 @@ export class DiscountService {
       percentage: 100000,
       max_amount: 2000000,
       expiry_date: '2022/02/02 20:30:40',
+      products: [
+        {
+          id: 1,
+          sub_cat_id: 1,
+          name: 'Pizza',
+          price: 100000,
+          enabled: true,
+          deleted: false,
+        },
+      ],
     };
     return { discount };
   }
@@ -61,6 +91,16 @@ export class DiscountService {
       percentage: 100000,
       max_amount: 2000000,
       expiry_date: '2022/02/02 20:30:40',
+      products: [
+        {
+          id: 1,
+          sub_cat_id: 1,
+          name: 'Pizza',
+          price: 100000,
+          enabled: true,
+          deleted: false,
+        },
+      ],
     };
     return { discount };
   }
@@ -73,6 +113,16 @@ export class DiscountService {
       percentage: 100000,
       max_amount: 2000000,
       expiry_date: '2022/02/02 20:30:40',
+      products: [
+        {
+          id: 1,
+          sub_cat_id: 1,
+          name: 'Pizza',
+          price: 100000,
+          enabled: true,
+          deleted: false,
+        },
+      ],
     };
     return { discount };
   }

@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Product } from 'src/product/dto';
 
 export class Discount {
   @ApiProperty({ example: 12345, description: 'ID of the entity in database' })
@@ -30,6 +31,21 @@ export class Discount {
     description: 'Discount expiry',
   })
   readonly expiry_date: string;
+
+  @ApiProperty({
+    example: [
+      {
+        id: 1,
+        sub_cat_id: 1,
+        name: 'Pizza',
+        price: 100000,
+        enabled: true,
+        deleted: false,
+      },
+    ],
+    description: 'Discounted products',
+  })
+  readonly products: Product[];
 }
 
 export class DiscountRO {

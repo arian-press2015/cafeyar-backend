@@ -27,4 +27,10 @@ export class UpdateDiscountDto {
     description: 'Discount expiry',
   })
   readonly expiry_date: string;
+
+  @ApiProperty({
+    example: [1, 2],
+    description: 'Discounted products',
+  })
+  readonly products: number[];
 }
