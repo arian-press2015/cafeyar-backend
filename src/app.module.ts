@@ -18,6 +18,7 @@ import { QrImageModule } from './qrImage/qrImage.module';
 import { HostImageModule } from './hostImage/hostImage.module';
 import { FeatureModule } from './feature/feature.module';
 import { PurchaseLevelModule } from './purchaseLevel/purchaseLevel.module';
+import { PurchasePlanModule } from './purchasePlan/purchasePlan.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { PurchaseLevelModule } from './purchaseLevel/purchaseLevel.module';
     HostImageModule,
     FeatureModule,
     PurchaseLevelModule,
+    PurchasePlanModule,
   ],
   controllers: [],
   providers: [],
