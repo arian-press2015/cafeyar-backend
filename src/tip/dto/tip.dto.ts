@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Personnel } from 'src/personnel/dto';
 
 export class Tip {
   @ApiProperty({ example: 12345, description: 'ID of the entity in database' })
@@ -29,10 +30,17 @@ export class Tip {
   readonly count: number;
 
   @ApiProperty({
-    example: [1, 2],
+    example: [
+      {
+        id: 1,
+        user_id: 1,
+        host_id: 1,
+        role_id: 1,
+      },
+    ],
     description: 'tip targets',
   })
-  readonly personnel: number[];
+  readonly personnels: Personnel[];
 }
 
 export class TipRO {

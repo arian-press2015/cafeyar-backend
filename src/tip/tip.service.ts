@@ -16,7 +16,14 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
-      personnel: [1, 2],
+      personnels: [
+        {
+          id: 1,
+          user_id: 1,
+          host_id: 1,
+          role_id: 1,
+        },
+      ],
     };
     return { tip };
   }
@@ -29,7 +36,14 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
-      personnel: [1, 2],
+      personnels: [
+        {
+          id: 1,
+          user_id: 1,
+          host_id: 1,
+          role_id: 1,
+        },
+      ],
     });
     return tip;
   }
@@ -41,7 +55,14 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
-      personnel: [1, 2],
+      personnels: [
+        {
+          id: 1,
+          user_id: 1,
+          host_id: 1,
+          role_id: 1,
+        },
+      ],
     };
     return { tip };
   }
@@ -57,7 +78,14 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
-      personnel: [1, 2],
+      personnels: [
+        {
+          id: 1,
+          user_id: 1,
+          host_id: 1,
+          role_id: 1,
+        },
+      ],
     };
     return { tip };
   }
@@ -69,7 +97,14 @@ export class TipService {
       user_id: 1,
       amount: 1000000,
       count: 5,
-      personnel: [1, 2],
+      personnels: [
+        {
+          id: 1,
+          user_id: 1,
+          host_id: 1,
+          role_id: 1,
+        },
+      ],
     };
     return { tip };
   }
