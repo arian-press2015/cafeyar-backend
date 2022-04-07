@@ -17,7 +17,14 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
-      features: [1, 2],
+      features: [
+        {
+          id: 1,
+          title: 'Pizza',
+          description: 'desc',
+          version: 1,
+        },
+      ],
     };
     return { purchaseLevel };
   }
@@ -28,7 +35,14 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
-      features: [1, 2],
+      features: [
+        {
+          id: 1,
+          title: 'Pizza',
+          description: 'desc',
+          version: 1,
+        },
+      ],
     });
     return purchaseLevel;
   }
@@ -38,7 +52,14 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
-      features: [1, 2],
+      features: [
+        {
+          id: 1,
+          title: 'Pizza',
+          description: 'desc',
+          version: 1,
+        },
+      ],
     };
     return { purchaseLevel };
   }
@@ -52,7 +73,14 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
-      features: [1, 2],
+      features: [
+        {
+          id: 1,
+          title: 'Pizza',
+          description: 'desc',
+          version: 1,
+        },
+      ],
     };
     return { purchaseLevel };
   }
@@ -65,7 +93,14 @@ export class PurchaseLevelService {
       id: 1,
       title: 'basic',
       price: 1000000,
-      features: [1, 2],
+      features: [
+        {
+          id: 1,
+          title: 'Pizza',
+          description: 'desc',
+          version: 1,
+        },
+      ],
     };
     return { purchaseLevel };
   }
