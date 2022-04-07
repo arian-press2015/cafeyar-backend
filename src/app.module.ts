@@ -21,6 +21,7 @@ import { PurchaseLevelModule } from './purchaseLevel/purchaseLevel.module';
 import { PurchasePlanModule } from './purchasePlan/purchasePlan.module';
 import { PurchaseLifetimeModule } from './purchaseLifetime/purchaseLifetime.module';
 import { UserImageModule } from './userImage/userImage.module';
+import { RateModule } from './rate/rate.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { UserImageModule } from './userImage/userImage.module';
     PurchasePlanModule,
     PurchaseLifetimeModule,
     UserImageModule,
+    RateModule,
   ],
   controllers: [],
   providers: [],
