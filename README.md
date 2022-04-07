@@ -30,6 +30,7 @@
 - after version 1 (fake data version) add new things(new swagger error | feature , new routes, ...) to generate change log based on conventional commit
 - replace '/here/file.jpg' with real file address
 - add many-to-many & many-to-one relation routes to one of the entity routes: all routes are just basics, some need extra routes
+- some dto fields must be nullable according to db
 
 ## Description
 

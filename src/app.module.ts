@@ -28,6 +28,7 @@ import { OrderModule } from './order/order.module';
 import { UserFeatureModule } from './userFeature/userFeature.module';
 import { PurchaseModule } from './purchase/purchase.module';
 import { PaymentModule } from './payment/payment.module';
+import { DiscountModule } from './discount/discount.module';
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ import { PaymentModule } from './payment/payment.module';
     UserFeatureModule,
     PurchaseModule,
     PaymentModule,
+    DiscountModule,
   ],
   controllers: [],
   providers: [],
