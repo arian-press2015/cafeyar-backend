@@ -34,6 +34,7 @@ import { SubcategoryDiscountModule } from './subcategoryDiscount/subcategoryDisc
 import { RoleModule } from './role/role.module';
 import { PermissionModule } from './permission/permission.module';
 import { OwnerRoleModule } from './ownerRole/ownerRole.module';
+import { OwnerPermissionModule } from './ownerPermission/ownerPermission.module';
 
 @Module({
   imports: [
@@ -73,6 +74,7 @@ import { OwnerRoleModule } from './ownerRole/ownerRole.module';
     RoleModule,
     PermissionModule,
     OwnerRoleModule,
+    OwnerPermissionModule,
   ],
   controllers: [],
   providers: [],
