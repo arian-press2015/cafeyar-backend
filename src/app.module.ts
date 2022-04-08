@@ -41,7 +41,7 @@ import { PurchaseDiscountModule } from './purchaseDiscount/purchaseDiscount.modu
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
+      rootPath: join(__dirname, '../..', 'public'),
     }),
     UserModule,
     HostModule,

@@ -18,7 +18,7 @@ export class ProductImageService {
       product_id: 1,
       width: 640,
       height: 480,
-      url: 'here/file.jpg',
+      url: '/pic640480.jpg',
       user_image: true,
     };
     return { productImage };
@@ -31,7 +31,7 @@ export class ProductImageService {
       product_id: 1,
       width: 640,
       height: 480,
-      url: 'here/file.jpg',
+      url: '/pic640480.jpg',
       user_image: true,
     });
     return productImage;
@@ -43,7 +43,7 @@ export class ProductImageService {
       product_id: 1,
       width: 640,
       height: 480,
-      url: 'here/file.jpg',
+      url: '/pic640480.jpg',
       user_image: true,
     };
     return { productImage };
@@ -59,7 +59,7 @@ export class ProductImageService {
       product_id: 1,
       width: 640,
       height: 480,
-      url: 'here/file.jpg',
+      url: '/pic640480.jpg',
       user_image: true,
     };
     return { productImage };
@@ -74,7 +74,7 @@ export class ProductImageService {
       product_id: 1,
       width: 640,
       height: 480,
-      url: 'here/file.jpg',
+      url: '/pic640480.jpg',
       user_image: true,
     };
     return { productImage };

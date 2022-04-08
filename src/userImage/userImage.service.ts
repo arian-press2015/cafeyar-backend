@@ -14,9 +14,9 @@ export class UserImageService {
   ): Promise<UserImageRO> {
     const userImage = {
       user_id: 1,
-      width: 640,
-      height: 480,
-      url: '/here/file.jpg',
+      width: 720,
+      height: 1280,
+      url: '/7201280.png',
     };
     return { userImage };
   }
@@ -24,9 +24,9 @@ export class UserImageService {
   async findOne(userImageID: number): Promise<UserImageRO> {
     const userImage = {
       user_id: 1,
-      width: 640,
-      height: 480,
-      url: '/here/file.jpg',
+      width: 720,
+      height: 1280,
+      url: '/7201280.png',
     };
     return { userImage };
   }
@@ -38,9 +38,9 @@ export class UserImageService {
   ): Promise<UserImageRO> {
     const userImage = {
       user_id: 1,
-      width: 640,
-      height: 480,
-      url: '/here/file.jpg',
+      width: 720,
+      height: 1280,
+      url: '/7201280.png',
     };
     return { userImage };
   }
@@ -48,9 +48,9 @@ export class UserImageService {
   async delete(userID: number, userImageID: number): Promise<UserImageRO> {
     const userImage = {
       user_id: 1,
-      width: 640,
-      height: 480,
-      url: '/here/file.jpg',
+      width: 720,
+      height: 1280,
+      url: '/7201280.png',
     };
     return { userImage };
   }
