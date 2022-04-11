@@ -43,10 +43,50 @@ export class UserController {
   })
   @ApiResponse({
     status: 400,
-    description: 'phone number already exists',
+    description: 'Phone number already exists|Phone number is not valid',
   })
   async create(@Body() userData: CreateUserDto): Promise<UserDisplayRO> {
     return await this.userService.create(userData);
+  }
+
+  @UsePipes(new ValidationPipe())
+  @Get('login')
+  @ApiOperation({ summary: 'Request login verification' })
+  @ApiBody({ description: 'LoginUserDto Schema', type: LoginUserDto })
+  @ApiResponse({
+    status: 200,
+    description: 'Trys to Log in using given data',
+    type: Boolean,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'No user found|Phone number is not valid',
+  })
+  async login(@Body() loginUserDto: LoginUserDto): Promise<boolean> {
+    return await this.userService.login(loginUserDto);
+  }
+
+  @UsePipes(new ValidationPipe())
+  @Post('login')
+  @ApiOperation({ summary: 'Verify User' })
+  @HttpCode(200)
+  @ApiBody({ description: 'VerifyUserDto Schema', type: VerifyUserDto })
+  @ApiResponse({
+    status: 200,
+    description: 'Verifies User before login and returns Auth Token',
+    type: UserRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Phone number is not valid|otp must be a number string|Wrong otp',
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'No otp found|No user found',
+  })
+  async verify(@Body() verifyUserDto: VerifyUserDto): Promise<UserRO> {
+    return await this.userService.verify(verifyUserDto);
   }
 
   @ApiBearerAuth()
@@ -55,9 +95,9 @@ export class UserController {
   @ApiResponse({
     status: 200,
     description: 'Returns User for provided Auth Token',
-    type: UserDisplayRO,
+    type: UserRO,
   })
-  async findMe(@User('phone') phone: string): Promise<UserDisplayRO> {
+  async findMe(@User('phone') phone: string): Promise<UserRO> {
     return await this.userService.findByPhone(phone);
   }
 
@@ -77,6 +117,7 @@ export class UserController {
     return await this.userService.findById(userID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current User' })
@@ -115,44 +156,5 @@ export class UserController {
     @User('id') id: number,
   ): Promise<UserDisplayRO> {
     return await this.userService.delete(id, userID);
-  }
-
-  @UsePipes(new ValidationPipe())
-  @Get('login')
-  @ApiOperation({ summary: 'Request login verification' })
-  @ApiBody({ description: 'LoginUserDto Schema', type: LoginUserDto })
-  @ApiResponse({
-    status: 200,
-    description: 'Trys to Log in using given data',
-    type: Boolean,
-  })
-  @ApiResponse({
-    status: 404,
-    description: 'No user found',
-  })
-  async login(@Body() loginUserDto: LoginUserDto): Promise<boolean> {
-    return await this.userService.login(loginUserDto);
-  }
-
-  @UsePipes(new ValidationPipe())
-  @Post('login')
-  @ApiOperation({ summary: 'Verify User' })
-  @HttpCode(200)
-  @ApiBody({ description: 'VerifyUserDto Schema', type: VerifyUserDto })
-  @ApiResponse({
-    status: 200,
-    description: 'Verifies User before login and returns Auth Token',
-    type: UserRO,
-  })
-  @ApiResponse({
-    status: 400,
-    description: 'Wrong otp',
-  })
-  @ApiResponse({
-    status: 404,
-    description: 'No otp found|No user found',
-  })
-  async verify(@Body() verifyUserDto: VerifyUserDto): Promise<UserRO> {
-    return await this.userService.verify(verifyUserDto);
   }
 }

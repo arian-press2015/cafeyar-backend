@@ -5,7 +5,7 @@ export class User {
   readonly id: number;
 
   @ApiProperty({
-    example: '09012883045',
+    example: '+989012883045',
     description: 'Phone number of the User',
   })
   readonly phone: string;

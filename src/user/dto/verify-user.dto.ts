@@ -1,14 +1,20 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsMobilePhone, IsNumberString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class VerifyUserDto {
-  @IsNotEmpty()
+  @IsNumberString()
   @ApiProperty({ example: '12345', description: 'Validation code sent as SMS' })
   readonly otp: string;
 
-  @IsNotEmpty()
+  @IsMobilePhone(
+    'fa-IR',
+    { strictMode: true },
+    {
+      message: 'Phone number is not valid',
+    },
+  )
   @ApiProperty({
-    example: '09012883045',
+    example: '+989012883045',
     description: 'Phone number of the User',
   })
   readonly phone: string;

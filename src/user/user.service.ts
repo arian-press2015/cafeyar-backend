@@ -29,7 +29,7 @@ export class UserService {
   constructor(private prisma: PrismaService, private redis: RedisService) {}
 
   async login(payload: LoginUserDto): Promise<boolean> {
-    if (payload.phone != '09012883045') {
+    if (payload.phone != '+989012883045') {
       throw new HttpException('No user found', 404);
     }
     return true;
@@ -63,7 +63,7 @@ export class UserService {
 
   async create(dto: CreateUserDto): Promise<UserDisplayRO> {
     if (dto.phone == '1') {
-      throw new HttpException('phone number already exists', 400);
+      throw new HttpException('Phone number already exists', 400);
     }
 
     const user = {
@@ -85,7 +85,7 @@ export class UserService {
 
     const user = {
       id: 1,
-      phone: '09012883045',
+      phone: '+989012883045',
       name: 'mohammad',
       last: 'mohammadi',
       age: 25,
@@ -109,34 +109,44 @@ export class UserService {
   }
 
   async findById(id: number): Promise<UserDisplayRO> {
-    const user = await this.prisma.customer.findUnique({
-      where: { id },
-      select,
-    });
+    const user = {
+      id: 1,
+      name: 'mohammad',
+      last: 'mohammadi',
+      age: 25,
+      gender: 'male',
+      introduction_id: 'ap2015',
+    };
     return { user };
   }
 
-  async findByPhone(phone: string): Promise<UserDisplayRO> {
-    const user = await this.prisma.customer.findUnique({
-      where: { phone },
-      select,
-    });
+  async findByPhone(phone: string): Promise<UserRO> {
+    const user = {
+      id: 1,
+      phone: '+989012883045',
+      name: 'mohammad',
+      last: 'mohammadi',
+      age: 25,
+      gender: 'male',
+      credit: 10000000,
+      introduction_id: 'ap2015',
+    };
     return { user };
   }
 
   // Use this just for Auth Middleware
   async findByPhoneAuth(phone: string): Promise<UserRO> {
-    const user = await this.prisma.customer.findUnique({
-      where: { phone },
-    });
-
-    if (!user) {
-      throw new HttpException('No user found', 404);
-    }
-
-    const credit = Number(user.credit);
-    delete user.credit;
-    return { user: { ...user, credit } };
+    const user = {
+      id: 1,
+      phone: '+989012883045',
+      name: 'mohammad',
+      last: 'mohammadi',
+      age: 25,
+      gender: 'male',
+      credit: 10000000,
+      introduction_id: 'ap2015',
+    };
+    return { user };
   }
 
   public generateJWT(user: User): string {
