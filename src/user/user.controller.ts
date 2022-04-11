@@ -8,6 +8,7 @@ import {
   Patch,
   UsePipes,
   Param,
+  ValidationPipe,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -26,8 +27,6 @@ import {
   UserRO,
   VerifyUserDto,
 } from './dto';
-import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
-
 @ApiTags('user')
 @Controller('user')
 export class UserController {

@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ProductStarService } from './productStar.service';
 import {
@@ -21,7 +22,6 @@ import {
   ApiResponse,
   ApiOperation,
 } from '@nestjs/swagger';
-import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
 @ApiTags('product-star')

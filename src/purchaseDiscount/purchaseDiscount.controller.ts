@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { PurchaseDiscountService } from './purchaseDiscount.service';
 import {
@@ -23,7 +24,6 @@ import {
   ApiResponse,
   ApiOperation,
 } from '@nestjs/swagger';
-import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
 @ApiTags('purchase-discount')

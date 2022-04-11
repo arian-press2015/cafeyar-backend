@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -23,7 +24,7 @@ import {
   HostRO,
   Host,
 } from './dto';
-import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
+
 import { User } from 'src/user/user.decorator';
 
 @ApiTags('host')

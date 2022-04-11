@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { TableService } from './table.service';
 import {
@@ -23,7 +24,6 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { ValidationPipe } from 'src/shared/pipes/validation.pipe';
 import { User } from 'src/user/user.decorator';
 
 @ApiTags('table')
