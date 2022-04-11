@@ -1,0 +1,8 @@
+{
+  "Phone number already exists": "این شماره موبایل قبلا استفاده شده است",
+  "Phone number is not valid": "شماره موبایل معتبر نیست",
+  "No user found": "کاربر یافت نشد",
+  "otp must be a number string": "کد اعتبارسنجی باید عددی باشد",
+  "Wrong otp": "کد اعتبارسنجی نامعتبر است",
+  "No otp found": "کد اعتبارسنجی یافت نشد"
+}
