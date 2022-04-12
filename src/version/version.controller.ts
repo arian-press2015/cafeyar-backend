@@ -46,7 +46,8 @@ export class VersionController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Version already exists',
+    description:
+      'Version already exists|Version must be number|Invalid creation_date',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class VersionController {
     return this.versionService.create(userID, createVersionDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Version query fields',
@@ -73,6 +75,10 @@ export class VersionController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Version],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Version must be number|Invalid limit|Invalid page',
   })
   @ApiResponse({
     status: 404,
@@ -98,6 +104,7 @@ export class VersionController {
   }
 
   @ApiBearerAuth()
+  @UsePipes(new ValidationPipe())
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Version' })
   @ApiBody({
@@ -108,6 +115,10 @@ export class VersionController {
     status: 200,
     description: 'Updates current Version',
     type: VersionRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Version must be number',
   })
   @ApiResponse({
     status: 403,
