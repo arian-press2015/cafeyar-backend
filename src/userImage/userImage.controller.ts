@@ -45,7 +45,7 @@ export class UserImageController {
   })
   @ApiResponse({
     status: 400,
-    description: 'UserImage already exists',
+    description: 'Invalid user_id|Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
@@ -78,6 +78,7 @@ export class UserImageController {
   }
 
   @ApiBearerAuth()
+  @UsePipes(new ValidationPipe())
   @Patch(':id')
   @ApiOperation({ summary: 'Update current UserImage' })
   @ApiBody({
@@ -88,6 +89,10 @@ export class UserImageController {
     status: 200,
     description: 'Updates current UserImage',
     type: UserImageRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,

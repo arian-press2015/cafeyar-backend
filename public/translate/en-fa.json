@@ -12,5 +12,9 @@
   "No User found": "کاربر یافت نشد",
   "Invalid limit": "محدودیت معتبر نیست",
   "Invalid page": "شماره صفحه معتبر نیست",
-  "No Version found": "ورژن یافت نشد"
+  "No Version found": "ورژن یافت نشد",
+  "Invalid user_id": "شناسه کاربر نامعتبر است",
+  "Invalid width": "عرض تصویر نامعتبر است",
+  "Invalid height": "طول تصویر نامعتبر است",
+  "Invalid url": "آدرس فایل نامعتبر است"
 }
