@@ -16,7 +16,7 @@ export class VersionService {
     const version = {
       id: 1,
       version_number: 1,
-      creation_date: '2022/02/02 20:20:20',
+      creation_date: '2022-02-02 20:30:40',
     };
     return { version };
   }
@@ -26,7 +26,7 @@ export class VersionService {
     version.push({
       id: 1,
       version_number: 1,
-      creation_date: '2022/02/02 20:20:20',
+      creation_date: '2022-02-02 20:30:40',
     });
     return version;
   }
@@ -35,7 +35,7 @@ export class VersionService {
     const version = {
       id: 1,
       version_number: 1,
-      creation_date: '2022/02/02 20:20:20',
+      creation_date: '2022-02-02 20:30:40',
     };
     return { version };
   }
@@ -48,7 +48,7 @@ export class VersionService {
     const version = {
       id: 1,
       version_number: 1,
-      creation_date: '2022/02/02 20:20:20',
+      creation_date: '2022-02-02 20:30:40',
     };
     return { version };
   }
@@ -57,7 +57,7 @@ export class VersionService {
     const version = {
       id: 1,
       version_number: 1,
-      creation_date: '2022/02/02 20:20:20',
+      creation_date: '2022-02-02 20:30:40',
     };
     return { version };
   }

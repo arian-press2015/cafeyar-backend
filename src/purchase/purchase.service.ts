@@ -17,7 +17,7 @@ export class PurchaseService {
       id: 1,
       user_id: 1,
       purchase_plan_id: 1,
-      purchase_date: '2020/02/02 10:20:30',
+      purchase_date: '2022-02-02 20:30:40',
     };
     return { purchase };
   }
@@ -28,7 +28,7 @@ export class PurchaseService {
       id: 1,
       user_id: 1,
       purchase_plan_id: 1,
-      purchase_date: '2020/02/02 10:20:30',
+      purchase_date: '2022-02-02 20:30:40',
     });
     return purchase;
   }
@@ -38,7 +38,7 @@ export class PurchaseService {
       id: 1,
       user_id: 1,
       purchase_plan_id: 1,
-      purchase_date: '2020/02/02 10:20:30',
+      purchase_date: '2022-02-02 20:30:40',
     };
     return { purchase };
   }
@@ -52,7 +52,7 @@ export class PurchaseService {
       id: 1,
       user_id: 1,
       purchase_plan_id: 1,
-      purchase_date: '2020/02/02 10:20:30',
+      purchase_date: '2022-02-02 20:30:40',
     };
     return { purchase };
   }
@@ -62,7 +62,7 @@ export class PurchaseService {
       id: 1,
       user_id: 1,
       purchase_plan_id: 1,
-      purchase_date: '2020/02/02 10:20:30',
+      purchase_date: '2022-02-02 20:30:40',
     };
     return { purchase };
   }

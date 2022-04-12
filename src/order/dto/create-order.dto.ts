@@ -27,7 +27,7 @@ export class CreateOrderDto {
   readonly total_discount: number;
 
   @ApiProperty({
-    example: '2020/02/02 10:20:30',
+    example: '2022-02-02 20:30:40',
     description: 'Time of the Order',
   })
   readonly time: string;

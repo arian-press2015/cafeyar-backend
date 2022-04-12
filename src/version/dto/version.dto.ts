@@ -11,7 +11,7 @@ export class Version {
   readonly version_number: number;
 
   @ApiProperty({
-    example: '2020/02/02 20:30:40',
+    example: '2022-02-02 20:30:40',
     description: 'creation date of the Version',
   })
   readonly creation_date: string;

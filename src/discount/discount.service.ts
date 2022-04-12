@@ -19,7 +19,7 @@ export class DiscountService {
       count: 10,
       percentage: 100000,
       max_amount: 2000000,
-      expiry_date: '2022/02/02 20:30:40',
+      expiry_date: '2022-02-02 20:30:40',
       products: [
         {
           id: 1,
@@ -42,7 +42,7 @@ export class DiscountService {
       count: 10,
       percentage: 100000,
       max_amount: 2000000,
-      expiry_date: '2022/02/02 20:30:40',
+      expiry_date: '2022-02-02 20:30:40',
       products: [
         {
           id: 1,
@@ -64,7 +64,7 @@ export class DiscountService {
       count: 10,
       percentage: 100000,
       max_amount: 2000000,
-      expiry_date: '2022/02/02 20:30:40',
+      expiry_date: '2022-02-02 20:30:40',
       products: [
         {
           id: 1,
@@ -90,7 +90,7 @@ export class DiscountService {
       count: 10,
       percentage: 100000,
       max_amount: 2000000,
-      expiry_date: '2022/02/02 20:30:40',
+      expiry_date: '2022-02-02 20:30:40',
       products: [
         {
           id: 1,
@@ -112,7 +112,7 @@ export class DiscountService {
       count: 10,
       percentage: 100000,
       max_amount: 2000000,
-      expiry_date: '2022/02/02 20:30:40',
+      expiry_date: '2022-02-02 20:30:40',
       products: [
         {
           id: 1,

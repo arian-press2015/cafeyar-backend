@@ -18,7 +18,7 @@ export class InvoiceService {
       customer_id: 1,
       price: 1000000,
       discount: 100000,
-      pay_date: '2020/02/02 10:20:30',
+      pay_date: '2022-02-02 20:30:40',
     };
     return { invoice };
   }
@@ -30,7 +30,7 @@ export class InvoiceService {
       customer_id: 1,
       price: 1000000,
       discount: 100000,
-      pay_date: '2020/02/02 10:20:30',
+      pay_date: '2022-02-02 20:30:40',
     });
     return invoice;
   }
@@ -41,7 +41,7 @@ export class InvoiceService {
       customer_id: 1,
       price: 1000000,
       discount: 100000,
-      pay_date: '2020/02/02 10:20:30',
+      pay_date: '2022-02-02 20:30:40',
     };
     return { invoice };
   }
@@ -56,7 +56,7 @@ export class InvoiceService {
       customer_id: 1,
       price: 1000000,
       discount: 100000,
-      pay_date: '2020/02/02 10:20:30',
+      pay_date: '2022-02-02 20:30:40',
     };
     return { invoice };
   }
@@ -67,7 +67,7 @@ export class InvoiceService {
       customer_id: 1,
       price: 1000000,
       discount: 100000,
-      pay_date: '2020/02/02 10:20:30',
+      pay_date: '2022-02-02 20:30:40',
     };
     return { invoice };
   }

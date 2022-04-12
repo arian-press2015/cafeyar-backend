@@ -20,7 +20,7 @@ export class Owner {
   readonly owner_role_id: number;
 
   @ApiProperty({
-    example: '2022/02/02 20:20:20',
+    example: '2022-02-02 20:30:40',
     description: 'creation_date of the Owner',
   })
   readonly creation_date: string;

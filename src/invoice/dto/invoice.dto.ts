@@ -23,7 +23,7 @@ export class Invoice {
   readonly discount: number;
 
   @ApiProperty({
-    example: '2020/02/02 10:20:30',
+    example: '2022-02-02 20:30:40',
     description: 'pay date',
   })
   readonly pay_date: string;

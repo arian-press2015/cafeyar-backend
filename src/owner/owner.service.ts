@@ -18,7 +18,7 @@ export class OwnerService {
       username: 'Pizza',
       password: 'Pizza',
       owner_role_id: 10,
-      creation_date: '2020/02/02 20:20:20',
+      creation_date: '2022-02-02 20:20:20',
     };
     return { owner };
   }
@@ -30,7 +30,7 @@ export class OwnerService {
       username: 'Pizza',
       password: 'Pizza',
       owner_role_id: 10,
-      creation_date: '2020/02/02 20:20:20',
+      creation_date: '2022-02-02 20:20:20',
     });
     return owner;
   }
@@ -41,7 +41,7 @@ export class OwnerService {
       username: 'Pizza',
       password: 'Pizza',
       owner_role_id: 10,
-      creation_date: '2020/02/02 20:20:20',
+      creation_date: '2022-02-02 20:20:20',
     };
     return { owner };
   }
@@ -56,7 +56,7 @@ export class OwnerService {
       username: 'Pizza',
       password: 'Pizza',
       owner_role_id: 10,
-      creation_date: '2020/02/02 20:20:20',
+      creation_date: '2022-02-02 20:20:20',
     };
     return { owner };
   }
@@ -67,7 +67,7 @@ export class OwnerService {
       username: 'Pizza',
       password: 'Pizza',
       owner_role_id: 10,
-      creation_date: '2020/02/02 20:20:20',
+      creation_date: '2022-02-02 20:20:20',
     };
     return { owner };
   }

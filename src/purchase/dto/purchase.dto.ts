@@ -17,7 +17,7 @@ export class Purchase {
   readonly purchase_plan_id: number;
 
   @ApiProperty({
-    example: '2020/02/02 10:20:30',
+    example: '2022-02-02 20:30:40',
     description: 'purchase_date of the Purchase',
   })
   readonly purchase_date: string;
