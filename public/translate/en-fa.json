@@ -30,5 +30,12 @@
   "Invalid table_number": "شماره میز نامعتبر است",
   "Table number already exists": "شماره میز قبلا ثبت شده است",
   "Invalid capacity": "ظرفیت نامعتبر است",
-  "No Table found": "میز یافت نشد"
+  "No Table found": "میز یافت نشد",
+  "SubcategoryDiscount already exists": "تخفیف برای این دسته بندی قبلا ثبت شده است",
+  "Invalid cat_id": "شناسه دسته بندی نامعتبر است",
+  "Invalid sub_cat_id": "شناسه زیردسته بندی نامعتبر است",
+  "Invalid count": "تعداد نامعتبر است",
+  "Invalid percentage": "درصد نامعتبر است",
+  "|Invalid max_amount": "مقدار حداکثر تخفیف نامعتبر است",
+  "Invalid expiry_date": "تاریخ انقضا نامعتبر است"
 }
