@@ -16,5 +16,9 @@
   "Invalid user_id": "شناسه کاربر نامعتبر است",
   "Invalid width": "عرض تصویر نامعتبر است",
   "Invalid height": "طول تصویر نامعتبر است",
-  "Invalid url": "آدرس فایل نامعتبر است"
+  "Invalid url": "آدرس فایل نامعتبر است",
+  "Invalid title": "عنوان نامعتبر است",
+  "Invalid description": "شرح نامعتبر است",
+  "Invalid accepted": "وضعیت تایید نامعتبر است",
+  "Invalid paid": "وضعیت پرداخت نامعتبر است"
 }

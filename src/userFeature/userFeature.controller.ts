@@ -46,7 +46,7 @@ export class UserFeatureController {
   })
   @ApiResponse({
     status: 400,
-    description: 'UserFeature already exists',
+    description: 'Invalid user_id|Invalid title|Invalid description',
   })
   @ApiResponse({
     status: 403,
@@ -110,6 +110,11 @@ export class UserFeatureController {
     status: 200,
     description: 'Updates current UserFeature',
     type: UserFeatureRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid title|Invalid description|Invalid accepted|Invalid paid',
   })
   @ApiResponse({
     status: 403,
