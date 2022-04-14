@@ -2,8 +2,9 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive } from 'class-validator';
 
 export class FilterTableDto {
+  @IsInt({ message: 'Invalid host_id' })
   @ApiProperty({ example: 12345, description: 'ID of the entity in database' })
-  readonly hostID: number;
+  readonly host_id: number;
 
   @IsInt({ message: 'Invalid page' })
   @IsPositive({ message: 'Invalid page' })

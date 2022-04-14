@@ -25,5 +25,10 @@
   "Invalid Invoice_id": "شماره صورت حساب نامعتبر است",
   "Invalid tip amount": "مقدار انعام نامعتبر است",
   "Invalid tip count": "تعداد انعام نامعتبر است",
-  "Invalid personnel": "کارکنان انتخاب شده نامعتبر است"
+  "Invalid personnel": "کارکنان انتخاب شده نامعتبر است",
+  "Invalid host_id": "شناسه میزبان نامعتبر است",
+  "Invalid table_number": "شماره میز نامعتبر است",
+  "Table number already exists": "شماره میز قبلا ثبت شده است",
+  "Invalid capacity": "ظرفیت نامعتبر است",
+  "No Table found": "میز یافت نشد"
 }

@@ -43,7 +43,8 @@ export class TableController {
   })
   @ApiResponse({
     status: 400,
-    description: "Host doesn't exist|Table number already exists",
+    description:
+      'Invalid host_id|Invalid table_number|Table number already exists|Invalid capacity',
   })
   @ApiResponse({
     status: 403,
@@ -70,6 +71,10 @@ export class TableController {
     status: 200,
     description: 'Returns Tables for provided Host',
     type: [Table],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid host_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -102,6 +107,10 @@ export class TableController {
     status: 200,
     description: 'Updates current Table',
     type: TableRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid capacity',
   })
   @ApiResponse({
     status: 403,
