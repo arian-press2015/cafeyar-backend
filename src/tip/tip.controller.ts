@@ -46,7 +46,8 @@ export class TipController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Tip already exists',
+    description:
+      'Tip already exists|Invalid Invoice_id|Invalid user_id|Invalid tip amount|Invalid tip count|Invalid personnel',
   })
   @ApiResponse({
     status: 403,
@@ -73,6 +74,10 @@ export class TipController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Tip],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -108,6 +113,10 @@ export class TipController {
     status: 200,
     description: 'Updates current Tip',
     type: TipRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid tip amount|Invalid tip count|Invalid personnel',
   })
   @ApiResponse({
     status: 403,

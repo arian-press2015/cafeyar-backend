@@ -75,6 +75,10 @@ export class UserFeatureController {
     type: [UserFeature],
   })
   @ApiResponse({
+    status: 400,
+    description: 'Invalid user_id|Invalid page|Invalid limit',
+  })
+  @ApiResponse({
     status: 404,
     description: 'No UserFeature found',
   })

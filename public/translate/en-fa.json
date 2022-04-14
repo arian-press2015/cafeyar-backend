@@ -20,5 +20,10 @@
   "Invalid title": "عنوان نامعتبر است",
   "Invalid description": "شرح نامعتبر است",
   "Invalid accepted": "وضعیت تایید نامعتبر است",
-  "Invalid paid": "وضعیت پرداخت نامعتبر است"
+  "Invalid paid": "وضعیت پرداخت نامعتبر است",
+  "Tip already exists": "انعام قبلا داده شده است",
+  "Invalid Invoice_id": "شماره صورت حساب نامعتبر است",
+  "Invalid tip amount": "مقدار انعام نامعتبر است",
+  "Invalid tip count": "تعداد انعام نامعتبر است",
+  "Invalid personnel": "کارکنان انتخاب شده نامعتبر است"
 }
