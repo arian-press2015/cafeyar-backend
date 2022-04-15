@@ -46,7 +46,7 @@ export class IngredientController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Ingredient already exists',
+    description: 'Ingredient already exists|Invalid name',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +63,7 @@ export class IngredientController {
     return this.ingredientService.create(userID, createIngredientDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Ingredient query fields',
@@ -73,6 +74,10 @@ export class IngredientController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Ingredient],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -99,6 +104,7 @@ export class IngredientController {
     return this.ingredientService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Ingredient' })
@@ -110,6 +116,10 @@ export class IngredientController {
     status: 200,
     description: 'Updates current Ingredient',
     type: IngredientRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid name',
   })
   @ApiResponse({
     status: 403,
