@@ -46,7 +46,8 @@ export class ImageTypeController {
   })
   @ApiResponse({
     status: 400,
-    description: 'ImageType already exists',
+    description:
+      'ImageType already exists|Invalid type|Invalid description|Invalid width|Invalid height',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class ImageTypeController {
     return this.imageTypeService.create(userID, createImageTypeDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'ImageType query fields',
@@ -73,6 +75,10 @@ export class ImageTypeController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [ImageType],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class ImageTypeController {
     return this.imageTypeService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current ImageType' })
@@ -108,6 +115,11 @@ export class ImageTypeController {
     status: 200,
     description: 'Updates current ImageType',
     type: ImageTypeRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid type|Invalid description|Invalid width|Invalid height',
   })
   @ApiResponse({
     status: 403,
