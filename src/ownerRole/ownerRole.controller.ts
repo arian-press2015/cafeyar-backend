@@ -46,7 +46,8 @@ export class OwnerRoleController {
   })
   @ApiResponse({
     status: 400,
-    description: 'OwnerRole already exists',
+    description:
+      'OwnerRole already exists|Invalid title|Invalid title_fa|Invalid permissions',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class OwnerRoleController {
     return this.ownerRoleService.create(userID, createOwnerRoleDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'OwnerRole query fields',
@@ -73,6 +75,10 @@ export class OwnerRoleController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [OwnerRole],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class OwnerRoleController {
     return this.ownerRoleService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current OwnerRole' })
@@ -108,6 +115,10 @@ export class OwnerRoleController {
     status: 200,
     description: 'Updates current OwnerRole',
     type: OwnerRoleRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid title|Invalid title_fa|Invalid permissions',
   })
   @ApiResponse({
     status: 403,
