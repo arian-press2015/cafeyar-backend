@@ -45,7 +45,8 @@ export class QrImageController {
   })
   @ApiResponse({
     status: 400,
-    description: 'QrImage already exists',
+    description:
+      'QrImage already exists|Invalid user_id|Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
@@ -77,6 +78,7 @@ export class QrImageController {
     return this.qrImageService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current QrImage' })
@@ -88,6 +90,10 @@ export class QrImageController {
     status: 200,
     description: 'Updates current QrImage',
     type: QrImageRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
