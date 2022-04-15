@@ -46,7 +46,8 @@ export class RateController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Rate already exists',
+    description:
+      'Rate already exists|Invalid user_id|Invalid host_id|Invalid host_point|Invalid personnel_point|Invalid quality_point|Invalid description',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class RateController {
     return this.rateService.create(userID, createRateDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Rate query fields',
@@ -73,6 +75,10 @@ export class RateController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Rate],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid host_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class RateController {
     return this.rateService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Rate' })
@@ -108,6 +115,11 @@ export class RateController {
     status: 200,
     description: 'Updates current Rate',
     type: RateRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid host_point|Invalid personnel_point|Invalid quality_point|Invalid description',
   })
   @ApiResponse({
     status: 403,

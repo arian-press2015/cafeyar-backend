@@ -48,5 +48,15 @@
   "No Tip found": "انعام یافت نشد",
   "No UserFeature found": "فیچر کاربر یافت نشد",
   "No UserImage found": "تصویر کاربر یافت نشد",
+  "Rate already exists": "نمره دهی قبلا ثبت شده است",
+  "Invalid host_point": "نمره به میزبان نامعتبر است",
+  "Invalid personnel_point": "نمره به پرسنل نامعتبر است",
+  "Invalid quality_point": "نمره به کیفیت نامعتبر است",
+  "No Rate found": "نمره دهی یافت نشد",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
   "": ""
 }

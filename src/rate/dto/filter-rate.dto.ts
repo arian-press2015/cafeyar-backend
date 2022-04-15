@@ -2,6 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive } from 'class-validator';
 
 export class FilterRateDto {
+  @IsInt({ message: 'Invalid host_id' })
+  @IsPositive({ message: 'Invalid host_id' })
   @ApiProperty({
     example: 123,
     description: 'host_id of the Rate',
