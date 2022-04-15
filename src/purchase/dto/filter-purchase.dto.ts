@@ -9,7 +9,7 @@ export class FilterPurchaseDto {
     example: 123,
     description: 'user_id of the Purchase',
   })
-  readonly user_id: number;
+  readonly user_id?: number;
 
   @IsInt({ message: 'Invalid page' })
   @IsPositive({ message: 'Invalid page' })
