@@ -46,7 +46,8 @@ export class PurchaseLevelController {
   })
   @ApiResponse({
     status: 400,
-    description: 'PurchaseLevel already exists',
+    description:
+      'PurchaseLevel already exists|Invalid title|Invalid price|Invalid features',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class PurchaseLevelController {
     return this.purchaseLevelService.create(userID, createPurchaseLevelDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'PurchaseLevel query fields',
@@ -73,6 +75,10 @@ export class PurchaseLevelController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [PurchaseLevel],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -99,6 +105,7 @@ export class PurchaseLevelController {
     return this.purchaseLevelService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current PurchaseLevel' })
@@ -110,6 +117,10 @@ export class PurchaseLevelController {
     status: 200,
     description: 'Updates current PurchaseLevel',
     type: PurchaseLevelRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid title|Invalid price|Invalid features',
   })
   @ApiResponse({
     status: 403,

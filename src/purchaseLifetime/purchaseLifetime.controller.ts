@@ -82,6 +82,10 @@ export class PurchaseLifetimeController {
     type: [PurchaseLifetime],
   })
   @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
+  })
+  @ApiResponse({
     status: 404,
     description: 'No PurchaseLifetime found',
   })
