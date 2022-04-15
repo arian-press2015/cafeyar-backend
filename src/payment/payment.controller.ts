@@ -46,7 +46,8 @@ export class PaymentController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Payment already exists',
+    description:
+      'Payment already exists|Invalid invoice_id|Invalid purchase_id|Invalid price|Invalid success',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class PaymentController {
     return this.paymentService.create(userID, createPaymentDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Payment query fields',
@@ -73,6 +75,10 @@ export class PaymentController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Payment],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit|Invalid success',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class PaymentController {
     return this.paymentService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Payment' })
