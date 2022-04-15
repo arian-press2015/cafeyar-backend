@@ -39,5 +39,15 @@
   "|Invalid max_amount": "مقدار حداکثر تخفیف نامعتبر است",
   "Invalid expiry_date": "تاریخ انقضا نامعتبر است",
   "Subcategory already exists": "زیر دسته بندی قبلا ثبت شده است",
-  "Invalid name": "نام نامعتبر است"
+  "Invalid name": "نام نامعتبر است",
+  "Role already exists": "نقش قبلا ثبت شده است",
+  "Invalid title_fa": "عنوان فارسی نامعتبر است",
+  "Invalid permissions": "دسترسی ها نامعتبر است",
+  "No Role found": "نقش یافت نشد",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": ""
 }

@@ -46,7 +46,8 @@ export class RoleController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Role already exists',
+    description:
+      'Role already exists|Invalid host_id|Invalid title|Invalid title_fa|Invalid permissions',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class RoleController {
     return this.roleService.create(userID, createRoleDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Role query fields',
@@ -73,6 +75,10 @@ export class RoleController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Role],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid host_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class RoleController {
     return this.roleService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Role' })
@@ -108,6 +115,10 @@ export class RoleController {
     status: 200,
     description: 'Updates current Role',
     type: RoleRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid title|Invalid title_fa|Invalid permissions',
   })
   @ApiResponse({
     status: 403,
