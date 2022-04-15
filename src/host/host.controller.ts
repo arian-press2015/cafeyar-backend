@@ -44,7 +44,8 @@ export class HostController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Name already exists|Phone number already exists',
+    description:
+      'Name already exists|Phone number already exists|Invalid name|Invalid phone|Invalid address|Invalid description|Invalid opening_time|Invalid closing_time',
   })
   async create(
     @User('id') userID: number,
@@ -64,6 +65,7 @@ export class HostController {
     return await this.hostService.findOne(hostID);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Category query fields',
@@ -74,6 +76,10 @@ export class HostController {
     status: 200,
     description: 'Returns all Hosts for provided filterHostDto',
     type: [Host],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   async find(@Body() filterHostDto: FilterHostDto): Promise<Host[]> {
     return await this.hostService.find(filterHostDto);
@@ -103,6 +109,7 @@ export class HostController {
     return await this.hostService.findAccesibleHosts(userID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Host' })
@@ -111,6 +118,11 @@ export class HostController {
     status: 200,
     description: 'Updates current Host',
     type: HostRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Name already exists|Invalid name|Invalid phone|Invalid address|Invalid description|Invalid opening_time|Invalid closing_time',
   })
   @ApiResponse({
     status: 404,

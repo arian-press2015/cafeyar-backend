@@ -119,6 +119,13 @@
   "No ImageType found": "نوع تصویر یافت نشد",
   "HostImage already exists": "تصویر میزبان قبلا ثبت شده است",
   "No HostImage found": "تصویر میزبان یافت نشد",
+  "Name already exists": "نام تکراری است",
+  "Invalid address": "آدرس نامعتبر است",
+  "Invalid opening_time": "زمان باز شدن نامعتبر است",
+  "Invalid closing_time": "زمان باز شدن نامعتبر است",
+  "No host found": "میزبان یافت نشد",
+  "": "",
+  "": "",
   "": "",
   "": "",
   "": ""
