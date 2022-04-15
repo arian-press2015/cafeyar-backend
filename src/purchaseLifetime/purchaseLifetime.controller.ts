@@ -48,7 +48,8 @@ export class PurchaseLifetimeController {
   })
   @ApiResponse({
     status: 400,
-    description: 'PurchaseLifetime already exists',
+    description:
+      'PurchaseLifetime already exists|Invalid title|Invalid description|Invalid multiplier',
   })
   @ApiResponse({
     status: 403,
@@ -68,6 +69,7 @@ export class PurchaseLifetimeController {
     );
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'PurchaseLifetime query fields',
@@ -104,6 +106,7 @@ export class PurchaseLifetimeController {
     return this.purchaseLifetimeService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current PurchaseLifetime' })
@@ -115,6 +118,10 @@ export class PurchaseLifetimeController {
     status: 200,
     description: 'Updates current PurchaseLifetime',
     type: PurchaseLifetimeRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid title|Invalid description|Invalid multiplier',
   })
   @ApiResponse({
     status: 403,
