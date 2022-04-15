@@ -46,7 +46,8 @@ export class OrderController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Order already exists',
+    description:
+      'Order already exists|Invalid host_id|Invalid invoice_id|Invalid total_price|Invalid total_discount|Invalid time|Invalid description|Invalid orderItems',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class OrderController {
     return this.orderService.create(userID, createOrderDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Order query fields',
@@ -73,6 +75,11 @@ export class OrderController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Order],
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid host_id|Invalid invoice_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +104,7 @@ export class OrderController {
     return this.orderService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Order' })
@@ -108,6 +116,11 @@ export class OrderController {
     status: 200,
     description: 'Updates current Order',
     type: OrderRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid total_price|Invalid total_discount|Invalid time|Invalid description|Invalid orderItems',
   })
   @ApiResponse({
     status: 403,
