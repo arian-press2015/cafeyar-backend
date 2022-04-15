@@ -46,7 +46,8 @@ export class PermissionController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Permission already exists',
+    description:
+      'Permission already exists|Invalid title|Invalid title_fa|Invalid description',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class PermissionController {
     return this.permissionService.create(userID, createPermissionDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Permission query fields',
@@ -73,6 +75,10 @@ export class PermissionController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Permission],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -99,6 +105,7 @@ export class PermissionController {
     return this.permissionService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Permission' })
@@ -110,6 +117,10 @@ export class PermissionController {
     status: 200,
     description: 'Updates current Permission',
     type: PermissionRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid title|Invalid title_fa|Invalid description',
   })
   @ApiResponse({
     status: 403,

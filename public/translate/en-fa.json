@@ -87,6 +87,18 @@
   "Personnel already exists": "پرسنل قبلا ثبت شده است",
   "Invalid role_id": "شناسه نقش نامعتبر است",
   "No Personnel found": "پرسنل یافت نشد",
+  "Permission already exists": "دسترسی قبلا ثبت شده است",
+  "No Permission found": "دسترسی یافت نشد",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
   "": "",
   "": ""
 }
