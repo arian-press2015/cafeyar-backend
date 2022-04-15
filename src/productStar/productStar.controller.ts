@@ -44,7 +44,8 @@ export class ProductStarController {
   })
   @ApiResponse({
     status: 400,
-    description: 'ProductStar already exists',
+    description:
+      'ProductStar already exists|Invalid product_id|Invalid user_id|Invalid star',
   })
   @ApiResponse({
     status: 403,
@@ -61,6 +62,7 @@ export class ProductStarController {
     return this.productStarService.create(userID, createProductStarDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'ProductStar query fields',
@@ -71,6 +73,10 @@ export class ProductStarController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [ProductStar],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
