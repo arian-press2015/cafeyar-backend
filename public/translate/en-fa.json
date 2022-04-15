@@ -117,8 +117,8 @@
   "ImageType already exists": "نوع تصویر قبلا ثبت شده است",
   "Invalid type": "نوع نامعتبر است",
   "No ImageType found": "نوع تصویر یافت نشد",
-  "": "",
-  "": "",
+  "HostImage already exists": "تصویر میزبان قبلا ثبت شده است",
+  "No HostImage found": "تصویر میزبان یافت نشد",
   "": "",
   "": "",
   "": ""

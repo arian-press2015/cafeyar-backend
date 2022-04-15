@@ -45,7 +45,8 @@ export class HostImageController {
   })
   @ApiResponse({
     status: 400,
-    description: 'HostImage already exists',
+    description:
+      'HostImage already exists|Invalid host_id|Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
@@ -77,6 +78,7 @@ export class HostImageController {
     return this.hostImageService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current HostImage' })
@@ -88,6 +90,10 @@ export class HostImageController {
     status: 200,
     description: 'Updates current HostImage',
     type: HostImageRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid host_id|Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
