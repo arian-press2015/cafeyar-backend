@@ -1,12 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterInvoiceDto {
+  @IsOptional()
+  @IsInt({ message: 'Invalid user_id' })
+  @IsPositive({ message: 'Invalid user_id' })
   @ApiProperty({
     example: 123,
     description: 'user_id of the Invoice',
   })
-  readonly user_id: number;
+  readonly user_id?: number;
 
   @IsInt({ message: 'Invalid page' })
   @IsPositive({ message: 'Invalid page' })

@@ -46,7 +46,8 @@ export class InvoiceController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invoice already exists',
+    description:
+      'Invoice already exists|Invalid user_id|Invalid price|Invalid discount|Invalid pay_date',
   })
   @ApiResponse({
     status: 403,
@@ -73,6 +74,10 @@ export class InvoiceController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Invoice],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid user_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -108,6 +113,10 @@ export class InvoiceController {
     status: 200,
     description: 'Updates current Invoice',
     type: InvoiceRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid price|Invalid discount|Invalid pay_date',
   })
   @ApiResponse({
     status: 403,
