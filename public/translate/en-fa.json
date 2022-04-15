@@ -84,9 +84,9 @@
   "Invalid deletion status": "وضعیت حذف نامعتبر است",
   "Invalid ingredients": "اجزا نامعتبر است",
   "No Product found": "محصول یافت نشد",
-  "": "",
-  "": "",
-  "": "",
+  "Personnel already exists": "پرسنل قبلا ثبت شده است",
+  "Invalid role_id": "شناسه نقش نامعتبر است",
+  "No Personnel found": "پرسنل یافت نشد",
   "": "",
   "": ""
 }

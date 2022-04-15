@@ -46,7 +46,8 @@ export class PersonnelController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Personnel already exists',
+    description:
+      'Personnel already exists|Invalid user_id|Invalid host_id|Invalid role_id',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class PersonnelController {
     return this.personnelService.create(userID, createPersonnelDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Personnel query fields',
@@ -73,6 +75,10 @@ export class PersonnelController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Personnel],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid host_id|Invalid role_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class PersonnelController {
     return this.personnelService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Personnel' })
@@ -108,6 +115,10 @@ export class PersonnelController {
     status: 200,
     description: 'Updates current Personnel',
     type: PersonnelRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid user_id|Invalid host_id|Invalid role_id',
   })
   @ApiResponse({
     status: 403,
