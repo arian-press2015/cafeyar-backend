@@ -15,7 +15,7 @@ export class InvoiceService {
   ): Promise<InvoiceRO> {
     const invoice = {
       id: 1,
-      customer_id: 1,
+      user_id: 1,
       price: 1000000,
       discount: 100000,
       pay_date: '2022-02-02 20:30:40',
@@ -27,7 +27,7 @@ export class InvoiceService {
     const invoice = [];
     invoice.push({
       id: 1,
-      customer_id: 1,
+      user_id: 1,
       price: 1000000,
       discount: 100000,
       pay_date: '2022-02-02 20:30:40',
@@ -38,7 +38,7 @@ export class InvoiceService {
   async findOne(invoiceID: number): Promise<InvoiceRO> {
     const invoice = {
       id: 1,
-      customer_id: 1,
+      user_id: 1,
       price: 1000000,
       discount: 100000,
       pay_date: '2022-02-02 20:30:40',
@@ -53,7 +53,7 @@ export class InvoiceService {
   ): Promise<InvoiceRO> {
     const invoice = {
       id: 1,
-      customer_id: 1,
+      user_id: 1,
       price: 1000000,
       discount: 100000,
       pay_date: '2022-02-02 20:30:40',
@@ -64,7 +64,7 @@ export class InvoiceService {
   async delete(userID: number, invoiceID: number): Promise<InvoiceRO> {
     const invoice = {
       id: 1,
-      customer_id: 1,
+      user_id: 1,
       price: 1000000,
       discount: 100000,
       pay_date: '2022-02-02 20:30:40',

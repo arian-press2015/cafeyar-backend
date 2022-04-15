@@ -12,9 +12,9 @@ export class ProductStar {
 
   @ApiProperty({
     example: 123,
-    description: 'customer_id of the ProductStar',
+    description: 'user_id of the ProductStar',
   })
-  readonly customer_id: number;
+  readonly user_id: number;
 
   @ApiProperty({
     example: 5,

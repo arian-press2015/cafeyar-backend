@@ -16,7 +16,7 @@ export class ProductStarService {
     const productStar = {
       id: 1,
       product_id: 1,
-      customer_id: 1,
+      user_id: 1,
       star: 5,
     };
     return { productStar };
@@ -27,7 +27,7 @@ export class ProductStarService {
     productStar.push({
       id: 1,
       product_id: 1,
-      customer_id: 1,
+      user_id: 1,
       star: 5,
     });
     return productStar;
@@ -37,7 +37,7 @@ export class ProductStarService {
     const productStar = {
       id: 1,
       product_id: 1,
-      customer_id: 1,
+      user_id: 1,
       star: 5,
     };
     return { productStar };
@@ -47,7 +47,7 @@ export class ProductStarService {
     const productStar = {
       id: 1,
       product_id: 1,
-      customer_id: 1,
+      user_id: 1,
       star: 5,
     };
     return { productStar };

@@ -4,9 +4,9 @@ import { IsInt, IsPositive } from 'class-validator';
 export class FilterInvoiceDto {
   @ApiProperty({
     example: 123,
-    description: 'customer_id of the Invoice',
+    description: 'user_id of the Invoice',
   })
-  readonly customer_id: number;
+  readonly user_id: number;
 
   @IsInt({ message: 'Invalid page' })
   @IsPositive({ message: 'Invalid page' })
