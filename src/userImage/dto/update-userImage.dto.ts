@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsString } from 'class-validator';
+import { IsInt, IsOptional, IsString } from 'class-validator';
 
 export class UpdateUserImageDto {
+  @IsOptional()
   @IsInt({ message: 'Invalid width' })
   @ApiProperty({
     example: 640,
@@ -9,6 +10,7 @@ export class UpdateUserImageDto {
   })
   readonly width: number;
 
+  @IsOptional()
   @IsInt({ message: 'Invalid height' })
   @ApiProperty({
     example: 40,
@@ -16,6 +18,7 @@ export class UpdateUserImageDto {
   })
   readonly height: number;
 
+  @IsOptional()
   @IsString({ message: 'Invalid url' })
   @ApiProperty({
     example: '/here/file.jpg',

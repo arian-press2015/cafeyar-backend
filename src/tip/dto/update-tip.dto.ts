@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class UpdateTipDto {
+  @IsOptional()
   @IsInt({ message: 'Invalid tip amount' })
   @IsPositive({ message: 'Invalid tip amount' })
   @ApiProperty({
@@ -10,6 +11,7 @@ export class UpdateTipDto {
   })
   readonly amount: number;
 
+  @IsOptional()
   @IsInt({ message: 'Invalid tip count' })
   @IsPositive({ message: 'Invalid tip count' })
   @ApiProperty({
@@ -18,6 +20,7 @@ export class UpdateTipDto {
   })
   readonly count: number;
 
+  @IsOptional()
   @IsInt({ message: 'Invalid personnel' })
   @ApiProperty({
     example: [1, 2],

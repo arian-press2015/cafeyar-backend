@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsOptional } from 'class-validator';
 
 export class UpdateVersionDto {
+  @IsOptional()
   @IsNumber(
     {
       allowNaN: false,
