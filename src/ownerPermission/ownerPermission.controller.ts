@@ -48,7 +48,8 @@ export class OwnerPermissionController {
   })
   @ApiResponse({
     status: 400,
-    description: 'OwnerPermission already exists',
+    description:
+      'OwnerPermission already exists|Invalid title|Invalid title_fa|Invalid description',
   })
   @ApiResponse({
     status: 403,
@@ -65,6 +66,7 @@ export class OwnerPermissionController {
     return this.ownerPermissionService.create(userID, createOwnerPermissionDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'OwnerPermission query fields',
@@ -75,6 +77,10 @@ export class OwnerPermissionController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [OwnerPermission],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -101,6 +107,7 @@ export class OwnerPermissionController {
     return this.ownerPermissionService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current OwnerPermission' })
@@ -112,6 +119,10 @@ export class OwnerPermissionController {
     status: 200,
     description: 'Updates current OwnerPermission',
     type: OwnerPermissionRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid title|Invalid title_fa|Invalid description',
   })
   @ApiResponse({
     status: 403,

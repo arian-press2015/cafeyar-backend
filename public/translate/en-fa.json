@@ -96,8 +96,8 @@
   "No Payment found": "پرداخت یافت نشد",
   "OwnerRole already exists": "نقش ادمین قبلا ثبت شده است",
   "No OwnerRole found": "نقش ادمین یافت نشد",
-  "": "",
-  "": "",
+  "OwnerPermission already exists": "دسترسی ادمین قبلا ثبت شده است",
+  "No OwnerPermission found": "دسترسی ادمین یافت نشد",
   "": "",
   "": "",
   "": ""
