@@ -8,5 +8,5 @@ export class UpdateSubcategoryDto {
     example: 'Italian coffee',
     description: 'Name of the Subcategory',
   })
-  readonly name: string;
+  readonly name?: string;
 }

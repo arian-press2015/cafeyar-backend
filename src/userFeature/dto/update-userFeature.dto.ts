@@ -5,7 +5,7 @@ export class UpdateUserFeatureDto {
   @IsOptional()
   @IsString({ message: 'Invalid title' })
   @ApiProperty({ example: 'show sth', description: 'Title of the UserFeature' })
-  readonly title: string;
+  readonly title?: string;
 
   @IsOptional()
   @IsString({ message: 'Invalid description' })
@@ -13,7 +13,7 @@ export class UpdateUserFeatureDto {
     example: 'show something',
     description: 'Description of the UserFeature',
   })
-  readonly description: string;
+  readonly description?: string;
 
   @IsOptional()
   @IsBoolean({ message: 'Invalid accepted' })
@@ -21,7 +21,7 @@ export class UpdateUserFeatureDto {
     example: '03146258582',
     description: 'Accept status the UserFeature',
   })
-  readonly accepted: boolean;
+  readonly accepted?: boolean;
 
   @IsOptional()
   @IsBoolean({ message: 'Invalid paid' })
@@ -29,5 +29,5 @@ export class UpdateUserFeatureDto {
     example: '03146258582',
     description: 'Payment status the UserFeature',
   })
-  readonly paid: boolean;
+  readonly paid?: boolean;
 }

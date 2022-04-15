@@ -9,7 +9,7 @@ export class FilterPurchasePlanDto {
     example: 123,
     description: 'purchase_level_id of the PurchasePlan',
   })
-  readonly purchase_level_id: number;
+  readonly purchase_level_id?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid purchase_lifetime_id' })
@@ -18,7 +18,7 @@ export class FilterPurchasePlanDto {
     example: 123,
     description: 'purchase_lifetime_id of the PurchasePlan',
   })
-  readonly purchase_lifetime_id: number;
+  readonly purchase_lifetime_id?: number;
 
   @IsInt({ message: 'Invalid page' })
   @IsPositive({ message: 'Invalid page' })

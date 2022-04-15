@@ -1,14 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterSubcategoryDto {
+  @IsOptional()
   @IsInt({ message: 'Invalid cat_id' })
   @IsPositive({ message: 'Invalid cat_id' })
   @ApiProperty({
     example: 123,
     description: 'cat_id of the Category',
   })
-  readonly cat_id: number;
+  readonly cat_id?: number;
 
   @IsInt({ message: 'Invalid page' })
   @IsPositive({ message: 'Invalid page' })

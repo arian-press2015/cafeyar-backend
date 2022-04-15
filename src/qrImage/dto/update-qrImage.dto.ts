@@ -9,7 +9,7 @@ export class UpdateQrImageDto {
     example: 640,
     description: 'width of the QrImage',
   })
-  readonly width: number;
+  readonly width?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid height' })
@@ -18,7 +18,7 @@ export class UpdateQrImageDto {
     example: 480,
     description: 'height of the QrImage',
   })
-  readonly height: number;
+  readonly height?: number;
 
   @IsOptional()
   @IsString({ message: 'Invalid url' })
@@ -26,5 +26,5 @@ export class UpdateQrImageDto {
     example: '/here/file.jpg',
     description: 'QrImage url',
   })
-  readonly url: string;
+  readonly url?: string;
 }

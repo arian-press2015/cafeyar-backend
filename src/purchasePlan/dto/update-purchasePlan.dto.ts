@@ -9,7 +9,7 @@ export class UpdatePurchasePlanDto {
     example: 123,
     description: 'purchase_level_id of the PurchasePlan',
   })
-  readonly purchase_level_id: number;
+  readonly purchase_level_id?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid purchase_lifetime_id' })
@@ -18,7 +18,7 @@ export class UpdatePurchasePlanDto {
     example: 123,
     description: 'purchase_lifetime_id of the PurchasePlan',
   })
-  readonly purchase_lifetime_id: number;
+  readonly purchase_lifetime_id?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid price' })
@@ -27,5 +27,5 @@ export class UpdatePurchasePlanDto {
     example: 20000000,
     description: 'Price of the PurchasePlan',
   })
-  readonly price: number;
+  readonly price?: number;
 }

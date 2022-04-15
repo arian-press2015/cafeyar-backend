@@ -10,7 +10,7 @@ export class UpdateRateDto {
     example: 5,
     description: 'the host Rate',
   })
-  readonly host_point: number;
+  readonly host_point?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid personnel_point' })
@@ -20,7 +20,7 @@ export class UpdateRateDto {
     example: 5,
     description: 'the personnel Rate',
   })
-  readonly personnel_point: number;
+  readonly personnel_point?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid quality_point' })
@@ -30,7 +30,7 @@ export class UpdateRateDto {
     example: 5,
     description: 'the quality Rate',
   })
-  readonly quality_point: number;
+  readonly quality_point?: number;
 
   @IsOptional()
   @IsString({ message: 'Invalid description' })
@@ -38,5 +38,5 @@ export class UpdateRateDto {
     example: 'it was good',
     description: 'this is optional description',
   })
-  readonly description: string;
+  readonly description?: string;
 }

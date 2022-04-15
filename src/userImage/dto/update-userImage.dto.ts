@@ -8,7 +8,7 @@ export class UpdateUserImageDto {
     example: 640,
     description: 'width in the UserImage',
   })
-  readonly width: number;
+  readonly width?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid height' })
@@ -16,7 +16,7 @@ export class UpdateUserImageDto {
     example: 40,
     description: 'height of the UserImage',
   })
-  readonly height: number;
+  readonly height?: number;
 
   @IsOptional()
   @IsString({ message: 'Invalid url' })
@@ -24,5 +24,5 @@ export class UpdateUserImageDto {
     example: '/here/file.jpg',
     description: 'Url of the UserImage',
   })
-  readonly url: string;
+  readonly url?: string;
 }

@@ -9,7 +9,7 @@ export class UpdateTipDto {
     example: 100000,
     description: 'Tip amount',
   })
-  readonly amount: number;
+  readonly amount?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid tip count' })
@@ -18,7 +18,7 @@ export class UpdateTipDto {
     example: 5,
     description: 'tip count',
   })
-  readonly count: number;
+  readonly count?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid personnel' })
@@ -26,5 +26,5 @@ export class UpdateTipDto {
     example: [1, 2],
     description: 'tip targets',
   })
-  readonly personnel: number[];
+  readonly personnel?: number[];
 }

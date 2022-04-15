@@ -13,5 +13,5 @@ export class UpdateVersionDto {
     example: 123,
     description: 'number of the Version',
   })
-  readonly version_number: number;
+  readonly version_number?: number;
 }

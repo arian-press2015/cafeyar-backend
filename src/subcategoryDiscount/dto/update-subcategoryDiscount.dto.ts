@@ -16,7 +16,7 @@ export class UpdateSubcategoryDiscountDto {
     example: 4,
     description: 'Count of the Discount',
   })
-  readonly count: number;
+  readonly count?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid percentage' })
@@ -26,7 +26,7 @@ export class UpdateSubcategoryDiscountDto {
     example: 30,
     description: 'Discount percentage',
   })
-  readonly percentage: number;
+  readonly percentage?: number;
 
   @IsOptional()
   @IsInt({ message: 'Invalid max_amount' })
@@ -35,7 +35,7 @@ export class UpdateSubcategoryDiscountDto {
     example: 200000,
     description: 'maximum Discount amount',
   })
-  readonly max_amount: number;
+  readonly max_amount?: number;
 
   @IsOptional()
   @IsDateString({}, { message: 'Invalid expiry_date' })
@@ -43,5 +43,5 @@ export class UpdateSubcategoryDiscountDto {
     example: '2022-02-02 20:30:40',
     description: 'Discount expiry',
   })
-  readonly expiry_date: string;
+  readonly expiry_date?: string;
 }
