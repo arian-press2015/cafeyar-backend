@@ -61,6 +61,7 @@ export class TableController {
     return this.tableService.create(userID, createTableDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiOperation({ summary: 'Get all Tables for the Host' })
   @ApiBody({
@@ -99,6 +100,7 @@ export class TableController {
     return this.tableService.findOne(table_number);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Table' })

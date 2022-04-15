@@ -70,6 +70,7 @@ export class SubcategoryDiscountController {
     );
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'SubcategoryDiscount query fields',
@@ -111,6 +112,7 @@ export class SubcategoryDiscountController {
     return this.subcategoryDiscountService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current SubcategoryDiscount' })

@@ -64,6 +64,7 @@ export class TipController {
     return this.tipService.create(userID, createTipDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Tip query fields',
@@ -102,6 +103,7 @@ export class TipController {
     return this.tipService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Tip' })

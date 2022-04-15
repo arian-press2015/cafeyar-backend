@@ -63,6 +63,7 @@ export class UserFeatureController {
     return this.userFeatureService.create(userID, createUserFeatureDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'UserFeature query fields',
@@ -103,6 +104,7 @@ export class UserFeatureController {
     return this.userFeatureService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current UserFeature' })
