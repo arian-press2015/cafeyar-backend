@@ -46,7 +46,8 @@ export class OwnerController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Owner already exists',
+    description:
+      'Owner already exists|Invalid user_id|Invalid username|Invalid password|Invalid owner_role_id|Invalid creation_date',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class OwnerController {
     return this.ownerService.create(userID, createOwnerDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Owner query fields',
@@ -73,6 +75,10 @@ export class OwnerController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Owner],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid owner_role_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class OwnerController {
     return this.ownerService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Owner' })
@@ -108,6 +115,10 @@ export class OwnerController {
     status: 200,
     description: 'Updates current Owner',
     type: OwnerRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid username|Invalid password|Invalid owner_role_id',
   })
   @ApiResponse({
     status: 403,

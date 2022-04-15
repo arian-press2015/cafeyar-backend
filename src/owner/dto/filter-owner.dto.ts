@@ -1,12 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterOwnerDto {
+  @IsOptional()
+  @IsInt({ message: 'Invalid owner_role_id' })
+  @IsPositive({ message: 'Invalid owner_role_id' })
   @ApiProperty({
     example: 2,
     description: 'owner_role_id of the Owner',
   })
-  readonly owner_role_id: number;
+  readonly owner_role_id?: number;
 
   @IsInt({ message: 'Invalid page' })
   @IsPositive({ message: 'Invalid page' })
