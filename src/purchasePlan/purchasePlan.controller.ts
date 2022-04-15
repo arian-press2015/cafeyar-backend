@@ -46,7 +46,8 @@ export class PurchasePlanController {
   })
   @ApiResponse({
     status: 400,
-    description: 'PurchasePlan already exists',
+    description:
+      'PurchasePlan already exists|Invalid purchase_level_id|Invalid purchase_lifetime_id|Invalid price',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class PurchasePlanController {
     return this.purchasePlanService.create(userID, createPurchasePlanDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'PurchasePlan query fields',
@@ -73,6 +75,10 @@ export class PurchasePlanController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [PurchasePlan],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid purchase_level_id|Invalid purchase_lifetime_id',
   })
   @ApiResponse({
     status: 404,
@@ -99,6 +105,7 @@ export class PurchasePlanController {
     return this.purchasePlanService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current PurchasePlan' })
@@ -110,6 +117,11 @@ export class PurchasePlanController {
     status: 200,
     description: 'Updates current PurchasePlan',
     type: PurchasePlanRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid purchase_level_id|Invalid purchase_lifetime_id|Invalid price',
   })
   @ApiResponse({
     status: 403,
