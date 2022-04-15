@@ -46,7 +46,7 @@ export class SubcategoryController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Subcategory already exists',
+    description: 'Subcategory already exists|Invalid cat_id|Invalid name',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +63,7 @@ export class SubcategoryController {
     return this.subcategoryService.create(userID, createSubcategoryDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Subcategory query fields',
@@ -73,6 +74,10 @@ export class SubcategoryController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Subcategory],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid cat_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -99,6 +104,7 @@ export class SubcategoryController {
     return this.subcategoryService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Subcategory' })
@@ -110,6 +116,10 @@ export class SubcategoryController {
     status: 200,
     description: 'Updates current Subcategory',
     type: SubcategoryRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid name',
   })
   @ApiResponse({
     status: 403,

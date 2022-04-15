@@ -37,5 +37,7 @@
   "Invalid count": "تعداد نامعتبر است",
   "Invalid percentage": "درصد نامعتبر است",
   "|Invalid max_amount": "مقدار حداکثر تخفیف نامعتبر است",
-  "Invalid expiry_date": "تاریخ انقضا نامعتبر است"
+  "Invalid expiry_date": "تاریخ انقضا نامعتبر است",
+  "Subcategory already exists": "زیر دسته بندی قبلا ثبت شده است",
+  "Invalid name": "نام نامعتبر است"
 }
