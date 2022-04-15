@@ -1,7 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterPurchaseDto {
+  @IsOptional()
+  @IsInt({ message: 'Invalid user_id' })
+  @IsPositive({ message: 'Invalid user_id' })
   @ApiProperty({
     example: 123,
     description: 'user_id of the Purchase',

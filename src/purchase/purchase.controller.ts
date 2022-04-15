@@ -46,7 +46,8 @@ export class PurchaseController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Purchase already exists',
+    description:
+      'Purchase already exists|Invalid user_id|Invalid purchase_plan_id|Invalid purchase_date',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class PurchaseController {
     return this.purchaseService.create(userID, createPurchaseDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Purchase query fields',
@@ -73,6 +75,10 @@ export class PurchaseController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Purchase],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid user_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class PurchaseController {
     return this.purchaseService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Purchase' })
