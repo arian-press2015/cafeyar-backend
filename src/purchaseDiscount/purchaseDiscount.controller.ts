@@ -48,7 +48,8 @@ export class PurchaseDiscountController {
   })
   @ApiResponse({
     status: 400,
-    description: 'PurchaseDiscount already exists',
+    description:
+      'PurchaseDiscount already exists|Invalid purchase_plan_id|Invalid code|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date',
   })
   @ApiResponse({
     status: 403,
@@ -68,6 +69,7 @@ export class PurchaseDiscountController {
     );
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'PurchaseDiscount query fields',
@@ -78,6 +80,10 @@ export class PurchaseDiscountController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [PurchaseDiscount],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -104,6 +110,7 @@ export class PurchaseDiscountController {
     return this.purchaseDiscountService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current PurchaseDiscount' })
@@ -115,6 +122,11 @@ export class PurchaseDiscountController {
     status: 200,
     description: 'Updates current PurchaseDiscount',
     type: PurchaseDiscountRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid purchase_plan_id|Invalid code|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date',
   })
   @ApiResponse({
     status: 403,
