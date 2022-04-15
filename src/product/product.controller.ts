@@ -46,7 +46,8 @@ export class ProductController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Product already exists',
+    description:
+      'Product already exists|Invalid sub_cat_id|Invalid name|Invalid price|Invalid enable status|Invalid deletion status|Invalid ingredients',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class ProductController {
     return this.productService.create(userID, createProductDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Product query fields',
@@ -73,6 +75,10 @@ export class ProductController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Product],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid sub_cat_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class ProductController {
     return this.productService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Product' })
@@ -108,6 +115,11 @@ export class ProductController {
     status: 200,
     description: 'Updates current Product',
     type: ProductRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid name|Invalid price|Invalid enable status|Invalid deletion status|Invalid ingredients',
   })
   @ApiResponse({
     status: 403,
