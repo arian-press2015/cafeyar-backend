@@ -46,7 +46,8 @@ export class ProductImageController {
   })
   @ApiResponse({
     status: 400,
-    description: 'ProductImage already exists',
+    description:
+      'ProductImage already exists|Invalid product_id|Invalid width|Invalid height|Invalid url|Invalid image status',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class ProductImageController {
     return this.productImageService.create(userID, createProductImageDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'ProductImage query fields',
@@ -73,6 +75,10 @@ export class ProductImageController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [ProductImage],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid product_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -99,6 +105,7 @@ export class ProductImageController {
     return this.productImageService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current ProductImage' })
@@ -110,6 +117,10 @@ export class ProductImageController {
     status: 200,
     description: 'Updates current ProductImage',
     type: ProductImageRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid url',
   })
   @ApiResponse({
     status: 403,
