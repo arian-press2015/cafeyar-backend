@@ -45,7 +45,8 @@ export class CategoryImageController {
   })
   @ApiResponse({
     status: 400,
-    description: 'CategoryImage already exists',
+    description:
+      'CategoryImage already exists|Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
@@ -77,6 +78,7 @@ export class CategoryImageController {
     return this.categoryImageService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current CategoryImage' })
@@ -88,6 +90,10 @@ export class CategoryImageController {
     status: 200,
     description: 'Updates current CategoryImage',
     type: CategoryImageRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
