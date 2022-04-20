@@ -127,6 +127,16 @@
   "Feature already exists": "فیچر قبلا ثبت شده است",
   "Invalid version": "ورژن نامعتبر است",
   "No Feature found": "فیچر یافت نشد",
+  "Faq already exists": "سوال پرکاربرد قبلا ثبت شده است",
+  "Invalid question": "سوال نامعتبر است",
+  "Invalid answer": "جواب نامعتبر است",
+  "No Faq found": "سوال پرکاربرد یافت نشد",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
   "": "",
   "": ""
 }

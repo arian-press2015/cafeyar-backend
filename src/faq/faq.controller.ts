@@ -46,7 +46,7 @@ export class FaqController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Faq already exists',
+    description: 'Faq already exists|Invalid question|Invalid answer',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +63,7 @@ export class FaqController {
     return this.faqService.create(userID, createFaqDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Faq query fields',
@@ -73,6 +74,10 @@ export class FaqController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Faq],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +102,7 @@ export class FaqController {
     return this.faqService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Faq' })
@@ -108,6 +114,10 @@ export class FaqController {
     status: 200,
     description: 'Updates current Faq',
     type: FaqRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid question|Invalid answer',
   })
   @ApiResponse({
     status: 403,
