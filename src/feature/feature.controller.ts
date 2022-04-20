@@ -46,7 +46,8 @@ export class FeatureController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Feature already exists',
+    description:
+      'Feature already exists|Invalid title|Invalid description|Invalid version',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class FeatureController {
     return this.featureService.create(userID, createFeatureDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Feature query fields',
@@ -73,6 +75,10 @@ export class FeatureController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Feature],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid version|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class FeatureController {
     return this.featureService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Feature' })
@@ -108,6 +115,10 @@ export class FeatureController {
     status: 200,
     description: 'Updates current Feature',
     type: FeatureRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid title|Invalid description|Invalid version',
   })
   @ApiResponse({
     status: 403,

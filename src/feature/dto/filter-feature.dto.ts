@@ -1,12 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterFeatureDto {
+  @IsOptional()
+  @IsInt({ message: 'Invalid version' })
+  @IsPositive({ message: 'Invalid version' })
   @ApiProperty({
     example: 123,
     description: 'Version of the Feature',
   })
-  readonly version: number;
+  readonly version?: number;
 
   @IsInt({ message: 'Invalid page' })
   @IsPositive({ message: 'Invalid page' })

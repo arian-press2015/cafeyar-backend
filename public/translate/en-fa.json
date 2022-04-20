@@ -124,9 +124,9 @@
   "Invalid opening_time": "زمان باز شدن نامعتبر است",
   "Invalid closing_time": "زمان باز شدن نامعتبر است",
   "No host found": "میزبان یافت نشد",
-  "": "",
-  "": "",
-  "": "",
+  "Feature already exists": "فیچر قبلا ثبت شده است",
+  "Invalid version": "ورژن نامعتبر است",
+  "No Feature found": "فیچر یافت نشد",
   "": "",
   "": ""
 }
