@@ -136,7 +136,9 @@
   "No Discount found": "تخفیف یافت نشد",
   "CategoryImage already exists": "تصویر دسته بندی قبلا ثبت شده است",
   "No CategoryImage found": "تصویر دسته بندی یافت نشد",
-  "": "",
-  "": "",
-  "": ""
+  "Category already exists": "دسته بندی قبلا ثبت شده است",
+  "Invalid item_count": "تعداد آیتم نامعتبر است",
+  "Invalid item_min_price": "حداقل قیمت دسته بندی نامعتبر است",
+  "Invalid item_max_price": "حداکثر قیمت دسته بندی نامعتبر است",
+  "No Category found": "دسته بندی یافت نشد"
 }

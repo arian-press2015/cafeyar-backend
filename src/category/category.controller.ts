@@ -46,7 +46,8 @@ export class CategoryController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Category already exists',
+    description:
+      'Category already exists|Invalid host_id|Invalid name|Invalid item_count|Invalid item_min_price|Invalid item_max_price',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class CategoryController {
     return this.categoryService.create(userID, createCategoryDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Category query fields',
@@ -73,6 +75,10 @@ export class CategoryController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Category],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid host_id|Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -90,6 +96,11 @@ export class CategoryController {
     type: CategoryRO,
   })
   @ApiResponse({
+    status: 400,
+    description:
+      'Invalid host_id|Invalid name|Invalid item_count|Invalid item_min_price|Invalid item_max_price',
+  })
+  @ApiResponse({
     status: 404,
     description: 'No Category found',
   })
@@ -97,6 +108,7 @@ export class CategoryController {
     return this.categoryService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Category' })
