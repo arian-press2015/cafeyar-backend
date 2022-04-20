@@ -46,7 +46,8 @@ export class DiscountController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Discount already exists',
+    description:
+      'Discount already exists|Invalid code|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date|Invalid products',
   })
   @ApiResponse({
     status: 403,
@@ -63,6 +64,7 @@ export class DiscountController {
     return this.discountService.create(userID, createDiscountDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Get()
   @ApiBody({
     description: 'Discount query fields',
@@ -73,6 +75,10 @@ export class DiscountController {
     status: 200,
     description: 'Returns all of the Categories',
     type: [Discount],
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid page|Invalid limit',
   })
   @ApiResponse({
     status: 404,
@@ -97,6 +103,7 @@ export class DiscountController {
     return this.discountService.findOne(catID);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Update current Discount' })
@@ -108,6 +115,11 @@ export class DiscountController {
     status: 200,
     description: 'Updates current Discount',
     type: DiscountRO,
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'Invalid code|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date|Invalid products',
   })
   @ApiResponse({
     status: 403,
