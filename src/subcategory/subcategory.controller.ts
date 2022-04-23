@@ -47,7 +47,7 @@ export class SubcategoryController {
   @ApiResponse({
     status: 400,
     description:
-      'Subcategory already exists|Invalid cat_id|Name must be a string',
+      'Subcategory already exists|Cat_id must be a positive number|Name must be a string',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class SubcategoryController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid cat_id|Page must be a positive number|Limit must be a positive number',
+      'Cat_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

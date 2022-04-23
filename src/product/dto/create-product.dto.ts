@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsInt, IsPositive, IsString } from 'class-validator';
 
 export class CreateProductDto {
-  @IsInt({ message: 'Invalid sub_cat_id' })
-  @IsPositive({ message: 'Invalid sub_cat_id' })
+  @IsInt({ message: 'Sub_cat_id must be a positive number' })
+  @IsPositive({ message: 'Sub_cat_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'sub_cat_id of the Product',

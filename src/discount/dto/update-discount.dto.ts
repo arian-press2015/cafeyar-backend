@@ -16,7 +16,7 @@ export class UpdateDiscountDto {
   readonly code?: string;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid count' })
+  @IsInt({ message: 'Count must be a positive number' })
   @IsPositive({ message: 'Invalid couunt' })
   @ApiProperty({
     example: 4,
@@ -25,9 +25,9 @@ export class UpdateDiscountDto {
   readonly count?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid percentage' })
-  @Min(0, { message: 'Invalid percentage' })
-  @Max(100, { message: 'Invalid percentage' })
+  @IsInt({ message: 'Percentage must be a positive number' })
+  @Min(0, { message: 'Percentage must be a positive number' })
+  @Max(100, { message: 'Percentage must be a positive number' })
   @ApiProperty({
     example: 30,
     description: 'Discount percentage',

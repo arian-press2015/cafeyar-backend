@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive, IsString } from 'class-validator';
 
 export class CreateSubcategoryDto {
-  @IsInt({ message: 'Invalid cat_id' })
-  @IsPositive({ message: 'Invalid cat_id' })
+  @IsInt({ message: 'Cat_id must be a positive number' })
+  @IsPositive({ message: 'Cat_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'cat_id of the Category',

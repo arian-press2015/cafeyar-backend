@@ -47,7 +47,7 @@ export class DiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'Discount code already taken|Invalid code|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date|Invalid products',
+      'Discount code already taken|Invalid code|Count must be a positive number|Percentage must be a positive number|Invalid max_amount|Invalid expiry_date|Invalid products',
   })
   @ApiResponse({
     status: 403,
@@ -120,7 +120,7 @@ export class DiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid code|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date|Invalid products',
+      'Invalid code|Count must be a positive number|Percentage must be a positive number|Invalid max_amount|Invalid expiry_date|Invalid products',
   })
   @ApiResponse({
     status: 403,

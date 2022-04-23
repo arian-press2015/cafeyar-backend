@@ -47,7 +47,7 @@ export class ProductController {
   @ApiResponse({
     status: 400,
     description:
-      'Product already exists|Invalid sub_cat_id|Name must be a string|Invalid price|Invalid enable status|Invalid deletion status|Invalid ingredients',
+      'Product already exists|Sub_cat_id must be a positive number|Name must be a string|Invalid price|Invalid enable status|Invalid deletion status|Invalid ingredients',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class ProductController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid sub_cat_id|Page must be a positive number|Limit must be a positive number',
+      'Sub_cat_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

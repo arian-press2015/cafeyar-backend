@@ -2,33 +2,33 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsInt, IsPositive, Max, Min } from 'class-validator';
 
 export class CreateSubcategoryDiscountDto {
-  @IsInt({ message: 'Invalid cat_id' })
-  @IsPositive({ message: 'Invalid cat_id' })
+  @IsInt({ message: 'Cat_id must be a positive number' })
+  @IsPositive({ message: 'Cat_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'category_id of the SubcategoryDiscount',
   })
   readonly cat_id: number;
 
-  @IsInt({ message: 'Invalid sub_cat_id' })
-  @IsPositive({ message: 'Invalid sub_cat_id' })
+  @IsInt({ message: 'Sub_cat_id must be a positive number' })
+  @IsPositive({ message: 'Sub_cat_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'subcategory_id of the SubcategoryDiscount',
   })
   readonly sub_cat_id: number;
 
-  @IsInt({ message: 'Invalid count' })
-  @IsPositive({ message: 'Invalid count' })
+  @IsInt({ message: 'Count must be a positive number' })
+  @IsPositive({ message: 'Count must be a positive number' })
   @ApiProperty({
     example: 4,
     description: 'Count of the Discount',
   })
   readonly count: number;
 
-  @IsInt({ message: 'Invalid percentage' })
-  @Min(0, { message: 'Invalid percentage' })
-  @Max(100, { message: 'Invalid percentage' })
+  @IsInt({ message: 'Percentage must be a positive number' })
+  @Min(0, { message: 'Percentage must be a positive number' })
+  @Max(100, { message: 'Percentage must be a positive number' })
   @ApiProperty({
     example: 30,
     description: 'Discount percentage',

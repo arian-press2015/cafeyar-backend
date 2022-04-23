@@ -49,7 +49,7 @@ export class SubcategoryDiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'SubcategoryDiscount already exists|Invalid cat_id|Invalid sub_cat_id|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date',
+      'SubcategoryDiscount already exists|Cat_id must be a positive number|Sub_cat_id must be a positive number|Count must be a positive number|Percentage must be a positive number|Invalid max_amount|Invalid expiry_date',
   })
   @ApiResponse({
     status: 403,
@@ -85,7 +85,7 @@ export class SubcategoryDiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid cat_id|Invalid sub_cat_id|Page must be a positive number|Limit must be a positive number',
+      'Cat_id must be a positive number|Sub_cat_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,
@@ -129,7 +129,7 @@ export class SubcategoryDiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date',
+      'Count must be a positive number|Percentage must be a positive number|Invalid max_amount|Invalid expiry_date',
   })
   @ApiResponse({
     status: 403,

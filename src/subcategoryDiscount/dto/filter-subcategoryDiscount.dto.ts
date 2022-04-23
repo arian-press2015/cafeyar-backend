@@ -3,8 +3,8 @@ import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterSubcategoryDiscountDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid cat_id' })
-  @IsPositive({ message: 'Invalid cat_id' })
+  @IsInt({ message: 'Cat_id must be a positive number' })
+  @IsPositive({ message: 'Cat_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'category_id of the SubcategoryDiscount',
@@ -12,8 +12,8 @@ export class FilterSubcategoryDiscountDto {
   readonly cat_id?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid sub_cat_id' })
-  @IsPositive({ message: 'Invalid sub_cat_id' })
+  @IsInt({ message: 'Sub_cat_id must be a positive number' })
+  @IsPositive({ message: 'Sub_cat_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'subcategory_id of the SubcategoryDiscount',

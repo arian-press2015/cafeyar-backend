@@ -10,8 +10,8 @@ import {
 
 export class UpdateSubcategoryDiscountDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid count' })
-  @IsPositive({ message: 'Invalid count' })
+  @IsInt({ message: 'Count must be a positive number' })
+  @IsPositive({ message: 'Count must be a positive number' })
   @ApiProperty({
     example: 4,
     description: 'Count of the Discount',
@@ -19,9 +19,9 @@ export class UpdateSubcategoryDiscountDto {
   readonly count?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid percentage' })
-  @Min(0, { message: 'Invalid percentage' })
-  @Max(100, { message: 'Invalid percentage' })
+  @IsInt({ message: 'Percentage must be a positive number' })
+  @Min(0, { message: 'Percentage must be a positive number' })
+  @Max(100, { message: 'Percentage must be a positive number' })
   @ApiProperty({
     example: 30,
     description: 'Discount percentage',
