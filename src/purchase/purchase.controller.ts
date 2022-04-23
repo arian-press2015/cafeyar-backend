@@ -47,7 +47,7 @@ export class PurchaseController {
   @ApiResponse({
     status: 400,
     description:
-      'Purchase already exists|Invalid user_id|Invalid purchase_plan_id|Invalid purchase_date',
+      'Purchase already exists|User_id must be a positive number|Invalid purchase_plan_id|Invalid purchase_date',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class PurchaseController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid user_id|Page must be a positive number|Limit must be a positive number',
+      'User_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

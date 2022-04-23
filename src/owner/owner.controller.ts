@@ -47,7 +47,7 @@ export class OwnerController {
   @ApiResponse({
     status: 400,
     description:
-      'Owner already exists|Invalid user_id|Invalid username|Invalid password|Invalid owner_role_id|Invalid creation_date',
+      'Owner already exists|User_id must be a positive number|Invalid username|Invalid password|Invalid owner_role_id|Invalid creation_date',
   })
   @ApiResponse({
     status: 403,

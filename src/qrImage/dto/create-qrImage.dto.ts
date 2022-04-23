@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive, IsString } from 'class-validator';
 
 export class CreateQrImageDto {
-  @IsInt({ message: 'Invalid user_id' })
-  @IsPositive({ message: 'Invalid user_id' })
+  @IsInt({ message: 'User_id must be a positive number' })
+  @IsPositive({ message: 'User_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'host_table_id of the QrImage',

@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsString } from 'class-validator';
 
 export class CreateUserFeatureDto {
-  @IsInt({ message: 'Invalid user_id' })
+  @IsInt({ message: 'User_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'user_id of the UserFeature',

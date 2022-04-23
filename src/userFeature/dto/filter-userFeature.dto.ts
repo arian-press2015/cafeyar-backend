@@ -3,7 +3,7 @@ import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterUserFeatureDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid user_id' })
+  @IsInt({ message: 'User_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'user_id of the UserFeature',

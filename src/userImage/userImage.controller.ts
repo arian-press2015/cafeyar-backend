@@ -45,7 +45,8 @@ export class UserImageController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid user_id|Invalid width|Invalid height|Invalid url',
+    description:
+      'User_id must be a positive number|Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,

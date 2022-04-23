@@ -10,8 +10,8 @@ export class CreateProductStarDto {
   })
   readonly product_id: number;
 
-  @IsInt({ message: 'Invalid user_id' })
-  @IsPositive({ message: 'Invalid user_id' })
+  @IsInt({ message: 'User_id must be a positive number' })
+  @IsPositive({ message: 'User_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'user_id of the ProductStar',

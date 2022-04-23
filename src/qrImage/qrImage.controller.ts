@@ -46,7 +46,7 @@ export class QrImageController {
   @ApiResponse({
     status: 400,
     description:
-      'QrImage already exists|Invalid user_id|Invalid width|Invalid height|Invalid url',
+      'QrImage already exists|User_id must be a positive number|Invalid width|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
