@@ -2,16 +2,16 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsInt, IsPositive } from 'class-validator';
 
 export class CreatePaymentDto {
-  @IsInt({ message: 'Invalid invoice_id' })
-  @IsPositive({ message: 'Invalid invoice_id' })
+  @IsInt({ message: 'Invoice_id must be a positive number' })
+  @IsPositive({ message: 'Invoice_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'invoice_id of the Payment',
   })
   readonly invoice_id: number;
 
-  @IsInt({ message: 'Invalid purchase_id' })
-  @IsPositive({ message: 'Invalid purchase_id' })
+  @IsInt({ message: 'Purchase_id must be a positive number' })
+  @IsPositive({ message: 'Purchase_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'purchase_id of the Payment',

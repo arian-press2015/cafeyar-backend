@@ -36,8 +36,8 @@ export class CreateProductDto {
   })
   readonly deleted: boolean;
 
-  @IsInt({ each: true, message: 'Invalid ingredients' })
-  @IsPositive({ each: true, message: 'Invalid ingredients' })
+  @IsInt({ each: true, message: 'Ingredients must be a positive number' })
+  @IsPositive({ each: true, message: 'Ingredients must be a positive number' })
   @ApiProperty({
     example: [1, 2],
     description: 'product ingredients',

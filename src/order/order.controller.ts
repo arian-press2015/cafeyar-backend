@@ -47,7 +47,7 @@ export class OrderController {
   @ApiResponse({
     status: 400,
     description:
-      'Order already exists|Host_id must be a positive number|Invalid invoice_id|Invalid total_price|Invalid total_discount|Invalid time|Destination must be a string|Invalid orderItems',
+      'Order already exists|Host_id must be a positive number|Invoice_id must be a positive number|Invalid total_price|Invalid total_discount|Invalid time|Destination must be a string|Invalid orderItems',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class OrderController {
   @ApiResponse({
     status: 400,
     description:
-      'Host_id must be a positive number|Invalid invoice_id|Page must be a positive number|Limit must be a positive number',
+      'Host_id must be a positive number|Invoice_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

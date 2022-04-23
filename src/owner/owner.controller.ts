@@ -47,7 +47,7 @@ export class OwnerController {
   @ApiResponse({
     status: 400,
     description:
-      'Owner already exists|User_id must be a positive number|Invalid username|Invalid password|Invalid owner_role_id|Invalid creation_date',
+      'Owner already exists|User_id must be a positive number|Invalid username|Invalid password|Owner_role_id must be a positive number|Invalid creation_date',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class OwnerController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid owner_role_id|Page must be a positive number|Limit must be a positive number',
+      'Owner_role_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,
@@ -119,7 +119,8 @@ export class OwnerController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid username|Invalid password|Invalid owner_role_id',
+    description:
+      'Invalid username|Invalid password|Owner_role_id must be a positive number',
   })
   @ApiResponse({
     status: 403,

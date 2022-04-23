@@ -12,8 +12,8 @@ export class FilterPersonnelDto {
   readonly host_id?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid role_id' })
-  @IsPositive({ message: 'Invalid role_id' })
+  @IsInt({ message: 'Role_id must be a positive number' })
+  @IsPositive({ message: 'Role_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'role_id of the Personnel',

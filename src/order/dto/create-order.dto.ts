@@ -11,8 +11,8 @@ export class CreateOrderDto {
   })
   readonly host_id: number;
 
-  @IsInt({ message: 'Invalid invoice_id' })
-  @IsPositive({ message: 'Invalid invoice_id' })
+  @IsInt({ message: 'Invoice_id must be a positive number' })
+  @IsPositive({ message: 'Invoice_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'invoice_id of the Order',

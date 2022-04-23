@@ -18,8 +18,8 @@ export class CreateOwnerDto {
   @ApiProperty({ example: 'ap2015', description: 'Password of the Owner' })
   readonly password: string;
 
-  @IsInt({ message: 'Invalid owner_role_id' })
-  @IsPositive({ message: 'Invalid owner_role_id' })
+  @IsInt({ message: 'Owner_role_id must be a positive number' })
+  @IsPositive({ message: 'Owner_role_id must be a positive number' })
   @ApiProperty({
     example: 2,
     description: 'owner_role_id of the Owner',
