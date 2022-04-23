@@ -78,7 +78,8 @@ export class ProductController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid sub_cat_id|Invalid page|Invalid limit',
+    description:
+      'Invalid sub_cat_id|Invalid page|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

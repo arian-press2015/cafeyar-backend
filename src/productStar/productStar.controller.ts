@@ -76,7 +76,7 @@ export class ProductStarController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid page|Invalid limit',
+    description: 'Invalid page|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

@@ -78,7 +78,7 @@ export class FeatureController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid version|Invalid page|Invalid limit',
+    description: 'Invalid version|Invalid page|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

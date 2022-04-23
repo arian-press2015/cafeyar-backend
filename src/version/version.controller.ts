@@ -78,7 +78,8 @@ export class VersionController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Version must be number|Invalid limit|Invalid page',
+    description:
+      'Version must be number|Limit must be a positive number|Invalid page',
   })
   @ApiResponse({
     status: 404,

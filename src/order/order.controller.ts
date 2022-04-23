@@ -79,7 +79,7 @@ export class OrderController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid host_id|Invalid invoice_id|Invalid page|Invalid limit',
+      'Invalid host_id|Invalid invoice_id|Invalid page|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

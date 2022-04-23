@@ -9,7 +9,7 @@
   "Version must be number": "ورژن باید عددی باشد",
   "Invalid creation_date": "تاریخ معتبر نیست",
   "You don't have permission to do that": "شما مجوز انجام این کار را ندارید",
-  "Invalid limit": "محدودیت معتبر نیست",
+  "Limit must be a positive number": "فیلد محدودیت باید از نوع عدد و مثبت نیست",
   "Invalid page": "شماره صفحه معتبر نیست",
   "No Version found": "ورژن یافت نشد",
   "Invalid user_id": "شناسه کاربر نامعتبر است",

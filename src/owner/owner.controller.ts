@@ -78,7 +78,8 @@ export class OwnerController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid owner_role_id|Invalid page|Invalid limit',
+    description:
+      'Invalid owner_role_id|Invalid page|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

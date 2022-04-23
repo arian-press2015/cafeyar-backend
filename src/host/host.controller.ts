@@ -79,7 +79,7 @@ export class HostController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid page|Invalid limit',
+    description: 'Invalid page|Limit must be a positive number',
   })
   async find(@Body() filterHostDto: FilterHostDto): Promise<Host[]> {
     return await this.hostService.find(filterHostDto);

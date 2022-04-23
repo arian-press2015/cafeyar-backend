@@ -78,7 +78,7 @@ export class PaymentController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid page|Invalid limit|Invalid success',
+    description: 'Invalid page|Limit must be a positive number|Invalid success',
   })
   @ApiResponse({
     status: 404,

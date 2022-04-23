@@ -19,8 +19,8 @@ export class FilterProductDto {
   })
   readonly page: number;
 
-  @IsInt({ message: 'Invalid limit' })
-  @IsPositive({ message: 'Invalid limit' })
+  @IsInt({ message: 'Limit must be a positive number' })
+  @IsPositive({ message: 'Limit must be a positive number' })
   @ApiProperty({
     example: 10,
     description: 'limit of versions',
