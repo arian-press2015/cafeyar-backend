@@ -11,8 +11,8 @@ export class FilterPurchaseDto {
   })
   readonly user_id?: number;
 
-  @IsInt({ message: 'Invalid page' })
-  @IsPositive({ message: 'Invalid page' })
+  @IsInt({ message: 'Page must be a positive number' })
+  @IsPositive({ message: 'Page must be a positive number' })
   @ApiProperty({
     example: 3,
     description: 'page of versions',

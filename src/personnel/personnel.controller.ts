@@ -79,7 +79,7 @@ export class PersonnelController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid host_id|Invalid role_id|Invalid page|Limit must be a positive number',
+      'Invalid host_id|Invalid role_id|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

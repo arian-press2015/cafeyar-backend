@@ -78,7 +78,8 @@ export class PurchaseController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid user_id|Invalid page|Limit must be a positive number',
+    description:
+      'Invalid user_id|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

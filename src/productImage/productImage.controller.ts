@@ -79,7 +79,7 @@ export class ProductImageController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid product_id|Invalid page|Limit must be a positive number',
+      'Invalid product_id|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive } from 'class-validator';
 
 export class FilterImageTypeDto {
-  @IsInt({ message: 'Invalid page' })
-  @IsPositive({ message: 'Invalid page' })
+  @IsInt({ message: 'Page must be a positive number' })
+  @IsPositive({ message: 'Page must be a positive number' })
   @ApiProperty({
     example: 3,
     description: 'page of versions',

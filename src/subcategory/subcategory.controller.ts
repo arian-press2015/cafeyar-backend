@@ -78,7 +78,8 @@ export class SubcategoryController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid cat_id|Invalid page|Limit must be a positive number',
+    description:
+      'Invalid cat_id|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,
