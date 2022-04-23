@@ -43,7 +43,7 @@ export class UserController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Phone number already exists|Phone number is not valid',
+    description: 'Phone number already taken|Phone number is not valid',
   })
   async create(@Body() userData: CreateUserDto): Promise<UserDisplayRO> {
     return await this.userService.create(userData);

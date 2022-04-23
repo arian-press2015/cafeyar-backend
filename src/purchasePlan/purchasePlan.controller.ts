@@ -47,7 +47,7 @@ export class PurchasePlanController {
   @ApiResponse({
     status: 400,
     description:
-      'PurchasePlan already exists|Invalid purchase_level_id|Invalid purchase_lifetime_id|Invalid price',
+      'PurchasePlan title already taken|Invalid purchase_level_id|Invalid purchase_lifetime_id|Invalid price',
   })
   @ApiResponse({
     status: 403,

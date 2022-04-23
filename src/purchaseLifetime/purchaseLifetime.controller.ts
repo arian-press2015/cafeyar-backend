@@ -49,7 +49,7 @@ export class PurchaseLifetimeController {
   @ApiResponse({
     status: 400,
     description:
-      'PurchaseLifetime already exists|Invalid title|Invalid description|Invalid multiplier',
+      'PurchaseLifetime title already taken|Invalid title|Invalid description|Invalid multiplier',
   })
   @ApiResponse({
     status: 403,

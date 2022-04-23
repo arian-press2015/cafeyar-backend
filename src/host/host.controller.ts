@@ -45,7 +45,7 @@ export class HostController {
   @ApiResponse({
     status: 400,
     description:
-      'Name already exists|Phone number already exists|Invalid name|Invalid phone|Invalid address|Invalid description|Invalid opening_time|Invalid closing_time',
+      'Name already exists|Phone number already taken|Invalid name|Invalid phone|Invalid address|Invalid description|Invalid opening_time|Invalid closing_time',
   })
   async create(
     @User('id') userID: number,

@@ -46,7 +46,7 @@ export class IngredientController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Ingredient already exists|Invalid name',
+    description: 'Ingredient name already taken|Invalid name',
   })
   @ApiResponse({
     status: 403,

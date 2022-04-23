@@ -47,7 +47,7 @@ export class DiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'Discount already exists|Invalid code|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date|Invalid products',
+      'Discount code already taken|Invalid code|Invalid count|Invalid percentage|Invalid max_amount|Invalid expiry_date|Invalid products',
   })
   @ApiResponse({
     status: 403,

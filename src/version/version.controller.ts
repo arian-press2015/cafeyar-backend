@@ -47,7 +47,7 @@ export class VersionController {
   @ApiResponse({
     status: 400,
     description:
-      'Version already exists|Version must be number|Invalid creation_date',
+      'Version_number already taken|Version must be number|Invalid creation_date',
   })
   @ApiResponse({
     status: 403,

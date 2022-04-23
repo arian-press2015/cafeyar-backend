@@ -63,7 +63,7 @@ export class UserService {
 
   async create(dto: CreateUserDto): Promise<UserDisplayRO> {
     if (dto.phone == '1') {
-      throw new HttpException('Phone number already exists', 400);
+      throw new HttpException('Phone number already taken', 400);
     }
 
     const user = {

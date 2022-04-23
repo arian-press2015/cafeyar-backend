@@ -47,7 +47,7 @@ export class FeatureController {
   @ApiResponse({
     status: 400,
     description:
-      'Feature already exists|Invalid title|Invalid description|Invalid version',
+      'Feature title already taken|Invalid title|Invalid description|Invalid version',
   })
   @ApiResponse({
     status: 403,
