@@ -10,7 +10,7 @@ export class CreateProductDto {
   })
   readonly sub_cat_id: number;
 
-  @IsString({ message: 'Invalid name' })
+  @IsString({ message: 'Name must be a string' })
   @ApiProperty({ example: 'APCafe', description: 'Name of the Product' })
   readonly name: string;
 

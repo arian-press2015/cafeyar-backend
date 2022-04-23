@@ -47,7 +47,7 @@ export class ProductController {
   @ApiResponse({
     status: 400,
     description:
-      'Product already exists|Invalid sub_cat_id|Invalid name|Invalid price|Invalid enable status|Invalid deletion status|Invalid ingredients',
+      'Product already exists|Invalid sub_cat_id|Name must be a string|Invalid price|Invalid enable status|Invalid deletion status|Invalid ingredients',
   })
   @ApiResponse({
     status: 403,
@@ -119,7 +119,7 @@ export class ProductController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid name|Invalid price|Invalid enable status|Invalid deletion status|Invalid ingredients',
+      'Name must be a string|Invalid price|Invalid enable status|Invalid deletion status|Invalid ingredients',
   })
   @ApiResponse({
     status: 403,

@@ -3,7 +3,7 @@ import { IsInt, IsOptional, IsPositive, IsString } from 'class-validator';
 
 export class UpdateCategoryDto {
   @IsOptional()
-  @IsString({ message: 'Invalid name' })
+  @IsString({ message: 'Name must be a string' })
   @ApiProperty({ example: 'APCafe', description: 'Name of the Category' })
   readonly name?: string;
 

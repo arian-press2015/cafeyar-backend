@@ -10,7 +10,7 @@ export class CreateSubcategoryDto {
   })
   readonly cat_id: number;
 
-  @IsString({ message: 'Invalid name' })
+  @IsString({ message: 'Name must be a string' })
   @ApiProperty({
     example: 'Italian coffee',
     description: 'Name of the Subcategory',

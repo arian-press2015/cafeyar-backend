@@ -46,7 +46,8 @@ export class SubcategoryController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Subcategory already exists|Invalid cat_id|Invalid name',
+    description:
+      'Subcategory already exists|Invalid cat_id|Name must be a string',
   })
   @ApiResponse({
     status: 403,
@@ -119,7 +120,7 @@ export class SubcategoryController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid name',
+    description: 'Name must be a string',
   })
   @ApiResponse({
     status: 403,

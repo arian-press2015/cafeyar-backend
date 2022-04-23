@@ -9,7 +9,7 @@ import {
 
 export class UpdateProductDto {
   @IsOptional()
-  @IsString({ message: 'Invalid name' })
+  @IsString({ message: 'Name must be a string' })
   @ApiProperty({ example: 'APCafe', description: 'Name of the Product' })
   readonly name?: string;
 

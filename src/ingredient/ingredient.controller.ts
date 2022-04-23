@@ -46,7 +46,7 @@ export class IngredientController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Ingredient name already taken|Invalid name',
+    description: 'Ingredient name already taken|Name must be a string',
   })
   @ApiResponse({
     status: 403,
@@ -119,7 +119,7 @@ export class IngredientController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid name',
+    description: 'Name must be a string',
   })
   @ApiResponse({
     status: 403,

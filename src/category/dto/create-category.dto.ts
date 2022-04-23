@@ -10,7 +10,7 @@ export class CreateCategoryDto {
   })
   readonly host_id: number;
 
-  @IsString({ message: 'Invalid name' })
+  @IsString({ message: 'Name must be a string' })
   @ApiProperty({ example: 'APCafe', description: 'Name of the Category' })
   readonly name: string;
 

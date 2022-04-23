@@ -47,7 +47,7 @@ export class CategoryController {
   @ApiResponse({
     status: 400,
     description:
-      'Category already exists|Invalid host_id|Invalid name|Invalid item_count|Invalid item_min_price|Invalid item_max_price',
+      'Category already exists|Invalid host_id|Name must be a string|Invalid item_count|Invalid item_min_price|Invalid item_max_price',
   })
   @ApiResponse({
     status: 403,
@@ -98,7 +98,7 @@ export class CategoryController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid host_id|Invalid name|Invalid item_count|Invalid item_min_price|Invalid item_max_price',
+      'Invalid host_id|Name must be a string|Invalid item_count|Invalid item_min_price|Invalid item_max_price',
   })
   @ApiResponse({
     status: 404,

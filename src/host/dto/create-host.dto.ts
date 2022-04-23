@@ -2,7 +2,7 @@ import { IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateHostDto {
-  @IsString({ message: 'Invalid name' })
+  @IsString({ message: 'Name must be a string' })
   @ApiProperty({ example: 'APCafe', description: 'Name of the Host' })
   readonly name: string;
 
