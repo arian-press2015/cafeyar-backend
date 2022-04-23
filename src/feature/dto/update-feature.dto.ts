@@ -3,7 +3,7 @@ import { IsInt, IsOptional, IsPositive, IsString } from 'class-validator';
 
 export class UpdateFeatureDto {
   @IsOptional()
-  @IsString({ message: 'Invalid title' })
+  @IsString({ message: 'Title must be a string' })
   @ApiProperty({ example: 'see images', description: 'Title of the Feature' })
   readonly title?: string;
 

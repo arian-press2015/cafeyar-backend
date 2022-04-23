@@ -47,7 +47,7 @@ export class PermissionController {
   @ApiResponse({
     status: 400,
     description:
-      'Permission already exists|Invalid title|Invalid title_fa|Invalid description',
+      'Permission already exists|Title must be a string|Title_fa must be a string|Invalid description',
   })
   @ApiResponse({
     status: 403,
@@ -121,7 +121,8 @@ export class PermissionController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid title|Invalid title_fa|Invalid description',
+    description:
+      'Title must be a string|Title_fa must be a string|Invalid description',
   })
   @ApiResponse({
     status: 403,

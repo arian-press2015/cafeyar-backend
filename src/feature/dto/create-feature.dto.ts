@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive, IsString } from 'class-validator';
 
 export class CreateFeatureDto {
-  @IsString({ message: 'Invalid title' })
+  @IsString({ message: 'Title must be a string' })
   @ApiProperty({ example: 'see images', description: 'Title of the Feature' })
   readonly title: string;
 

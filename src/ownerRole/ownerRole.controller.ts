@@ -47,7 +47,7 @@ export class OwnerRoleController {
   @ApiResponse({
     status: 400,
     description:
-      'OwnerRole already exists|Invalid title|Invalid title_fa|Invalid permissions',
+      'OwnerRole already exists|Title must be a string|Title_fa must be a string|Invalid permissions',
   })
   @ApiResponse({
     status: 403,
@@ -119,7 +119,8 @@ export class OwnerRoleController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid title|Invalid title_fa|Invalid permissions',
+    description:
+      'Title must be a string|Title_fa must be a string|Invalid permissions',
   })
   @ApiResponse({
     status: 403,

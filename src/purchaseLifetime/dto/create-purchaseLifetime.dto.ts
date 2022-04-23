@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsString } from 'class-validator';
 
 export class CreatePurchaseLifetimeDto {
-  @IsString({ message: 'Invalid title' })
+  @IsString({ message: 'Title must be a string' })
   @ApiProperty({
     example: 'monthly',
     description: 'title of the PurchaseLifetime',

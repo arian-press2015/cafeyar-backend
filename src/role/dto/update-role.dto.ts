@@ -3,12 +3,12 @@ import { IsInt, IsOptional, IsString } from 'class-validator';
 
 export class UpdateRoleDto {
   @IsOptional()
-  @IsString({ message: 'Invalid title' })
+  @IsString({ message: 'Title must be a string' })
   @ApiProperty({ example: 'see', description: 'title of the Role' })
   readonly title?: string;
 
   @IsOptional()
-  @IsString({ message: 'Invalid title_fa' })
+  @IsString({ message: 'Title_fa must be a string' })
   @ApiProperty({ example: 'دیدن', description: 'farsi title of the Role' })
   readonly title_fa?: string;
 

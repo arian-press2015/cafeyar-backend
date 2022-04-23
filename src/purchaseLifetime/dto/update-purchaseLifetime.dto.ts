@@ -3,7 +3,7 @@ import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UpdatePurchaseLifetimeDto {
   @IsOptional()
-  @IsString({ message: 'Invalid title' })
+  @IsString({ message: 'Title must be a string' })
   @ApiProperty({
     example: 'monthly',
     description: 'title of the PurchaseLifetime',

@@ -47,7 +47,7 @@ export class PurchaseLevelController {
   @ApiResponse({
     status: 400,
     description:
-      'PurchaseLevel already exists|Invalid title|Invalid price|Invalid features',
+      'PurchaseLevel already exists|Title must be a string|Invalid price|Invalid features',
   })
   @ApiResponse({
     status: 403,
@@ -121,7 +121,7 @@ export class PurchaseLevelController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid title|Invalid price|Invalid features',
+    description: 'Title must be a string|Invalid price|Invalid features',
   })
   @ApiResponse({
     status: 403,

@@ -3,7 +3,7 @@ import { IsInt, IsOptional, IsString } from 'class-validator';
 
 export class UpdatePurchaseLevelDto {
   @IsOptional()
-  @IsString({ message: 'Invalid title' })
+  @IsString({ message: 'Title must be a string' })
   @ApiProperty({ example: 'basic', description: 'title of the PurchaseLevel' })
   readonly title?: string;
 
