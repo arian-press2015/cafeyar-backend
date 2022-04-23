@@ -47,7 +47,7 @@ export class ProductImageController {
   @ApiResponse({
     status: 400,
     description:
-      'ProductImage already exists|Invalid product_id|Invalid width|Invalid height|Invalid url|Invalid image status',
+      'ProductImage already exists|Invalid product_id|Width must be a positive number|Invalid height|Invalid url|Invalid image status',
   })
   @ApiResponse({
     status: 403,

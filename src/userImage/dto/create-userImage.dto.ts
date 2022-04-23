@@ -9,7 +9,7 @@ export class CreateUserImageDto {
   })
   readonly user_id: number;
 
-  @IsInt({ message: 'Invalid width' })
+  @IsInt({ message: 'Width must be a positive number' })
   @ApiProperty({
     example: 640,
     description: 'width in the UserImage',

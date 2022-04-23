@@ -3,7 +3,7 @@ import { IsInt, IsOptional, IsString } from 'class-validator';
 
 export class UpdateUserImageDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid width' })
+  @IsInt({ message: 'Width must be a positive number' })
   @ApiProperty({
     example: 640,
     description: 'width in the UserImage',

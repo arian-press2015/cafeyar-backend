@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive, IsString } from 'class-validator';
 
 export class CreateCategoryImageDto {
-  @IsInt({ message: 'Invalid width' })
-  @IsPositive({ message: 'Invalid width' })
+  @IsInt({ message: 'Width must be a positive number' })
+  @IsPositive({ message: 'Width must be a positive number' })
   @ApiProperty({
     example: 640,
     description: 'width of the CategoryImage',

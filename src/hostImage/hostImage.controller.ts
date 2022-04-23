@@ -46,7 +46,7 @@ export class HostImageController {
   @ApiResponse({
     status: 400,
     description:
-      'HostImage already exists|Invalid host_id|Invalid width|Invalid height|Invalid url',
+      'HostImage already exists|Invalid host_id|Width must be a positive number|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,
@@ -93,7 +93,8 @@ export class HostImageController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid host_id|Invalid width|Invalid height|Invalid url',
+    description:
+      'Invalid host_id|Width must be a positive number|Invalid height|Invalid url',
   })
   @ApiResponse({
     status: 403,

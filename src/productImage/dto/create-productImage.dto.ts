@@ -10,8 +10,8 @@ export class CreateProductImageDto {
   })
   readonly product_id: number;
 
-  @IsInt({ message: 'Invalid width' })
-  @IsPositive({ message: 'Invalid width' })
+  @IsInt({ message: 'Width must be a positive number' })
+  @IsPositive({ message: 'Width must be a positive number' })
   @ApiProperty({
     example: 640,
     description: 'image width',

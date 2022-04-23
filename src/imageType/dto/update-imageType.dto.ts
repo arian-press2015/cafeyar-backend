@@ -16,8 +16,8 @@ export class UpdateImageTypeDto {
   readonly description?: string;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid width' })
-  @IsPositive({ message: 'Invalid width' })
+  @IsInt({ message: 'Width must be a positive number' })
+  @IsPositive({ message: 'Width must be a positive number' })
   @ApiProperty({ example: 640, description: 'width of the Image' })
   readonly width?: number;
 

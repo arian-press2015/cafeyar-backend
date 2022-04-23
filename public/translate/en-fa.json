@@ -13,7 +13,7 @@
   "Page must be a positive number": "فیلد شماره صفحه باید از نوع عدد و مثبت باشد",
   "No Version found": "ورژن یافت نشد",
   "User_id must be a positive number": "فیلد شناسه کاربر باید از نوع عدد و مثبت باشد",
-  "Invalid width": "عرض تصویر نامعتبر است",
+  "Width must be a positive number": "فیلد عرض تصویر باید از نوع عدد و مثبت باشد",
   "Invalid height": "طول تصویر نامعتبر است",
   "Invalid url": "آدرس فایل نامعتبر است",
   "Invalid title": "عنوان نامعتبر است",
