@@ -16,7 +16,7 @@ export class UpdateHostDto {
   readonly phone?: string;
 
   @IsOptional()
-  @IsString({ message: 'Invalid address' })
+  @IsString({ message: 'Address must be a string' })
   @ApiProperty({ example: 'somewhere', description: 'Address of the Host' })
   readonly address?: string;
 

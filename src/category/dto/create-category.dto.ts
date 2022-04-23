@@ -14,24 +14,24 @@ export class CreateCategoryDto {
   @ApiProperty({ example: 'APCafe', description: 'Name of the Category' })
   readonly name: string;
 
-  @IsInt({ message: 'Invalid item_count' })
-  @IsPositive({ message: 'Invalid item_count' })
+  @IsInt({ message: 'Item_count must be a positive number' })
+  @IsPositive({ message: 'Item_count must be a positive number' })
   @ApiProperty({
     example: '03146258582',
     description: 'number of items in the Category',
   })
   readonly item_count: number;
 
-  @IsInt({ message: 'Invalid item_min_price' })
-  @IsPositive({ message: 'Invalid item_min_price' })
+  @IsInt({ message: 'Item_min_price must be a positive number' })
+  @IsPositive({ message: 'Item_min_price must be a positive number' })
   @ApiProperty({
     example: '100000',
     description: 'minimum item price',
   })
   readonly item_min_price: number;
 
-  @IsInt({ message: 'Invalid item_max_price' })
-  @IsPositive({ message: 'Invalid item_max_price' })
+  @IsInt({ message: 'Item_max_price must be a positive number' })
+  @IsPositive({ message: 'Item_max_price must be a positive number' })
   @ApiProperty({
     example: '2000000',
     description: 'maximum item price',

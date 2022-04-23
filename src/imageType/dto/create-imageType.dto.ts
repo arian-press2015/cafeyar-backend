@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive, IsString } from 'class-validator';
 
 export class CreateImageTypeDto {
-  @IsString({ message: 'Invalid type' })
+  @IsString({ message: 'Type must be a string' })
   @ApiProperty({ example: 'UserImage', description: 'Image of the User' })
   readonly type: string;
 

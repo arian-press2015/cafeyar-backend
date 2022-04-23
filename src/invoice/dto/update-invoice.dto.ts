@@ -12,8 +12,8 @@ export class UpdateInvoiceDto {
   readonly price?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid discount' })
-  @IsPositive({ message: 'Invalid discount' })
+  @IsInt({ message: 'Discount must be a positive number' })
+  @IsPositive({ message: 'Discount must be a positive number' })
   @ApiProperty({
     example: '100000',
     description: 'total discount of the Invoice',

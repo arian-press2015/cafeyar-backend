@@ -16,8 +16,8 @@ export class UpdateFeatureDto {
   readonly description?: string;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid version' })
-  @IsPositive({ message: 'Invalid version' })
+  @IsInt({ message: 'Version must be a positive number' })
+  @IsPositive({ message: 'Version must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'Version of the Feature',

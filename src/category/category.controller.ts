@@ -47,7 +47,7 @@ export class CategoryController {
   @ApiResponse({
     status: 400,
     description:
-      'Category already exists|Host_id must be a positive number|Name must be a string|Invalid item_count|Invalid item_min_price|Invalid item_max_price',
+      'Category already exists|Host_id must be a positive number|Name must be a string|Item_count must be a positive number|Item_min_price must be a positive number|Item_max_price must be a positive number',
   })
   @ApiResponse({
     status: 403,
@@ -99,7 +99,7 @@ export class CategoryController {
   @ApiResponse({
     status: 400,
     description:
-      'Host_id must be a positive number|Name must be a string|Invalid item_count|Invalid item_min_price|Invalid item_max_price',
+      'Host_id must be a positive number|Name must be a string|Item_count must be a positive number|Item_min_price must be a positive number|Item_max_price must be a positive number',
   })
   @ApiResponse({
     status: 404,

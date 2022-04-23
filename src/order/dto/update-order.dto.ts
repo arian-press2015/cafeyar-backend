@@ -10,8 +10,8 @@ import { OrderItem } from './order.dto';
 
 export class UpdateOrderDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid total_price' })
-  @IsPositive({ message: 'Invalid total_price' })
+  @IsInt({ message: 'Total_price must be a positive number' })
+  @IsPositive({ message: 'Total_price must be a positive number' })
   @ApiProperty({
     example: 2000000,
     description: 'total_price of the Order',
@@ -19,8 +19,8 @@ export class UpdateOrderDto {
   readonly total_price?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid total_discount' })
-  @IsPositive({ message: 'Invalid total_discount' })
+  @IsInt({ message: 'Total_discount must be a positive number' })
+  @IsPositive({ message: 'Total_discount must be a positive number' })
   @ApiProperty({
     example: 100000,
     description: 'total_discount of the Order',

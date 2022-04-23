@@ -47,7 +47,7 @@ export class FeatureController {
   @ApiResponse({
     status: 400,
     description:
-      'Feature title already taken|Title must be a string|Destination must be a string|Invalid version',
+      'Feature title already taken|Title must be a string|Destination must be a string|Version must be a positive number',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class FeatureController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid version|Page must be a positive number|Limit must be a positive number',
+      'Version must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,
@@ -120,7 +120,7 @@ export class FeatureController {
   @ApiResponse({
     status: 400,
     description:
-      'Title must be a string|Destination must be a string|Invalid version',
+      'Title must be a string|Destination must be a string|Version must be a positive number',
   })
   @ApiResponse({
     status: 403,

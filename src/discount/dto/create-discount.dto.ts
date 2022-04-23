@@ -47,8 +47,8 @@ export class CreateDiscountDto {
   })
   readonly expiry_date: string;
 
-  @IsInt({ each: true, message: 'Invalid products' })
-  @IsPositive({ each: true, message: 'Invalid products' })
+  @IsInt({ each: true, message: 'Products must be a positive number' })
+  @IsPositive({ each: true, message: 'Products must be a positive number' })
   @ApiProperty({
     example: [1, 2],
     description: 'Discounted products',

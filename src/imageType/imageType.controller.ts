@@ -47,7 +47,7 @@ export class ImageTypeController {
   @ApiResponse({
     status: 400,
     description:
-      'ImageType already exists|Invalid type|Destination must be a string|Width must be a positive number|Height must be a positive number',
+      'ImageType already exists|Type must be a string|Destination must be a string|Width must be a positive number|Height must be a positive number',
   })
   @ApiResponse({
     status: 403,
@@ -120,7 +120,7 @@ export class ImageTypeController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid type|Destination must be a string|Width must be a positive number|Height must be a positive number',
+      'Type must be a string|Destination must be a string|Width must be a positive number|Height must be a positive number',
   })
   @ApiResponse({
     status: 403,

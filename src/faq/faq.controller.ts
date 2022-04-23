@@ -46,7 +46,8 @@ export class FaqController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Faq already exists|Invalid question|Invalid answer',
+    description:
+      'Faq already exists|Question must be a string|Answer must be a string',
   })
   @ApiResponse({
     status: 403,
@@ -118,7 +119,7 @@ export class FaqController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid question|Invalid answer',
+    description: 'Question must be a string|Answer must be a string',
   })
   @ApiResponse({
     status: 403,

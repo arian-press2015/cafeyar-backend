@@ -3,7 +3,7 @@ import { IsInt, IsOptional, IsPositive, IsString } from 'class-validator';
 
 export class UpdateImageTypeDto {
   @IsOptional()
-  @IsString({ message: 'Invalid type' })
+  @IsString({ message: 'Type must be a string' })
   @ApiProperty({ example: 'UserImage', description: 'Image of the User' })
   readonly type?: string;
 
