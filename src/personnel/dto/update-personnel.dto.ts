@@ -12,8 +12,8 @@ export class UpdatePersonnelDto {
   readonly user_id?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid host_id' })
-  @IsPositive({ message: 'Invalid host_id' })
+  @IsInt({ message: 'Host_id must be a positive number' })
+  @IsPositive({ message: 'Host_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'host_id of the Personnel',

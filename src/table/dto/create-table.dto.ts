@@ -2,18 +2,18 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt } from 'class-validator';
 
 export class CreateTableDto {
-  @IsInt({ message: 'Invalid host_id' })
+  @IsInt({ message: 'Host_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'host_id of the Table',
   })
   readonly host_id: number;
 
-  @IsInt({ message: 'Invalid capacity' })
+  @IsInt({ message: 'Capacity must be a positive number' })
   @ApiProperty({ example: 4, description: 'Capacity of the Table' })
   readonly capacity: number;
 
-  @IsInt({ message: 'Invalid table_number' })
+  @IsInt({ message: 'Table_number must be a positive number' })
   @ApiProperty({
     example: 12,
     description: 'Number of the Table',

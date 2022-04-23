@@ -3,7 +3,7 @@ import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterTableDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid host_id' })
+  @IsInt({ message: 'Host_id must be a positive number' })
   @ApiProperty({ example: 12345, description: 'ID of the entity in database' })
   readonly host_id?: number;
 

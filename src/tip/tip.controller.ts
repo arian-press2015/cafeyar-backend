@@ -47,7 +47,7 @@ export class TipController {
   @ApiResponse({
     status: 400,
     description:
-      'Tip already exists|Invalid Invoice_id|User_id must be a positive number|Invalid tip amount|Invalid tip count|Invalid personnel',
+      'Tip already exists|Invoice_id must be a positive number|User_id must be a positive number|Tip amount must be a positive number|Tip count must be a positive number|Personnel must be a positive number',
   })
   @ApiResponse({
     status: 403,
@@ -119,7 +119,8 @@ export class TipController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid tip amount|Invalid tip count|Invalid personnel',
+    description:
+      'Tip amount must be a positive number|Tip count must be a positive number|Personnel must be a positive number',
   })
   @ApiResponse({
     status: 403,

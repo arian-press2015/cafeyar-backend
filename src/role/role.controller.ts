@@ -47,7 +47,7 @@ export class RoleController {
   @ApiResponse({
     status: 400,
     description:
-      'Role already exists|Invalid host_id|Title must be a string|Title_fa must be a string|Invalid permissions',
+      'Role already exists|Host_id must be a positive number|Title must be a string|Title_fa must be a string|Invalid permissions',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class RoleController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid host_id|Page must be a positive number|Limit must be a positive number',
+      'Host_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

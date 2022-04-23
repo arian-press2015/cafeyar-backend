@@ -44,7 +44,7 @@ export class TableController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid host_id|Invalid table_number|Table number already exists|Invalid capacity',
+      'Host_id must be a positive number|Table_number must be a positive number|Table number already exists|Capacity must be a positive number',
   })
   @ApiResponse({
     status: 403,
@@ -76,7 +76,7 @@ export class TableController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid host_id|Page must be a positive number|Limit must be a positive number',
+      'Host_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,
@@ -113,7 +113,7 @@ export class TableController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid capacity',
+    description: 'Capacity must be a positive number',
   })
   @ApiResponse({
     status: 403,

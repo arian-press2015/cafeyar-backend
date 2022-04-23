@@ -47,7 +47,7 @@ export class PersonnelController {
   @ApiResponse({
     status: 400,
     description:
-      'Personnel already exists|User_id must be a positive number|Invalid host_id|Invalid role_id',
+      'Personnel already exists|User_id must be a positive number|Host_id must be a positive number|Invalid role_id',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class PersonnelController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid host_id|Invalid role_id|Page must be a positive number|Limit must be a positive number',
+      'Host_id must be a positive number|Invalid role_id|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,
@@ -120,7 +120,7 @@ export class PersonnelController {
   @ApiResponse({
     status: 400,
     description:
-      'User_id must be a positive number|Invalid host_id|Invalid role_id',
+      'User_id must be a positive number|Host_id must be a positive number|Invalid role_id',
   })
   @ApiResponse({
     status: 403,

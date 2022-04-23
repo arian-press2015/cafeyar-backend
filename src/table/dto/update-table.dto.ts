@@ -3,7 +3,7 @@ import { IsInt, IsOptional } from 'class-validator';
 
 export class UpdateTableDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid capacity' })
+  @IsInt({ message: 'Capacity must be a positive number' })
   @ApiProperty({ example: 4, description: 'Capacity of the Table' })
   readonly capacity?: number;
 }

@@ -3,8 +3,8 @@ import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class UpdateTipDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid tip amount' })
-  @IsPositive({ message: 'Invalid tip amount' })
+  @IsInt({ message: 'Tip amount must be a positive number' })
+  @IsPositive({ message: 'Tip amount must be a positive number' })
   @ApiProperty({
     example: 100000,
     description: 'Tip amount',
@@ -12,8 +12,8 @@ export class UpdateTipDto {
   readonly amount?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid tip count' })
-  @IsPositive({ message: 'Invalid tip count' })
+  @IsInt({ message: 'Tip count must be a positive number' })
+  @IsPositive({ message: 'Tip count must be a positive number' })
   @ApiProperty({
     example: 5,
     description: 'tip count',
@@ -21,7 +21,7 @@ export class UpdateTipDto {
   readonly count?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid personnel' })
+  @IsInt({ message: 'Personnel must be a positive number' })
   @ApiProperty({
     example: [1, 2],
     description: 'tip targets',
