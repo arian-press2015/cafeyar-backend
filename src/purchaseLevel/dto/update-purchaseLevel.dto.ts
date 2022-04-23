@@ -8,7 +8,7 @@ export class UpdatePurchaseLevelDto {
   readonly title?: string;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid price' })
+  @IsInt({ message: 'Price must be a positive number' })
   @ApiProperty({
     example: '03146258582',
     description: 'title of the PurchaseLevel',
@@ -16,7 +16,7 @@ export class UpdatePurchaseLevelDto {
   readonly price?: number;
 
   @IsOptional()
-  @IsInt({ each: true, message: 'Invalid features' })
+  @IsInt({ each: true, message: 'Features must be a positive number' })
   @ApiProperty({
     example: [1, 2],
     description: 'array of features related to this PurchaseLevel',

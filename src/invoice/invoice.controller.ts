@@ -47,7 +47,7 @@ export class InvoiceController {
   @ApiResponse({
     status: 400,
     description:
-      'Invoice already exists|User_id must be a positive number|Invalid price|Invalid discount|Invalid pay_date',
+      'Invoice already exists|User_id must be a positive number|Price must be a positive number|Invalid discount|Invalid pay_date',
   })
   @ApiResponse({
     status: 403,
@@ -117,7 +117,8 @@ export class InvoiceController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid price|Invalid discount|Invalid pay_date',
+    description:
+      'Price must be a positive number|Invalid discount|Invalid pay_date',
   })
   @ApiResponse({
     status: 403,

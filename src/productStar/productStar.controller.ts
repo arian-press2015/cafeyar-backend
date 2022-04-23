@@ -45,7 +45,7 @@ export class ProductStarController {
   @ApiResponse({
     status: 400,
     description:
-      'ProductStar already exists|Invalid product_id|User_id must be a positive number|Invalid star',
+      'ProductStar already exists|Product_id must be a positive number|User_id must be a positive number|Invalid star',
   })
   @ApiResponse({
     status: 403,

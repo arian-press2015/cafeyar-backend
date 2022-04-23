@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive, Max, Min } from 'class-validator';
 
 export class CreateProductStarDto {
-  @IsInt({ message: 'Invalid product_id' })
-  @IsPositive({ message: 'Invalid product_id' })
+  @IsInt({ message: 'Product_id must be a positive number' })
+  @IsPositive({ message: 'Product_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'product_id of the ProductStar',

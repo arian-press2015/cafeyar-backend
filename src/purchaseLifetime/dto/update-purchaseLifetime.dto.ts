@@ -19,7 +19,10 @@ export class UpdatePurchaseLifetimeDto {
   readonly description?: string;
 
   @IsOptional()
-  @IsNumber({ allowNaN: false }, { message: 'Invalid multiplier' })
+  @IsNumber(
+    { allowNaN: false },
+    { message: 'Multiplier must be a positive number' },
+  )
   @ApiProperty({
     example: 0.1,
     description: 'multiplier of the PurchaseLifetime',

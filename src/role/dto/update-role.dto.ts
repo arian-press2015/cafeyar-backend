@@ -13,7 +13,7 @@ export class UpdateRoleDto {
   readonly title_fa?: string;
 
   @IsOptional()
-  @IsInt({ each: true, message: 'Invalid permissions' })
+  @IsInt({ each: true, message: 'Permissions must be a positive number' })
   @ApiProperty({
     example: [1, 2],
     description: 'permissions of the Role',

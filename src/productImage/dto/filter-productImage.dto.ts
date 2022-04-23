@@ -3,8 +3,8 @@ import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterProductImageDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid product_id' })
-  @IsPositive({ message: 'Invalid product_id' })
+  @IsInt({ message: 'Product_id must be a positive number' })
+  @IsPositive({ message: 'Product_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'product_id of the ProductImage',

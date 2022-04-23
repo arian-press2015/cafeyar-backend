@@ -10,8 +10,8 @@ import {
 } from 'class-validator';
 
 export class CreatePurchaseDiscountDto {
-  @IsInt({ message: 'Invalid purchase_plan_id' })
-  @IsPositive({ message: 'Invalid purchase_plan_id' })
+  @IsInt({ message: 'Purchase_plan_id must be a positive number' })
+  @IsPositive({ message: 'Purchase_plan_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'purchase plan id of the PurchaseDiscount',
@@ -43,8 +43,8 @@ export class CreatePurchaseDiscountDto {
   })
   readonly percentage: number;
 
-  @IsInt({ message: 'Invalid max_amount' })
-  @IsPositive({ message: 'Invalid max_amount' })
+  @IsInt({ message: 'Max_amount must be a positive number' })
+  @IsPositive({ message: 'Max_amount must be a positive number' })
   @ApiProperty({
     example: 200000,
     description: 'maximum PurchaseDiscount amount',

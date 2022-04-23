@@ -10,8 +10,8 @@ export class CreateOwnerRoleDto {
   @ApiProperty({ example: 'دیدن', description: 'farsi title of the OwnerRole' })
   readonly title_fa: string;
 
-  @IsInt({ each: true, message: 'Invalid permissions' })
-  @IsPositive({ each: true, message: 'Invalid permissions' })
+  @IsInt({ each: true, message: 'Permissions must be a positive number' })
+  @IsPositive({ each: true, message: 'Permissions must be a positive number' })
   @ApiProperty({
     example: [1, 2],
     description: 'permissions of the Role',

@@ -47,7 +47,7 @@ export class RoleController {
   @ApiResponse({
     status: 400,
     description:
-      'Role already exists|Host_id must be a positive number|Title must be a string|Title_fa must be a string|Invalid permissions',
+      'Role already exists|Host_id must be a positive number|Title must be a string|Title_fa must be a string|Permissions must be a positive number',
   })
   @ApiResponse({
     status: 403,
@@ -120,7 +120,7 @@ export class RoleController {
   @ApiResponse({
     status: 400,
     description:
-      'Title must be a string|Title_fa must be a string|Invalid permissions',
+      'Title must be a string|Title_fa must be a string|Permissions must be a positive number',
   })
   @ApiResponse({
     status: 403,

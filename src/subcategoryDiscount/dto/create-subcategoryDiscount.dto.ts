@@ -35,8 +35,8 @@ export class CreateSubcategoryDiscountDto {
   })
   readonly percentage: number;
 
-  @IsInt({ message: 'Invalid max_amount' })
-  @IsPositive({ message: 'Invalid max_amount' })
+  @IsInt({ message: 'Max_amount must be a positive number' })
+  @IsPositive({ message: 'Max_amount must be a positive number' })
   @ApiProperty({
     example: 200000,
     description: 'maximum Discount amount',

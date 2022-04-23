@@ -49,7 +49,7 @@ export class SubcategoryDiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'SubcategoryDiscount already exists|Cat_id must be a positive number|Sub_cat_id must be a positive number|Count must be a positive number|Percentage must be a positive number|Invalid max_amount|Invalid expiry_date',
+      'SubcategoryDiscount already exists|Cat_id must be a positive number|Sub_cat_id must be a positive number|Count must be a positive number|Percentage must be a positive number|Max_amount must be a positive number|Invalid expiry_date',
   })
   @ApiResponse({
     status: 403,
@@ -129,7 +129,7 @@ export class SubcategoryDiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'Count must be a positive number|Percentage must be a positive number|Invalid max_amount|Invalid expiry_date',
+      'Count must be a positive number|Percentage must be a positive number|Max_amount must be a positive number|Invalid expiry_date',
   })
   @ApiResponse({
     status: 403,

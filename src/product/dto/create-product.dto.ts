@@ -14,8 +14,8 @@ export class CreateProductDto {
   @ApiProperty({ example: 'APCafe', description: 'Name of the Product' })
   readonly name: string;
 
-  @IsInt({ message: 'Invalid price' })
-  @IsPositive({ message: 'Invalid price' })
+  @IsInt({ message: 'Price must be a positive number' })
+  @IsPositive({ message: 'Price must be a positive number' })
   @ApiProperty({
     example: '03146258582',
     description: 'price of the Product',

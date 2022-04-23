@@ -3,8 +3,8 @@ import { IsInt, IsOptional, IsPositive, IsString } from 'class-validator';
 
 export class UpdateInvoiceDto {
   @IsOptional()
-  @IsInt({ message: 'Invalid price' })
-  @IsPositive({ message: 'Invalid price' })
+  @IsInt({ message: 'Price must be a positive number' })
+  @IsPositive({ message: 'Price must be a positive number' })
   @ApiProperty({
     example: 1000000,
     description: 'total price of the Invoice',

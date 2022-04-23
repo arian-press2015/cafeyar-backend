@@ -47,7 +47,7 @@ export class ProductImageController {
   @ApiResponse({
     status: 400,
     description:
-      'ProductImage already exists|Invalid product_id|Width must be a positive number|Height must be a positive number|Invalid url|Invalid image status',
+      'ProductImage already exists|Product_id must be a positive number|Width must be a positive number|Height must be a positive number|Invalid url|Invalid image status',
   })
   @ApiResponse({
     status: 403,
@@ -79,7 +79,7 @@ export class ProductImageController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid product_id|Page must be a positive number|Limit must be a positive number',
+      'Product_id must be a positive number|Page must be a positive number|Limit must be a positive number',
   })
   @ApiResponse({
     status: 404,

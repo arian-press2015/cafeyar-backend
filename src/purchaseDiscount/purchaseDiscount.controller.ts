@@ -49,7 +49,7 @@ export class PurchaseDiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'PurchaseDiscount already exists|Invalid purchase_plan_id|Invalid code|Count must be a positive number|Percentage must be a positive number|Invalid max_amount|Invalid expiry_date',
+      'PurchaseDiscount already exists|Purchase_plan_id must be a positive number|Invalid code|Count must be a positive number|Percentage must be a positive number|Max_amount must be a positive number|Invalid expiry_date',
   })
   @ApiResponse({
     status: 403,
@@ -127,7 +127,7 @@ export class PurchaseDiscountController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid purchase_plan_id|Invalid code|Count must be a positive number|Percentage must be a positive number|Invalid max_amount|Invalid expiry_date',
+      'Purchase_plan_id must be a positive number|Invalid code|Count must be a positive number|Percentage must be a positive number|Max_amount must be a positive number|Invalid expiry_date',
   })
   @ApiResponse({
     status: 403,

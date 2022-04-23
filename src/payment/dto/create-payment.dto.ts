@@ -18,8 +18,8 @@ export class CreatePaymentDto {
   })
   readonly purchase_id: number;
 
-  @IsInt({ message: 'Invalid price' })
-  @IsPositive({ message: 'Invalid price' })
+  @IsInt({ message: 'Price must be a positive number' })
+  @IsPositive({ message: 'Price must be a positive number' })
   @ApiProperty({
     example: 20000000,
     description: 'Price of the Payment',

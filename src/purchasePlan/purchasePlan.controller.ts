@@ -47,7 +47,7 @@ export class PurchasePlanController {
   @ApiResponse({
     status: 400,
     description:
-      'PurchasePlan title already taken|Invalid purchase_level_id|Invalid purchase_lifetime_id|Invalid price',
+      'PurchasePlan title already taken|Purchase_level_id must be a positive number|Purchase_lifetime_id must be a positive number|Price must be a positive number',
   })
   @ApiResponse({
     status: 403,
@@ -78,7 +78,8 @@ export class PurchasePlanController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Invalid purchase_level_id|Invalid purchase_lifetime_id',
+    description:
+      'Purchase_level_id must be a positive number|Purchase_lifetime_id must be a positive number',
   })
   @ApiResponse({
     status: 404,
@@ -121,7 +122,7 @@ export class PurchasePlanController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid purchase_level_id|Invalid purchase_lifetime_id|Invalid price',
+      'Purchase_level_id must be a positive number|Purchase_lifetime_id must be a positive number|Price must be a positive number',
   })
   @ApiResponse({
     status: 403,

@@ -10,8 +10,8 @@ export class CreatePurchaseDto {
   })
   readonly user_id: number;
 
-  @IsInt({ message: 'Invalid purchase_plan_id' })
-  @IsPositive({ message: 'Invalid purchase_plan_id' })
+  @IsInt({ message: 'Purchase_plan_id must be a positive number' })
+  @IsPositive({ message: 'Purchase_plan_id must be a positive number' })
   @ApiProperty({
     example: 123,
     description: 'purchase_plan_id of the Purchase',

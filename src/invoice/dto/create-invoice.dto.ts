@@ -10,8 +10,8 @@ export class CreateInvoiceDto {
   })
   readonly user_id: number;
 
-  @IsInt({ message: 'Invalid price' })
-  @IsPositive({ message: 'Invalid price' })
+  @IsInt({ message: 'Price must be a positive number' })
+  @IsPositive({ message: 'Price must be a positive number' })
   @ApiProperty({
     example: 1000000,
     description: 'total price of the Invoice',

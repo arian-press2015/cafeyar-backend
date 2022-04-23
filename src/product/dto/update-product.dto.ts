@@ -14,8 +14,8 @@ export class UpdateProductDto {
   readonly name?: string;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid price' })
-  @IsPositive({ message: 'Invalid price' })
+  @IsInt({ message: 'Price must be a positive number' })
+  @IsPositive({ message: 'Price must be a positive number' })
   @ApiProperty({
     example: '03146258582',
     description: 'price of the Product',
