@@ -11,7 +11,7 @@ export class UpdateUserImageDto {
   readonly width?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid height' })
+  @IsInt({ message: 'Height must be a positive number' })
   @ApiProperty({
     example: 40,
     description: 'height of the UserImage',

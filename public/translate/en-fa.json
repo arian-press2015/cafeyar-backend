@@ -14,7 +14,7 @@
   "No Version found": "ورژن یافت نشد",
   "User_id must be a positive number": "فیلد شناسه کاربر باید از نوع عدد و مثبت باشد",
   "Width must be a positive number": "فیلد عرض تصویر باید از نوع عدد و مثبت باشد",
-  "Invalid height": "طول تصویر نامعتبر است",
+  "Height must be a positive number": "فیلد طول تصویر باید از نوع عدد و مثبت باشد",
   "Invalid url": "آدرس فایل نامعتبر است",
   "Invalid title": "عنوان نامعتبر است",
   "Invalid description": "شرح نامعتبر است",

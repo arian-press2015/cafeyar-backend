@@ -18,8 +18,8 @@ export class CreateProductImageDto {
   })
   readonly width: number;
 
-  @IsInt({ message: 'Invalid height' })
-  @IsPositive({ message: 'Invalid height' })
+  @IsInt({ message: 'Height must be a positive number' })
+  @IsPositive({ message: 'Height must be a positive number' })
   @ApiProperty({
     example: 480,
     description: 'image height',

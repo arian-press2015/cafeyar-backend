@@ -46,7 +46,7 @@ export class CategoryImageController {
   @ApiResponse({
     status: 400,
     description:
-      'CategoryImage already exists|Width must be a positive number|Invalid height|Invalid url',
+      'CategoryImage already exists|Width must be a positive number|Height must be a positive number|Invalid url',
   })
   @ApiResponse({
     status: 403,
@@ -93,7 +93,8 @@ export class CategoryImageController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Width must be a positive number|Invalid height|Invalid url',
+    description:
+      'Width must be a positive number|Height must be a positive number|Invalid url',
   })
   @ApiResponse({
     status: 403,

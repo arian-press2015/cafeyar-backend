@@ -12,8 +12,8 @@ export class UpdateQrImageDto {
   readonly width?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invalid height' })
-  @IsPositive({ message: 'Invalid height' })
+  @IsInt({ message: 'Height must be a positive number' })
+  @IsPositive({ message: 'Height must be a positive number' })
   @ApiProperty({
     example: 480,
     description: 'height of the QrImage',
