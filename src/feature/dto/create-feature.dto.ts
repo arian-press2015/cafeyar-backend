@@ -6,7 +6,7 @@ export class CreateFeatureDto {
   @ApiProperty({ example: 'see images', description: 'Title of the Feature' })
   readonly title: string;
 
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({
     example: 'show images',
     description: 'description of the Feature',

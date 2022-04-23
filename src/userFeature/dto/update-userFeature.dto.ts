@@ -8,7 +8,7 @@ export class UpdateUserFeatureDto {
   readonly title?: string;
 
   @IsOptional()
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({
     example: 'show something',
     description: 'Description of the UserFeature',

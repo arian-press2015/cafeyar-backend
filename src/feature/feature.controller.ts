@@ -47,7 +47,7 @@ export class FeatureController {
   @ApiResponse({
     status: 400,
     description:
-      'Feature title already taken|Title must be a string|Invalid description|Invalid version',
+      'Feature title already taken|Title must be a string|Destination must be a string|Invalid version',
   })
   @ApiResponse({
     status: 403,
@@ -119,7 +119,8 @@ export class FeatureController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Title must be a string|Invalid description|Invalid version',
+    description:
+      'Title must be a string|Destination must be a string|Invalid version',
   })
   @ApiResponse({
     status: 403,

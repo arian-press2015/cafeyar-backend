@@ -6,7 +6,7 @@ export class CreateImageTypeDto {
   @ApiProperty({ example: 'UserImage', description: 'Image of the User' })
   readonly type: string;
 
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({
     example: 'this is profile image of Users',
     description: 'description of ImageType',

@@ -47,7 +47,7 @@ export class RateController {
   @ApiResponse({
     status: 400,
     description:
-      'Rate already exists|User_id must be a positive number|Invalid host_id|Invalid host_point|Invalid personnel_point|Invalid quality_point|Invalid description',
+      'Rate already exists|User_id must be a positive number|Invalid host_id|Invalid host_point|Invalid personnel_point|Invalid quality_point|Destination must be a string',
   })
   @ApiResponse({
     status: 403,
@@ -120,7 +120,7 @@ export class RateController {
   @ApiResponse({
     status: 400,
     description:
-      'Invalid host_point|Invalid personnel_point|Invalid quality_point|Invalid description',
+      'Invalid host_point|Invalid personnel_point|Invalid quality_point|Destination must be a string',
   })
   @ApiResponse({
     status: 403,

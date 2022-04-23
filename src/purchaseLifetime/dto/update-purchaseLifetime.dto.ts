@@ -11,7 +11,7 @@ export class UpdatePurchaseLifetimeDto {
   readonly title?: string;
 
   @IsOptional()
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({
     example: 'this is monthly purchase',
     description: 'description of the PurchaseLifetime',

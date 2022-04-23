@@ -21,7 +21,7 @@ export class UpdateHostDto {
   readonly address?: string;
 
   @IsOptional()
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({
     example: 'blah-blah-blah',
     description: 'description of the Host',

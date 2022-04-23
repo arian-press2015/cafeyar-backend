@@ -42,7 +42,7 @@ export class CreateOrderDto {
   })
   readonly time: string;
 
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({ example: 'nothing', description: 'description of the Order' })
   readonly description: string;
 

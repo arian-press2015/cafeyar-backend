@@ -33,7 +33,7 @@ export class UpdateRateDto {
   readonly quality_point?: number;
 
   @IsOptional()
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({
     example: 'it was good',
     description: 'this is optional description',

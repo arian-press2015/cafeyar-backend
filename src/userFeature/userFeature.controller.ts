@@ -47,7 +47,7 @@ export class UserFeatureController {
   @ApiResponse({
     status: 400,
     description:
-      'User_id must be a positive number|Title must be a string|Invalid description',
+      'User_id must be a positive number|Title must be a string|Destination must be a string',
   })
   @ApiResponse({
     status: 403,
@@ -122,7 +122,7 @@ export class UserFeatureController {
   @ApiResponse({
     status: 400,
     description:
-      'Title must be a string|Invalid description|Invalid accepted|Invalid paid',
+      'Title must be a string|Destination must be a string|Invalid accepted|Invalid paid',
   })
   @ApiResponse({
     status: 403,

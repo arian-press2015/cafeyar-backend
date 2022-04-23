@@ -16,7 +16,7 @@ export class UpdatePermissionDto {
   readonly title_fa?: string;
 
   @IsOptional()
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({
     example: 'this lets you see',
     description: 'description of the Permission',

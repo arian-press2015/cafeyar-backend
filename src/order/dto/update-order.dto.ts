@@ -36,7 +36,7 @@ export class UpdateOrderDto {
   readonly time?: string;
 
   @IsOptional()
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({ example: 'nothing', description: 'description of the Order' })
   readonly description?: string;
 

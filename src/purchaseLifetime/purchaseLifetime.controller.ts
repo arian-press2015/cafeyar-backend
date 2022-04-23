@@ -49,7 +49,7 @@ export class PurchaseLifetimeController {
   @ApiResponse({
     status: 400,
     description:
-      'PurchaseLifetime title already taken|Title must be a string|Invalid description|Invalid multiplier',
+      'PurchaseLifetime title already taken|Title must be a string|Destination must be a string|Invalid multiplier',
   })
   @ApiResponse({
     status: 403,
@@ -127,7 +127,7 @@ export class PurchaseLifetimeController {
   @ApiResponse({
     status: 400,
     description:
-      'Title must be a string|Invalid description|Invalid multiplier',
+      'Title must be a string|Destination must be a string|Invalid multiplier',
   })
   @ApiResponse({
     status: 403,

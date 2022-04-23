@@ -13,7 +13,7 @@ export class CreateUserFeatureDto {
   @ApiProperty({ example: 'show sth', description: 'Title of the UserFeature' })
   readonly title: string;
 
-  @IsString({ message: 'Invalid description' })
+  @IsString({ message: 'Destination must be a string' })
   @ApiProperty({
     example: 'show something',
     description: 'Description of the UserFeature',
