@@ -15,10 +15,12 @@ export class OrderService {
   ): Promise<OrderRO> {
     const order = {
       id: 1,
+      user_id: 1,
       host_id: 1,
-      invoice_id: 1,
+      payment_id: 1,
       total_price: 10000,
       total_discount: 100000,
+      total_tip: 0,
       time: '2022-02-02 20:30:40',
       description: 'nothing',
       orderItems: [
@@ -42,10 +44,12 @@ export class OrderService {
     const order = [];
     order.push({
       id: 1,
+      user_id: 1,
       host_id: 1,
-      invoice_id: 1,
+      payment_id: 1,
       total_price: 10000,
       total_discount: 100000,
+      total_tip: 0,
       time: '2022-02-02 20:30:40',
       description: 'nothing',
       orderItems: [
@@ -68,10 +72,12 @@ export class OrderService {
   async findOne(orderID: number): Promise<OrderRO> {
     const order = {
       id: 1,
+      user_id: 1,
       host_id: 1,
-      invoice_id: 1,
+      payment_id: 1,
       total_price: 10000,
       total_discount: 100000,
+      total_tip: 0,
       time: '2022-02-02 20:30:40',
       description: 'nothing',
       orderItems: [
@@ -98,10 +104,12 @@ export class OrderService {
   ): Promise<OrderRO> {
     const order = {
       id: 1,
+      user_id: 1,
       host_id: 1,
-      invoice_id: 1,
+      payment_id: 1,
       total_price: 10000,
       total_discount: 100000,
+      total_tip: 0,
       time: '2022-02-02 20:30:40',
       description: 'nothing',
       orderItems: [
@@ -124,10 +132,12 @@ export class OrderService {
   async delete(userID: number, orderID: number): Promise<OrderRO> {
     const order = {
       id: 1,
+      user_id: 1,
       host_id: 1,
-      invoice_id: 1,
+      payment_id: 1,
       total_price: 10000,
       total_discount: 100000,
+      total_tip: 0,
       time: '2022-02-02 20:30:40',
       description: 'nothing',
       orderItems: [

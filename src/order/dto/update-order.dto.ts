@@ -28,12 +28,28 @@ export class UpdateOrderDto {
   readonly total_discount?: number;
 
   @IsOptional()
+  @IsInt({ message: 'Total_tip must be a number' })
+  @ApiProperty({
+    example: 100000,
+    description: 'total_tip of the Order',
+  })
+  readonly total_tip?: number;
+
+  @IsOptional()
   @IsDateString({}, { message: 'Invalid time' })
   @ApiProperty({
     example: '2022-02-02 20:30:40',
     description: 'Time of the Order',
   })
   readonly time?: string;
+
+  @IsOptional()
+  @IsDateString({}, { message: 'Invalid pay_date' })
+  @ApiProperty({
+    example: '2022-02-02 20:30:40',
+    description: 'Pay_date of the Order',
+  })
+  readonly pay_date?: string;
 
   @IsOptional()
   @IsString({ message: 'Destination must be a string' })

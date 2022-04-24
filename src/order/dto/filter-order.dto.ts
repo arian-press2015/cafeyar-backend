@@ -3,6 +3,15 @@ import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class FilterOrderDto {
   @IsOptional()
+  @IsInt({ message: 'User_id must be a positive number' })
+  @IsPositive({ message: 'User_id must be a positive number' })
+  @ApiProperty({
+    example: 123,
+    description: 'user_id of the Order',
+  })
+  readonly user_id?: number;
+
+  @IsOptional()
   @IsInt({ message: 'Host_id must be a positive number' })
   @IsPositive({ message: 'Host_id must be a positive number' })
   @ApiProperty({
@@ -12,13 +21,13 @@ export class FilterOrderDto {
   readonly host_id?: number;
 
   @IsOptional()
-  @IsInt({ message: 'Invoice_id must be a positive number' })
-  @IsPositive({ message: 'Invoice_id must be a positive number' })
+  @IsInt({ message: 'payment_id must be a positive number' })
+  @IsPositive({ message: 'payment_id must be a positive number' })
   @ApiProperty({
     example: 123,
-    description: 'invoice_id of the Order',
+    description: 'payment_id of the Order',
   })
-  readonly invoice_id?: number;
+  readonly payment_id?: number;
 
   @IsInt({ message: 'Page must be a positive number' })
   @IsPositive({ message: 'Page must be a positive number' })

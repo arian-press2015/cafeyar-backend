@@ -7,9 +7,9 @@ export class Tip {
 
   @ApiProperty({
     example: 123,
-    description: 'invoice_id of the Tip',
+    description: 'order_id of the Tip',
   })
-  readonly invoice_id: number;
+  readonly order_id: number;
 
   @ApiProperty({
     example: 123,

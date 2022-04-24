@@ -7,15 +7,21 @@ export class Order {
 
   @ApiProperty({
     example: 123,
+    description: 'user_id of the Order',
+  })
+  readonly user_id: number;
+
+  @ApiProperty({
+    example: 123,
     description: 'host_id of the Order',
   })
   readonly host_id: number;
 
   @ApiProperty({
     example: 123,
-    description: 'invoice_id of the Order',
+    description: 'payment_id of the Order',
   })
-  readonly invoice_id: number;
+  readonly payment_id: number;
 
   @ApiProperty({
     example: 2000000,
@@ -30,10 +36,22 @@ export class Order {
   readonly total_discount: number;
 
   @ApiProperty({
+    example: 100000,
+    description: 'total_tip of the Order',
+  })
+  readonly total_tip: number;
+
+  @ApiProperty({
     example: '2022-02-02 20:30:40',
     description: 'Time of the Order',
   })
   readonly time: string;
+
+  @ApiProperty({
+    example: '2022-02-02 20:30:40',
+    description: 'Pay_date of the Order',
+  })
+  readonly pay_date?: string;
 
   @ApiProperty({ example: 'nothing', description: 'description of the Order' })
   readonly description: string;

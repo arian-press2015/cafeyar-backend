@@ -47,7 +47,7 @@ export class PaymentController {
   @ApiResponse({
     status: 400,
     description:
-      'Payment already exists|Invoice_id must be a positive number|Purchase_id must be a positive number|Price must be a positive number|Invalid success',
+      'Payment already exists|Price must be a positive number|Invalid success',
   })
   @ApiResponse({
     status: 403,

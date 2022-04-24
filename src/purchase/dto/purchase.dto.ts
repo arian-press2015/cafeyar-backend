@@ -6,6 +6,12 @@ export class Purchase {
 
   @ApiProperty({
     example: 123,
+    description: 'payment_id of the Purchase',
+  })
+  readonly payment_id: number;
+
+  @ApiProperty({
+    example: 123,
     description: 'user_id of the Purchase',
   })
   readonly user_id: number;

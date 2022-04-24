@@ -2,12 +2,12 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsPositive } from 'class-validator';
 
 export class CreateTipDto {
-  @IsInt({ message: 'Invoice_id must be a positive number' })
+  @IsInt({ message: 'Order_id must be a positive number' })
   @ApiProperty({
     example: 123,
-    description: 'invoice_id of the Tip',
+    description: 'order_id of the Tip',
   })
-  readonly invoice_id: number;
+  readonly order_id: number;
 
   @IsInt({ message: 'User_id must be a positive number' })
   @ApiProperty({

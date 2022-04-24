@@ -15,8 +15,6 @@ export class PaymentService {
   ): Promise<PaymentRO> {
     const payment = {
       id: 1,
-      invoice_id: 1,
-      purchase_id: 1,
       price: 1000000,
       success: true,
     };
@@ -27,8 +25,6 @@ export class PaymentService {
     const payment = [];
     payment.push({
       id: 1,
-      invoice_id: 1,
-      purchase_id: 1,
       price: 1000000,
       success: true,
     });
@@ -39,8 +35,6 @@ export class PaymentService {
   async findOne(paymentID: number): Promise<PaymentRO> {
     const payment = {
       id: 1,
-      invoice_id: 1,
-      purchase_id: 1,
       price: 1000000,
       success: true,
     };
@@ -54,8 +48,6 @@ export class PaymentService {
   ): Promise<PaymentRO> {
     const payment = {
       id: 1,
-      invoice_id: 1,
-      purchase_id: 1,
       price: 1000000,
       success: true,
     };
@@ -65,8 +57,6 @@ export class PaymentService {
   async delete(userID: number, paymentID: number): Promise<PaymentRO> {
     const payment = {
       id: 1,
-      invoice_id: 1,
-      purchase_id: 1,
       price: 1000000,
       success: true,
     };

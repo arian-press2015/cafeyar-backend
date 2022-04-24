@@ -2,6 +2,14 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsInt, IsPositive } from 'class-validator';
 
 export class CreatePurchaseDto {
+  @IsInt({ message: 'payment_id must be a positive number' })
+  @IsPositive({ message: 'payment_id must be a positive number' })
+  @ApiProperty({
+    example: 123,
+    description: 'payment_id of the Purchase',
+  })
+  readonly payment_id: number;
+
   @IsInt({ message: 'User_id must be a positive number' })
   @IsPositive({ message: 'User_id must be a positive number' })
   @ApiProperty({

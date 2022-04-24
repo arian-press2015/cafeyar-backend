@@ -12,7 +12,7 @@ export class TipService {
   async create(userID: number, CreateTipDto: CreateTipDto): Promise<TipRO> {
     const tip = {
       id: 1,
-      invoice_id: 1,
+      order_id: 1,
       user_id: 1,
       amount: 1000000,
       count: 5,
@@ -32,7 +32,7 @@ export class TipService {
     const tip = [];
     tip.push({
       id: 1,
-      invoice_id: 1,
+      order_id: 1,
       user_id: 1,
       amount: 1000000,
       count: 5,
@@ -51,7 +51,7 @@ export class TipService {
   async findOne(tipID: number): Promise<TipRO> {
     const tip = {
       id: 1,
-      invoice_id: 1,
+      order_id: 1,
       user_id: 1,
       amount: 1000000,
       count: 5,
@@ -74,7 +74,7 @@ export class TipService {
   ): Promise<TipRO> {
     const tip = {
       id: 1,
-      invoice_id: 1,
+      order_id: 1,
       user_id: 1,
       amount: 1000000,
       count: 5,
@@ -93,7 +93,7 @@ export class TipService {
   async delete(userID: number, tipID: number): Promise<TipRO> {
     const tip = {
       id: 1,
-      invoice_id: 1,
+      order_id: 1,
       user_id: 1,
       amount: 1000000,
       count: 5,
