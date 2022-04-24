@@ -10,7 +10,6 @@ import { HostModule } from './host/host.module';
 import { HostImageModule } from './hostImage/hostImage.module';
 import { ImageTypeModule } from './imageType/imageType.module';
 import { IngredientModule } from './ingredient/ingredient.module';
-import { InvoiceModule } from './invoice/invoice.module';
 import { OrderModule } from './order/order.module';
 import { OwnerModule } from './owner/owner.module';
 import { OwnerPermissionModule } from './ownerPermission/ownerPermission.module';
@@ -52,7 +51,6 @@ import { VersionModule } from './version/version.module';
     HostImageModule,
     ImageTypeModule,
     IngredientModule,
-    InvoiceModule,
     OrderModule,
     OwnerModule,
     OwnerPermissionModule,
