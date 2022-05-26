@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { CategoryModule } from './category/category.module';
 import { CategoryImageModule } from './categoryImage/categoryImage.module';
+import configuration from './config/configuration';
 import { DiscountModule } from './discount/discount.module';
 import { FaqModule } from './faq/faq.module';
 import { FeatureModule } from './feature/feature.module';
@@ -41,6 +43,11 @@ import { VersionModule } from './version/version.module';
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'public'),
+    }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+      cache: true,
     }),
     CategoryModule,
     CategoryImageModule,

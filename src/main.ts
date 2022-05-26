@@ -5,10 +5,11 @@ import {
   SwaggerCustomOptions,
 } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import config from 'config';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('CafeYar')
@@ -24,6 +25,6 @@ async function bootstrap() {
 
   SwaggerModule.setup('docs', app, document, customOptions);
 
-  await app.listen(config.get('port'));
+  await app.listen(configService.get<number>('PORT'));
 }
 bootstrap();

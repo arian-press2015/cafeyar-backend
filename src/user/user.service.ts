@@ -1,6 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { totp } from 'otplib';
-import config from 'config';
 import * as jwt from 'jsonwebtoken';
 import {
   CreateUserDto,
@@ -13,6 +12,7 @@ import {
 } from './dto';
 import { PrismaService } from 'src/shared/services/prisma.service';
 import { RedisService } from 'src/shared/services/redis.service';
+import { ConfigService } from '@nestjs/config';
 
 const select = {
   id: true,
@@ -26,7 +26,11 @@ const select = {
 
 @Injectable()
 export class UserService {
-  constructor(private prisma: PrismaService, private redis: RedisService) {}
+  constructor(
+    private prisma: PrismaService,
+    private redis: RedisService,
+    private configService: ConfigService,
+  ) {}
 
   async login(payload: LoginUserDto): Promise<boolean> {
     if (payload.phone != '+989012883045') {
@@ -160,7 +164,7 @@ export class UserService {
         phone: user.phone,
         exp: exp.getTime() / 1000,
       },
-      config.get('secret'),
+      this.configService.get<string>('jwt_secret'),
     );
   }
 }

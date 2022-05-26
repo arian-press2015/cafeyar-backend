@@ -3,10 +3,11 @@ import {
   ExecutionContext,
   HttpException,
 } from '@nestjs/common';
-import config from 'config';
+import { ConfigService } from '@nestjs/config';
 import * as jwt from 'jsonwebtoken';
 
 export const User = createParamDecorator((data: any, ctx: ExecutionContext) => {
+  const configService = new ConfigService();
   const req = ctx.switchToHttp().getRequest();
   // if route is protected, there is a user set in auth.middleware
   if (!!req.user) {
@@ -18,7 +19,10 @@ export const User = createParamDecorator((data: any, ctx: ExecutionContext) => {
     ? (req.headers.authorization as string).split(' ')
     : null;
   if (token && token[1]) {
-    const decoded: any = jwt.verify(token[1], config.get('secret'));
+    const decoded: any = jwt.verify(
+      token[1],
+      configService.get<string>('jwt_secret'),
+    );
     return !!data ? decoded[data] : decoded;
   }
   throw new HttpException('Auth token required', 401);
