@@ -23,13 +23,13 @@ export class AuthMiddleware implements NestMiddleware {
       const user = await this.userService.findByPhoneAuth(decoded.phone);
 
       if (!user) {
-        throw new HttpException('User not found', HttpStatus.UNAUTHORIZED);
+        throw new HttpException('No user found', HttpStatus.UNAUTHORIZED);
       }
 
       req.user = user.user;
       next();
     } else {
-      throw new HttpException('Not authorized', HttpStatus.UNAUTHORIZED);
+      throw new HttpException('Auth token required', HttpStatus.UNAUTHORIZED);
     }
   }
 }

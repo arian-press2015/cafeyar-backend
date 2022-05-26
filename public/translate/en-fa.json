@@ -1,4 +1,5 @@
 {
+  "Auth token required": "شما وارد نشده اید",
   "Phone number already taken": "این شماره موبایل قبلا ثبت شده است",
   "Phone number is not valid": "شماره موبایل معتبر نیست",
   "No user found": "کاربر یافت نشد",
