@@ -1,15 +1,10 @@
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import {
-  createClient,
-  RedisClientType,
-  RedisModules,
-  RedisScripts,
-} from 'redis';
+import { createClient, RedisClientType } from 'redis';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class RedisService implements OnModuleInit, OnModuleDestroy {
-  readonly client: RedisClientType<RedisModules, RedisScripts>;
+  readonly client: RedisClientType;
   constructor(private configService: ConfigService) {
     this.client = createClient({
       url: this.configService.get<string>('redis_url'),
