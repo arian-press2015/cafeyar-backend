@@ -103,20 +103,6 @@ model ingredient {
   product_ingredient product_ingredient[]
 }
 
-model invoice {
-  id          Int       @id @default(autoincrement())
-  customer_id Int
-  price       BigInt    @default(0)
-  discount    BigInt    @default(0)
-  pay_date    DateTime? @db.DateTime(0)
-  customer    customer  @relation(fields: [customer_id], references: [id], map: "invoice_fk")
-  order       order[]
-  payment     payment[]
-  tip         tip[]
-
-  @@index([customer_id], map: "invoice_fk")
-}
-
 model level_feature {
   id             Int            @id @default(autoincrement())
   level_id       Int
@@ -131,19 +117,25 @@ model level_feature {
 model order {
   id                       Int                       @id @default(autoincrement())
   host_id                  Int
-  invoice_id               Int
+  payment_id               Int
   total_price              BigInt
   total_discount           BigInt
   time                     DateTime                  @db.DateTime(0)
   description              String?                   @db.VarChar(100)
+  customer_id              Int
+  total_tip                BigInt
+  pay_date                 DateTime?                 @db.DateTime(0)
+  customer                 customer                  @relation(fields: [customer_id], references: [id], map: "order_FK_2")
   host                     host                      @relation(fields: [host_id], references: [id], map: "order_fk")
-  invoice                  invoice                   @relation(fields: [invoice_id], references: [id], map: "order_fk_1")
+  payment                  payment                   @relation(fields: [payment_id], references: [id], map: "order_FK_1")
   order_item               order_item[]
   product_discount_history product_discount_history?
   sub_cat_discount_history sub_cat_discount_history?
+  tip                      tip[]
 
   @@index([host_id], map: "order_fk")
-  @@index([invoice_id], map: "order_fk_1")
+  @@index([payment_id], map: "order_fk_1")
+  @@index([customer_id], map: "order_FK_2")
 }
 
 model order_item {
@@ -198,16 +190,11 @@ model owner_role_permission {
 }
 
 model payment {
-  id          Int       @id @default(autoincrement())
-  invoice_id  Int?
-  purchase_id Int?
-  price       BigInt
-  success     Boolean?
-  invoice     invoice?  @relation(fields: [invoice_id], references: [id], onDelete: Restrict, map: "payment_fk_1")
-  purchase    purchase? @relation(fields: [purchase_id], references: [id], onDelete: Restrict, map: "payment_fk")
-
-  @@index([purchase_id], map: "payment_fk")
-  @@index([invoice_id], map: "payment_fk_1")
+  id       Int        @id @default(autoincrement())
+  price    BigInt
+  success  Boolean?
+  order    order[]
+  purchase purchase[]
 }
 
 model permission {
@@ -325,13 +312,15 @@ model purchase {
   customer_id               Int
   purchase_plan_id          Int
   purchase_date             DateTime                   @db.DateTime(0)
+  payment_id                Int
   customer                  customer                   @relation(fields: [customer_id], references: [id], map: "purchase_fk")
+  payment                   payment                    @relation(fields: [payment_id], references: [id], map: "purchase_FK_2")
   purchase_plan             purchase_plan              @relation(fields: [purchase_plan_id], references: [id], map: "purchase_fk_1")
-  payment                   payment[]
   purchase_discount_history purchase_discount_history?
 
   @@index([customer_id], map: "purchase_fk")
   @@index([purchase_plan_id], map: "purchase_fk_1")
+  @@index([payment_id], map: "purchase_FK_2")
 }
 
 model purchase_discount {
@@ -476,17 +465,17 @@ model sub_category {
 
 model tip {
   id            Int             @id @default(autoincrement())
-  invoice_id    Int
+  order_id      Int
   customer_id   Int
   amount        BigInt
   count         Int
   tip_date      DateTime        @db.DateTime(0)
   customer      customer        @relation(fields: [customer_id], references: [id], map: "tip_fk")
-  invoice       invoice         @relation(fields: [invoice_id], references: [id], map: "tip_fk_1")
+  order         order           @relation(fields: [order_id], references: [id], map: "tip_FK_1")
   personnel_tip personnel_tip[]
 
   @@index([customer_id], map: "tip_fk")
-  @@index([invoice_id], map: "tip_fk_1")
+  @@index([order_id], map: "tip_fk_1")
 }
 
 model version {
@@ -512,7 +501,7 @@ model customer {
   customer_introduction_customerTocustomer_introduction_customer_id   customer_introduction[] @relation("customerTocustomer_introduction_customer_id")
   customer_introduction_customerTocustomer_introduction_introducer_id customer_introduction[] @relation("customerTocustomer_introduction_introducer_id")
   host                                                                host[]
-  invoice                                                             invoice[]
+  order                                                               order[]
   owner                                                               owner?
   personnel                                                           personnel[]
   product_star                                                        product_star[]
@@ -561,6 +550,7 @@ model host_table {
   host         host      @relation(fields: [host_id], references: [id], map: "table_fk")
   qr_image     qr_image?
 
+  @@unique([host_id, table_number], map: "host_table_host_table_number_UN")
   @@index([host_id], map: "table_fk")
 }
 
