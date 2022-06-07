@@ -8,9 +8,10 @@ import { ProductStarService } from './productStar.service';
 import { ProductStarController } from './productStar.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule],
+  imports: [UserModule, ConfigModule],
   controllers: [ProductStarController],
   providers: [ProductStarService],
 })

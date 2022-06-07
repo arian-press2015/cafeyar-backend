@@ -8,9 +8,10 @@ import { CategoryImageService } from './categoryImage.service';
 import { CategoryImageController } from './categoryImage.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule],
+  imports: [UserModule, ConfigModule],
   controllers: [CategoryImageController],
   providers: [CategoryImageService],
 })

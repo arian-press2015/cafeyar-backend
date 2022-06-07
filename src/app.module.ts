@@ -46,7 +46,6 @@ import { VersionModule } from './version/version.module';
     }),
     ConfigModule.forRoot({
       envFilePath: `${process.cwd()}/.env.${process.env.NODE_ENV}`,
-      isGlobal: true,
       load: [configuration],
       cache: true,
     }),

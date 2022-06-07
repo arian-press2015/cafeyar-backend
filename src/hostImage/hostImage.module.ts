@@ -8,9 +8,10 @@ import { HostImageService } from './hostImage.service';
 import { HostImageController } from './hostImage.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule],
+  imports: [UserModule, ConfigModule],
   controllers: [HostImageController],
   providers: [HostImageService],
 })

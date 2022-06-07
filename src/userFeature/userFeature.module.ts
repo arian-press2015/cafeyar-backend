@@ -8,9 +8,10 @@ import { UserFeatureService } from './userFeature.service';
 import { UserFeatureController } from './userFeature.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule],
+  imports: [UserModule, ConfigModule],
   controllers: [UserFeatureController],
   providers: [UserFeatureService],
 })
