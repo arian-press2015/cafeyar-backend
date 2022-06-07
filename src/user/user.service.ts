@@ -13,6 +13,7 @@ import {
 import { PrismaService } from 'src/shared/services/prisma.service';
 import { RedisService } from 'src/shared/services/redis.service';
 import { ConfigService } from '@nestjs/config';
+import { v4 as uuid } from 'uuid';
 
 const select = {
   id: true,
@@ -33,9 +34,19 @@ export class UserService {
   ) {}
 
   async login(payload: LoginUserDto): Promise<boolean> {
-    if (payload.phone != '+989012883045') {
-      throw new HttpException('No user found', 404);
-    }
+    // create an otp
+    const otp = await totp.generate(
+      this.configService.get<string>('otp_secret'),
+    );
+
+    // store the otp
+    const pattern = `login-otp-${payload.phone}`;
+    await this.redis.set(pattern, otp);
+    await this.redis.expire(pattern, 120);
+
+    // send the otp
+    console.log(`otp is ${otp}`);
+
     return true;
   }
 
@@ -66,14 +77,30 @@ export class UserService {
   }
 
   async create(dto: CreateUserDto): Promise<UserDisplayRO> {
-    if (dto.phone == '1') {
-      throw new HttpException('Phone number already taken', 400);
+    // reward the introducer
+    if (dto.introduction) {
+      const introducer = await this.prisma.customer.findUnique({
+        select,
+        where: { introduction_id: dto.introduction },
+      });
+      if (!introducer) throw new HttpException('Invalid Introduction_id', 400);
+      else {
+        await this.prisma.customer.update({
+          select,
+          data: { credit: { increment: 100000n } },
+          where: { introduction_id: dto.introduction },
+        });
+      }
     }
 
-    const user = {
-      id: 1,
-      introduction_id: 'ap2015',
-    };
+    const user = await this.prisma.customer.create({
+      select,
+      data: {
+        phone: dto.phone,
+        introduction_id: uuid(),
+        creation_date: new Date(),
+      },
+    });
 
     return { user };
   }
@@ -125,16 +152,15 @@ export class UserService {
   }
 
   async findByPhone(phone: string): Promise<UserRO> {
-    const user = {
-      id: 1,
-      phone: '+989012883045',
-      name: 'mohammad',
-      last: 'mohammadi',
-      age: 25,
-      gender: 'male',
-      credit: 10000000n,
-      introduction_id: 'ap2015',
-    };
+    const user = await this.prisma.customer.findUnique({
+      select: {
+        ...select,
+        phone: true,
+      },
+      where: {
+        phone,
+      },
+    });
     return { user };
   }
 
@@ -151,6 +177,17 @@ export class UserService {
       introduction_id: 'ap2015',
     };
     return { user };
+  }
+
+  async checkUserExistance(phone: string): Promise<boolean> {
+    const exists = await this.prisma.customer.findUnique({
+      select,
+      where: { phone },
+    });
+    if (exists) {
+      return false;
+    }
+    return true;
   }
 
   public generateJWT(user: User): string {

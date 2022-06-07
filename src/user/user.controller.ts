@@ -9,6 +9,7 @@ import {
   UsePipes,
   Param,
   ValidationPipe,
+  HttpException,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -46,6 +47,11 @@ export class UserController {
     description: 'Phone number already taken|Phone number is not valid',
   })
   async create(@Body() userData: CreateUserDto): Promise<UserDisplayRO> {
+    const userExists = await this.userService.checkUserExistance(
+      userData.phone,
+    );
+    if (userExists) throw new HttpException('Phone number already taken', 400);
+
     return await this.userService.create(userData);
   }
 
@@ -63,6 +69,11 @@ export class UserController {
     description: 'No user found|Phone number is not valid',
   })
   async login(@Body() loginUserDto: LoginUserDto): Promise<boolean> {
+    const userExists = await this.userService.checkUserExistance(
+      loginUserDto.phone,
+    );
+    if (userExists) throw new HttpException('No user found', 404);
+
     return await this.userService.login(loginUserDto);
   }
 
