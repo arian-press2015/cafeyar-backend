@@ -26,7 +26,7 @@ export class User {
   readonly gender?: string;
 
   @ApiProperty({ example: 2500000, description: 'credit of the User (IRR)' })
-  readonly credit: number;
+  readonly credit: bigint;
 
   @ApiProperty({
     example: 'f43uc31u0o4f4j13c',

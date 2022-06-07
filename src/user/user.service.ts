@@ -55,7 +55,7 @@ export class UserService {
       last: 'mohammadi',
       age: 25,
       gender: 'male',
-      credit: 10000000,
+      credit: 10000000n,
       introduction_id: 'ap2015',
     };
 
@@ -94,7 +94,7 @@ export class UserService {
       last: 'mohammadi',
       age: 25,
       gender: 'male',
-      credit: 10000000,
+      credit: 10000000n,
       introduction_id: 'ap2015',
     };
     return { user };
@@ -132,7 +132,7 @@ export class UserService {
       last: 'mohammadi',
       age: 25,
       gender: 'male',
-      credit: 10000000,
+      credit: 10000000n,
       introduction_id: 'ap2015',
     };
     return { user };
@@ -147,7 +147,7 @@ export class UserService {
       last: 'mohammadi',
       age: 25,
       gender: 'male',
-      credit: 10000000,
+      credit: 10000000n,
       introduction_id: 'ap2015',
     };
     return { user };
