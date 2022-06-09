@@ -72,7 +72,7 @@ export class UserController {
     const userExists = await this.userService.checkUserExistance(
       loginUserDto.phone,
     );
-    if (userExists) throw new HttpException('No user found', 404);
+    if (!userExists) throw new HttpException('No user found', 404);
 
     return await this.userService.login(loginUserDto);
   }

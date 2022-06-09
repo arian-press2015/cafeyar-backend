@@ -4,7 +4,8 @@ import { PrismaService } from '../shared/services/prisma.service';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { PrismaClient } from '@prisma/client';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
+import configuration from 'src/config/configuration';
 
 describe('UserController', () => {
   let controller: UserController;
@@ -19,13 +20,24 @@ describe('UserController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UserController],
-      providers: [UserService, PrismaService, RedisService, ConfigService],
+      providers: [UserService, PrismaService, RedisService],
+      imports: [
+        ConfigModule.forRoot({
+          envFilePath: `${process.cwd()}/.env.${process.env.NODE_ENV}`,
+          load: [configuration],
+          cache: true,
+        }),
+      ],
     }).compile();
 
     controller = module.get<UserController>(UserController);
     service = module.get<UserService>(UserService);
     redis = module.get<RedisService>(RedisService);
-    // redis.onModuleInit();
+    await redis.onModuleInit();
+  });
+
+  afterEach(async () => {
+    await redis.onModuleDestroy();
   });
 
   it('should be defined', () => {
@@ -78,11 +90,11 @@ describe('UserController', () => {
 
   describe('async login(loginUserDto: LoginUserDto): Promise<boolean>', () => {
     it('should request login validation', async () => {
-      expect(await service.login({ phone: '+989012883045' })).toBe(true);
+      expect(await controller.login({ phone: '+989012883045' })).toBe(true);
     });
 
     it('should decline request login validation on non existing user', async () => {
-      expect(service.login({ phone: '+989132234231' })).rejects.toThrow(
+      expect(controller.login({ phone: '+989132234231' })).rejects.toThrow(
         'No user found',
       );
     });

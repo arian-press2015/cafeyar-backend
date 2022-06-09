@@ -1,6 +1,7 @@
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaClient } from '@prisma/client';
+import configuration from 'src/config/configuration';
 import { PrismaService } from '../shared/services/prisma.service';
 import { RedisService } from '../shared/services/redis.service';
 import { UserService } from './user.service';
@@ -16,21 +17,13 @@ describe('UserService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        UserService,
-        PrismaService,
-        RedisService,
-        {
-          provide: ConfigService,
-          useValue: {
-            get: jest.fn((key: string) => {
-              if (key === 'otp_secret') {
-                return 'qwertyuiopasdfghjklzxcvbnm123456890';
-              }
-              return null;
-            }),
-          },
-        },
+      providers: [UserService, PrismaService, RedisService],
+      imports: [
+        ConfigModule.forRoot({
+          envFilePath: `${process.cwd()}/.env.${process.env.NODE_ENV}`,
+          load: [configuration],
+          cache: true,
+        }),
       ],
     }).compile();
 

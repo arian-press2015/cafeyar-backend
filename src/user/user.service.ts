@@ -184,7 +184,7 @@ export class UserService {
       select,
       where: { phone },
     });
-    if (exists) {
+    if (!exists) {
       return false;
     }
     return true;
