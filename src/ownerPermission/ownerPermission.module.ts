@@ -8,10 +8,9 @@ import { OwnerPermissionService } from './ownerPermission.service';
 import { OwnerPermissionController } from './ownerPermission.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule, ConfigModule],
+  imports: [UserModule],
   controllers: [OwnerPermissionController],
   providers: [OwnerPermissionService],
 })

@@ -8,10 +8,9 @@ import { VersionService } from './version.service';
 import { VersionController } from './version.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule, ConfigModule],
+  imports: [UserModule],
   controllers: [VersionController],
   providers: [VersionService],
 })

@@ -8,10 +8,9 @@ import { CategoryService } from './category.service';
 import { CategoryController } from './category.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule, ConfigModule],
+  imports: [UserModule],
   controllers: [CategoryController],
   providers: [CategoryService],
 })

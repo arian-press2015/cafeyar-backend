@@ -8,10 +8,9 @@ import { TipService } from './tip.service';
 import { TipController } from './tip.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule, ConfigModule],
+  imports: [UserModule],
   controllers: [TipController],
   providers: [TipService],
 })

@@ -8,10 +8,9 @@ import { PersonnelService } from './personnel.service';
 import { PersonnelController } from './personnel.controller';
 import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from 'src/user/auth.middleware';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule, ConfigModule],
+  imports: [UserModule],
   controllers: [PersonnelController],
   providers: [PersonnelService],
 })
