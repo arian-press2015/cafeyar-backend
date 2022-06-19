@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { PurchaseDiscountService } from './purchaseDiscount.service';
 import {
@@ -91,7 +92,7 @@ export class PurchaseDiscountController {
     description: 'No PurchaseDiscount found',
   })
   find(
-    @Body() filterPurchaseDiscountDto: FilterPurchaseDiscountDto,
+    @Query() filterPurchaseDiscountDto: FilterPurchaseDiscountDto,
   ): Promise<PurchaseDiscount[]> {
     return this.purchaseDiscountService.find(filterPurchaseDiscountDto);
   }

@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { UserFeatureService } from './userFeature.service';
 import {
@@ -86,7 +87,7 @@ export class UserFeatureController {
     description: 'No UserFeature found',
   })
   find(
-    @Body() filterUserFeatureDto: FilterUserFeatureDto,
+    @Query() filterUserFeatureDto: FilterUserFeatureDto,
   ): Promise<UserFeature[]> {
     return this.userFeatureService.find(filterUserFeatureDto);
   }

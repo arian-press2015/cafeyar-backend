@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { PersonnelService } from './personnel.service';
 import {
@@ -85,7 +86,7 @@ export class PersonnelController {
     status: 404,
     description: 'No Personnel found',
   })
-  find(@Body() filterPersonnelDto: FilterPersonnelDto): Promise<Personnel[]> {
+  find(@Query() filterPersonnelDto: FilterPersonnelDto): Promise<Personnel[]> {
     return this.personnelService.find(filterPersonnelDto);
   }
 

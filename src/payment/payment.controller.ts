@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { PaymentService } from './payment.service';
 import {
@@ -85,7 +86,7 @@ export class PaymentController {
     status: 404,
     description: 'No Payment found',
   })
-  find(@Body() filterPaymentDto: FilterPaymentDto): Promise<Payment[]> {
+  find(@Query() filterPaymentDto: FilterPaymentDto): Promise<Payment[]> {
     return this.paymentService.find(filterPaymentDto);
   }
 

@@ -7,6 +7,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { ProductStarService } from './productStar.service';
 import {
@@ -84,7 +85,7 @@ export class ProductStarController {
     description: 'No ProductStar found',
   })
   find(
-    @Body() filterProductStarDto: FilterProductStarDto,
+    @Query() filterProductStarDto: FilterProductStarDto,
   ): Promise<ProductStar[]> {
     return this.productStarService.find(filterProductStarDto);
   }

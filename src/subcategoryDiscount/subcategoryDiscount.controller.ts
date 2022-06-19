@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { SubcategoryDiscountService } from './subcategoryDiscount.service';
 import {
@@ -92,7 +93,7 @@ export class SubcategoryDiscountController {
     description: 'No SubcategoryDiscount found',
   })
   find(
-    @Body()
+    @Query()
     filterSubcategoryDiscountDto: FilterSubcategoryDiscountDto,
   ): Promise<SubcategoryDiscount[]> {
     return this.subcategoryDiscountService.find(filterSubcategoryDiscountDto);

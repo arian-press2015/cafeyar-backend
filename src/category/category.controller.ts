@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import {
@@ -85,7 +86,7 @@ export class CategoryController {
     status: 404,
     description: 'No Category found',
   })
-  find(@Body() filterCategoryDto: FilterCategoryDto): Promise<Category[]> {
+  find(@Query() filterCategoryDto: FilterCategoryDto): Promise<Category[]> {
     return this.categoryService.find(filterCategoryDto);
   }
 

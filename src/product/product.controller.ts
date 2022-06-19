@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import {
@@ -85,7 +86,7 @@ export class ProductController {
     status: 404,
     description: 'No Product found',
   })
-  find(@Body() filterProductDto: FilterProductDto): Promise<Product[]> {
+  find(@Query() filterProductDto: FilterProductDto): Promise<Product[]> {
     return this.productService.find(filterProductDto);
   }
 

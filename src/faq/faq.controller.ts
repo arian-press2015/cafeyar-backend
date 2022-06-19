@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { FaqService } from './faq.service';
 import {
@@ -85,7 +86,7 @@ export class FaqController {
     status: 404,
     description: 'No Faq found',
   })
-  find(@Body() filterFaqDto: FilterFaqDto): Promise<Faq[]> {
+  find(@Query() filterFaqDto: FilterFaqDto): Promise<Faq[]> {
     return this.faqService.find(filterFaqDto);
   }
 

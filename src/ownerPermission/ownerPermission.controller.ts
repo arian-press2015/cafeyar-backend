@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { OwnerPermissionService } from './ownerPermission.service';
 import {
@@ -88,7 +89,7 @@ export class OwnerPermissionController {
     description: 'No OwnerPermission found',
   })
   find(
-    @Body() filterOwnerPermissionDto: FilterOwnerPermissionDto,
+    @Query() filterOwnerPermissionDto: FilterOwnerPermissionDto,
   ): Promise<OwnerPermission[]> {
     return this.ownerPermissionService.find(filterOwnerPermissionDto);
   }

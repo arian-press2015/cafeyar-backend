@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { VersionService } from './version.service';
 import {
@@ -85,7 +86,7 @@ export class VersionController {
     status: 404,
     description: 'No Version found',
   })
-  find(@Body() filterVersionDto: FilterVersionDto): Promise<Version[]> {
+  find(@Query() filterVersionDto: FilterVersionDto): Promise<Version[]> {
     return this.versionService.find(filterVersionDto);
   }
 

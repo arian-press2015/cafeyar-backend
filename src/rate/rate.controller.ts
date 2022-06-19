@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { RateService } from './rate.service';
 import {
@@ -85,7 +86,7 @@ export class RateController {
     status: 404,
     description: 'No Rate found',
   })
-  find(@Body() filterRateDto: FilterRateDto): Promise<Rate[]> {
+  find(@Query() filterRateDto: FilterRateDto): Promise<Rate[]> {
     return this.rateService.find(filterRateDto);
   }
 

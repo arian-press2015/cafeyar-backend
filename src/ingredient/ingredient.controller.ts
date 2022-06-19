@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { IngredientService } from './ingredient.service';
 import {
@@ -85,7 +86,7 @@ export class IngredientController {
     description: 'No Ingredient found',
   })
   find(
-    @Body() filterIngredientDto: FilterIngredientDto,
+    @Query() filterIngredientDto: FilterIngredientDto,
   ): Promise<Ingredient[]> {
     return this.ingredientService.find(filterIngredientDto);
   }
