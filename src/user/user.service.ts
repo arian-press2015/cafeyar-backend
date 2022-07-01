@@ -51,25 +51,13 @@ export class UserService {
   }
 
   async verify(payload: VerifyUserDto): Promise<UserRO> {
-    if (payload.otp == '1') {
-      throw new HttpException('No user found', 404);
-    } else if (payload.otp == '2') {
-      throw new HttpException('No otp found', 404);
-    } else if (payload.otp == '3') {
-      throw new HttpException('Wrong otp', 400);
-    }
+    const pattern = `login-otp-${payload.phone}`;
+    const otp = await this.redis.get(pattern);
 
-    const user = {
-      id: 1,
-      phone: '+989012883045',
-      name: 'mohammad',
-      last: 'mohammadi',
-      age: 25,
-      gender: 'male',
-      credit: 10000000n,
-      introduction_id: 'ap2015',
-    };
+    if (!otp) throw new HttpException('No otp found', 400);
+    if (payload.otp != otp) throw new HttpException('Wrong otp', 400);
 
+    const user = (await this.findByPhone(payload.phone)).user;
     const token = await this.generateJWT(user);
     return {
       user: { ...user, token },

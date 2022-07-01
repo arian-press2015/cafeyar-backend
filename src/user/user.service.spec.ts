@@ -1,6 +1,5 @@
 import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
-import { PrismaClient } from '@prisma/client';
 import configuration from 'src/config/configuration';
 import { PrismaService } from '../shared/services/prisma.service';
 import { RedisService } from '../shared/services/redis.service';
@@ -9,13 +8,9 @@ import { UserService } from './user.service';
 describe('UserService', () => {
   let service: UserService;
   let redis: RedisService;
+  let prisma: PrismaService;
 
   beforeAll(async () => {
-    const prisma = new PrismaClient();
-    await prisma.customer.deleteMany({});
-  });
-
-  beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [UserService, PrismaService, RedisService],
       imports: [
@@ -29,10 +24,12 @@ describe('UserService', () => {
 
     service = module.get<UserService>(UserService);
     redis = module.get<RedisService>(RedisService);
+    prisma = module.get<PrismaService>(PrismaService);
     await redis.onModuleInit();
+    await prisma.customer.deleteMany({});
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await redis.onModuleDestroy();
   });
 
@@ -81,57 +78,50 @@ describe('UserService', () => {
     });
   });
 
-  // describe('async verify(verifyUserDto: VerifyUserDto): Promise<UserRO>', () => {
-  //   it('should verify validation request', async () => {
-  //     await service.login({ phone: '09012883045' });
+  describe('async verify(verifyUserDto: VerifyUserDto): Promise<UserRO>', () => {
+    it('should verify validation request', async () => {
+      const phone = '+989012883045';
+      await service.login({ phone });
 
-  //     jest.spyOn(redis, 'get').mockImplementation(
-  //       () =>
-  //         new Promise((res) => {
-  //           res('123456');
-  //         }),
-  //     );
+      jest.spyOn(redis, 'get').mockImplementation(async () => '123456');
 
-  //     const result = await service.verify({
-  //       phone: '09012883045',
-  //       otp: '123456',
-  //     });
+      const result = await service.verify({
+        phone,
+        otp: '123456',
+      });
 
-  //     expect(typeof result).toBe('object');
-  //     expect(typeof result.user).toBe('object');
-  //     expect(result.user).toStrictEqual({
-  //       id: expect.any(Number),
-  //       phone: expect.any(String),
-  //       name: null,
-  //       last: null,
-  //       age: null,
-  //       gender: null,
-  //       weight: null,
-  //       height: null,
-  //       token: expect.any(String),
-  //     });
-  //   });
+      expect(typeof result).toBe('object');
+      expect(typeof result.user).toBe('object');
+      expect(result.user).toStrictEqual({
+        id: expect.any(Number),
+        phone: expect.any(String),
+        name: expect.any(String),
+        last: expect.any(String),
+        gender: null,
+        age: null,
+        credit: expect.any(BigInt),
+        introduction_id: expect.any(String),
+        token: expect.any(String),
+      });
+    });
 
-  //   it('should decline validation request on non existing user', async () => {
-  //     expect(
-  //       service.verify({ phone: '09132234231', otp: 'abcdef' }),
-  //     ).rejects.toThrow('No user found');
-  //   });
+    it('should decline validation request on no otp generated', async () => {
+      jest.spyOn(redis, 'get').mockImplementation(async () => undefined);
 
-  //   it('should decline validation request on no otp generated', async () => {
-  //     expect(
-  //       service.verify({ phone: '09012883045', otp: 'abcdef' }),
-  //     ).rejects.toThrow('No otp found');
-  //   });
+      await expect(
+        service.verify({ phone: '+989012883045', otp: 'abcdef' }),
+      ).rejects.toThrow('No otp found');
+    });
 
-  //   it('should decline validation request on wrong otp', async () => {
-  //     await service.login({ phone: '09012883045' });
+    it('should decline validation request on wrong otp', async () => {
+      await service.login({ phone: '+989012883045' });
 
-  //     expect(
-  //       service.verify({ phone: '09012883045', otp: 'abcdef' }),
-  //     ).rejects.toThrow('Wrong otp');
-  //   });
-  // });
+      jest.spyOn(redis, 'get').mockImplementation(async () => '123456');
+      expect(
+        service.verify({ phone: '+989012883045', otp: 'abcdef' }),
+      ).rejects.toThrow('Wrong otp');
+    });
+  });
 
   // describe('async update(userData: UpdateUserDto): Promise<UserDisplayRO>', () => {
   //   it('should update current user', async () => {

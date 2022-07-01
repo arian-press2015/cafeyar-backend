@@ -97,6 +97,11 @@ export class UserController {
     description: 'No otp found|No user found',
   })
   async verify(@Body() verifyUserDto: VerifyUserDto): Promise<UserRO> {
+    const userExists = await this.userService.checkUserExistance(
+      verifyUserDto.phone,
+    );
+    if (!userExists) throw new HttpException('No user found', 404);
+
     return await this.userService.verify(verifyUserDto);
   }
 

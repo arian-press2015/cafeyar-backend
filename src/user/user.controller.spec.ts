@@ -3,7 +3,6 @@ import { RedisService } from '../shared/services/redis.service';
 import { PrismaService } from '../shared/services/prisma.service';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
-import { PrismaClient } from '@prisma/client';
 import { ConfigModule } from '@nestjs/config';
 import configuration from 'src/config/configuration';
 
@@ -11,13 +10,9 @@ describe('UserController', () => {
   let controller: UserController;
   let service: UserService;
   let redis: RedisService;
+  let prisma: PrismaService;
 
   beforeAll(async () => {
-    const prisma = new PrismaClient();
-    await prisma.customer.deleteMany({});
-  });
-
-  beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UserController],
       providers: [UserService, PrismaService, RedisService],
@@ -33,10 +28,12 @@ describe('UserController', () => {
     controller = module.get<UserController>(UserController);
     service = module.get<UserService>(UserService);
     redis = module.get<RedisService>(RedisService);
+    prisma = module.get<PrismaService>(PrismaService);
     await redis.onModuleInit();
+    await prisma.customer.deleteMany({});
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await redis.onModuleDestroy();
   });
 
@@ -47,6 +44,7 @@ describe('UserController', () => {
   describe('async create(dto: CreateUserDto): Promise<UserDisplayRO>', () => {
     it('should create a new user', async () => {
       const result = await controller.create({ phone: '+989012883045' });
+
       expect(typeof result).toBe('object');
       expect(typeof result.user).toBe('object');
       expect(result.user).toStrictEqual({
@@ -58,6 +56,15 @@ describe('UserController', () => {
         credit: 0n,
         introduction_id: expect.any(String),
       });
+    });
+
+    it('should call service.create once with phone', async () => {
+      const serviceCalled = jest.spyOn(service, 'create');
+
+      await controller.create({ phone: '+989012883046' });
+
+      expect(serviceCalled).toBeCalledWith({ phone: '+989012883046' });
+      expect(serviceCalled).toBeCalledTimes(1);
     });
 
     it('should throw error on existing phone number', async () => {
@@ -93,10 +100,83 @@ describe('UserController', () => {
       expect(await controller.login({ phone: '+989012883045' })).toBe(true);
     });
 
+    it('should call service.login once with phone', async () => {
+      const serviceCalled = jest.spyOn(service, 'login');
+
+      await controller.login({ phone: '+989012883045' });
+
+      expect(serviceCalled).toBeCalledWith({ phone: '+989012883045' });
+      expect(serviceCalled).toBeCalledTimes(1);
+    });
+
     it('should decline request login validation on non existing user', async () => {
       expect(controller.login({ phone: '+989132234231' })).rejects.toThrow(
         'No user found',
       );
+    });
+  });
+
+  describe('async verify(verifyUserDto: VerifyUserDto): Promise<UserRO>', () => {
+    it('should verify validation request', async () => {
+      const phone = '+989012883045';
+      await controller.login({ phone });
+
+      jest.spyOn(redis, 'get').mockImplementation(async () => '123456');
+
+      const result = await controller.verify({
+        phone,
+        otp: '123456',
+      });
+
+      expect(typeof result).toBe('object');
+      expect(typeof result.user).toBe('object');
+      expect(result.user).toStrictEqual({
+        id: expect.any(Number),
+        phone: expect.any(String),
+        name: expect.any(String),
+        last: expect.any(String),
+        gender: null,
+        age: null,
+        credit: expect.any(BigInt),
+        introduction_id: expect.any(String),
+        token: expect.any(String),
+      });
+    });
+
+    it('should call service.verify once with phone and otp', async () => {
+      const serviceCalled = jest.spyOn(service, 'verify');
+
+      await controller.verify({ phone: '+989012883045', otp: '123456' });
+
+      expect(serviceCalled).toBeCalledWith({
+        phone: '+989012883045',
+        otp: '123456',
+      });
+      expect(serviceCalled).toBeCalledTimes(1);
+    });
+
+    it('should decline validation request on non existing user', async () => {
+      await expect(
+        controller.verify({ phone: '+989132234231', otp: 'abcdef' }),
+      ).rejects.toThrow('No user found');
+    });
+
+    it('should decline validation request on no otp generated', async () => {
+      jest.spyOn(redis, 'get').mockImplementation(async () => undefined);
+
+      await expect(
+        controller.verify({ phone: '+989012883045', otp: 'abcdef' }),
+      ).rejects.toThrow('No otp found');
+    });
+
+    it('should decline validation request on wrong otp', async () => {
+      await controller.login({ phone: '+989012883045' });
+
+      jest.spyOn(redis, 'get').mockImplementation(async () => '123456');
+
+      await expect(
+        controller.verify({ phone: '+989012883045', otp: 'abcdef' }),
+      ).rejects.toThrow('Wrong otp');
     });
   });
 });
