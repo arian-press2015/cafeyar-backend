@@ -192,35 +192,21 @@ describe('UserService', () => {
   //   });
   // });
 
-  // describe('async findByPhone(phone: string): Promise<UserDisplayRO>', () => {
-  //   it('should find and return user info', async () => {
-  //     await service.login({ phone: '09012883045' });
-
-  //     jest.spyOn(redis, 'get').mockImplementation(
-  //       () =>
-  //         new Promise((res) => {
-  //           res('123456');
-  //         }),
-  //     );
-
-  //     const result = await service.verify({
-  //       phone: '09012883045',
-  //       otp: '123456',
-  //     });
-
-  //     const phone = result.user.phone;
-
-  //     expect((await service.findByPhone(phone)).user).toStrictEqual({
-  //       id: expect.any(Number),
-  //       name: expect.any(String),
-  //       last: expect.any(String),
-  //       age: expect.any(Number),
-  //       gender: expect.any(String),
-  //       weight: expect.any(Number),
-  //       height: expect.any(Number),
-  //     });
-  //   });
-  // });
+  describe('async findByPhone(phone: string): Promise<UserDisplayRO>', () => {
+    it('should find and return user info', async () => {
+      const result = await service.findByPhone('+989012883045');
+      expect(result.user).toStrictEqual({
+        phone: '+989012883045',
+        id: expect.any(Number),
+        name: 'کاربر',
+        last: 'گرامی',
+        age: null,
+        gender: null,
+        credit: expect.any(BigInt),
+        introduction_id: expect.any(String),
+      });
+    });
+  });
 
   // describe('async findByPhoneAuth(phone: string): Promise<UserDisplayRO>', () => {
   //   it('should find and return user info', async () => {

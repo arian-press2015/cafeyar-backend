@@ -179,4 +179,29 @@ describe('UserController', () => {
       ).rejects.toThrow('Wrong otp');
     });
   });
+
+  describe(`async findMe(@User('phone') phone: string): Promise<UserRO>`, () => {
+    it('should find and return user info', async () => {
+      const result = await controller.findMe('+989012883045');
+      expect(result.user).toStrictEqual({
+        phone: '+989012883045',
+        id: expect.any(Number),
+        name: 'کاربر',
+        last: 'گرامی',
+        age: null,
+        gender: null,
+        credit: expect.any(BigInt),
+        introduction_id: expect.any(String),
+      });
+    });
+
+    it('should call service.findByPhone once with phone', async () => {
+      const serviceCalled = jest.spyOn(service, 'findByPhone');
+
+      await controller.findMe('+989012883045');
+
+      expect(serviceCalled).toBeCalledWith('+989012883045');
+      expect(serviceCalled).toBeCalledTimes(1);
+    });
+  });
 });
