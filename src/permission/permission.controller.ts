@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { PermissionService } from './permission.service';
 import {
@@ -86,7 +87,7 @@ export class PermissionController {
     description: 'No Permission found',
   })
   find(
-    @Body() filterPermissionDto: FilterPermissionDto,
+    @Query() filterPermissionDto: FilterPermissionDto,
   ): Promise<Permission[]> {
     return this.permissionService.find(filterPermissionDto);
   }

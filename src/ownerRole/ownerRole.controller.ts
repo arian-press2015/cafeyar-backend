@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { OwnerRoleService } from './ownerRole.service';
 import {
@@ -85,7 +86,7 @@ export class OwnerRoleController {
     status: 404,
     description: 'No OwnerRole found',
   })
-  find(@Body() filterOwnerRoleDto: FilterOwnerRoleDto): Promise<OwnerRole[]> {
+  find(@Query() filterOwnerRoleDto: FilterOwnerRoleDto): Promise<OwnerRole[]> {
     return this.ownerRoleService.find(filterOwnerRoleDto);
   }
 

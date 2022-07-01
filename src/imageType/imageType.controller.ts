@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { ImageTypeService } from './imageType.service';
 import {
@@ -85,7 +86,7 @@ export class ImageTypeController {
     status: 404,
     description: 'No ImageType found',
   })
-  find(@Body() filterImageTypeDto: FilterImageTypeDto): Promise<ImageType[]> {
+  find(@Query() filterImageTypeDto: FilterImageTypeDto): Promise<ImageType[]> {
     return this.imageTypeService.find(filterImageTypeDto);
   }
 

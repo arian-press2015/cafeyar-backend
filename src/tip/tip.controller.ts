@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { TipService } from './tip.service';
 import {
@@ -85,7 +86,7 @@ export class TipController {
     status: 404,
     description: 'No Tip found',
   })
-  find(@Body() filterTipDto: FilterTipDto): Promise<Tip[]> {
+  find(@Query() filterTipDto: FilterTipDto): Promise<Tip[]> {
     return this.tipService.find(filterTipDto);
   }
 

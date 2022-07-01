@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { RoleService } from './role.service';
 import {
@@ -85,7 +86,7 @@ export class RoleController {
     status: 404,
     description: 'No Role found',
   })
-  find(@Body() filterRoleDto: FilterRoleDto): Promise<Role[]> {
+  find(@Query() filterRoleDto: FilterRoleDto): Promise<Role[]> {
     return this.roleService.find(filterRoleDto);
   }
 

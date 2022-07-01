@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { TableService } from './table.service';
 import {
@@ -82,7 +83,7 @@ export class TableController {
     status: 404,
     description: 'No host found|No Table found',
   })
-  findHostTables(@Body() filterTableDto: FilterTableDto): Promise<Table[]> {
+  findHostTables(@Query() filterTableDto: FilterTableDto): Promise<Table[]> {
     return this.tableService.findHostTables(filterTableDto);
   }
 

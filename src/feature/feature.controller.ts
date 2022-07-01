@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { FeatureService } from './feature.service';
 import {
@@ -85,7 +86,7 @@ export class FeatureController {
     status: 404,
     description: 'No Feature found',
   })
-  find(@Body() filterFeatureDto: FilterFeatureDto): Promise<Feature[]> {
+  find(@Query() filterFeatureDto: FilterFeatureDto): Promise<Feature[]> {
     return this.featureService.find(filterFeatureDto);
   }
 

@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -82,7 +83,7 @@ export class HostController {
     description:
       'Page must be a positive number|Limit must be a positive number',
   })
-  async find(@Body() filterHostDto: FilterHostDto): Promise<Host[]> {
+  async find(@Query() filterHostDto: FilterHostDto): Promise<Host[]> {
     return await this.hostService.find(filterHostDto);
   }
 

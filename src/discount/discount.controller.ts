@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { DiscountService } from './discount.service';
 import {
@@ -85,7 +86,7 @@ export class DiscountController {
     status: 404,
     description: 'No Discount found',
   })
-  find(@Body() filterDiscountDto: FilterDiscountDto): Promise<Discount[]> {
+  find(@Query() filterDiscountDto: FilterDiscountDto): Promise<Discount[]> {
     return this.discountService.find(filterDiscountDto);
   }
 

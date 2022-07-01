@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { SubcategoryService } from './subcategory.service';
 import {
@@ -86,7 +87,7 @@ export class SubcategoryController {
     description: 'No Subcategory found',
   })
   find(
-    @Body() filterSubcategoryDto: FilterSubcategoryDto,
+    @Query() filterSubcategoryDto: FilterSubcategoryDto,
   ): Promise<Subcategory[]> {
     return this.subcategoryService.find(filterSubcategoryDto);
   }

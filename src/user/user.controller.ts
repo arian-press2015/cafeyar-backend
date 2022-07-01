@@ -10,6 +10,7 @@ import {
   Param,
   ValidationPipe,
   HttpException,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -68,7 +69,7 @@ export class UserController {
     status: 404,
     description: 'No user found|Phone number is not valid',
   })
-  async login(@Body() loginUserDto: LoginUserDto): Promise<boolean> {
+  async login(@Query() loginUserDto: LoginUserDto): Promise<boolean> {
     const userExists = await this.userService.checkUserExistance(
       loginUserDto.phone,
     );

@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { PurchasePlanService } from './purchasePlan.service';
 import {
@@ -86,7 +87,7 @@ export class PurchasePlanController {
     description: 'No PurchasePlan found',
   })
   find(
-    @Body() filterPurchasePlanDto: FilterPurchasePlanDto,
+    @Query() filterPurchasePlanDto: FilterPurchasePlanDto,
   ): Promise<PurchasePlan[]> {
     return this.purchasePlanService.find(filterPurchasePlanDto);
   }

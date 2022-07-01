@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { ProductImageService } from './productImage.service';
 import {
@@ -86,7 +87,7 @@ export class ProductImageController {
     description: 'No ProductImage found',
   })
   find(
-    @Body() filterProductImageDto: FilterProductImageDto,
+    @Query() filterProductImageDto: FilterProductImageDto,
   ): Promise<ProductImage[]> {
     return this.productImageService.find(filterProductImageDto);
   }
